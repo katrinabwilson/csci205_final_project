@@ -5,10 +5,14 @@ Lewisburg, PA
 Instructor: Brian King
 Semester: Fall 2022
 ## Team Information
-Katrina Wilson
-Nahom Ayele
-Harmony Yeung
-Nolan Sauers
+Katrina Wilson  
+
+Nahom Ayele 
+
+Harmony Yeung  
+
+Nolan Sauers is the Project Owner, Class of '25, and a Computer Science & Engineering major.
+
 List 1-2 relevant sentences about each member, including year and major
 ## Project Information
 *Write a few sentences about your project. This can be done later, as you may not quite know all the details yet.*
