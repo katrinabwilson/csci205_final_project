@@ -6,10 +6,12 @@ Instructor: Brian King
 Semester: Fall 2022
 ## Team Information
 Katrina Wilson is the Scrum Master and a developer for this project. She is a 
-sophomore studying Computer Science and Economics.  
-Nahom Ayele is a senior studying Math Econ. He's a developer.
-Nolan Sauers is the Project Owner and a developer for this project. He's a sophomore studying Computer Science and Engineering.
 sophomore studying Computer Science and Economics.
+
+Nahom Ayele is a senior studying Math Econ. He's a developer.
+
+Nolan Sauers is the Project Owner and a developer for this project. He's a sophomore studying Computer Science and Engineering.
+
 Harmony Yeung is a Developer who is a sophomore Computer Science major.
 
 List 1-2 relevant sentences about each member, including year and major
