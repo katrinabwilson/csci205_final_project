@@ -9,7 +9,7 @@ Katrina Wilson is the Scrum Master and a developer for this project. She is a
 sophomore studying Computer Science and Economics. 
 Nahom Ayele
 Harmony Yeung is a Developer who is a sophomore Computer Science major.
-Nolan Sauers
+Nolan Sauers 
 List 1-2 relevant sentences about each member, including year and major
 ## Project Information
 *Write a few sentences about your project. This can be done later, as you may not quite know all the details yet.*
