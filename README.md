@@ -5,7 +5,8 @@ Lewisburg, PA
 Instructor: Brian King
 Semester: Fall 2022
 ## Team Information
-Katrina Wilson
+Katrina Wilson is the Scrum Master and a developer for this project. She is a 
+sophomore studying Computer Science and Economics. 
 Nahom Ayele
 Harmony Yeung
 Nolan Sauers
