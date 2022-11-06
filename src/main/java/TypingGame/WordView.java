@@ -22,6 +22,8 @@ package TypingGame;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class WordView extends HBox {
@@ -29,21 +31,25 @@ public class WordView extends HBox {
     private char[] letters;
     private int correctLetters = 0;
     public WordView(String word) {
+        // Capitalize and split our word by character -> Store this list as a global attribute
         letters = word.toUpperCase().toCharArray();
         for (char c : word.toUpperCase().toCharArray()) {
             Text letter = new Text(c + "");
-            letter.setFont(Font.font(108));
-
+            // This allows us to change the font size and type
+            letter.setFont(Font.font("Serif",95));
+            // We add our modified word to our tree
             getChildren().add(letter);
         }
-
+        // Puts our word on center screen
         this.setAlignment(Pos.CENTER);
+
     }
 
     public void handleKeyPress(String letter) {
+        // A boolean that keeps us from having an index error
         if (isFinished())
             return;
-
+        // List of letters of the goal word
         char c = letters[correctLetters];
 
         // When the user correctly guesses the letter, the letter disappears

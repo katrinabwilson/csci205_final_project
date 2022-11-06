@@ -35,6 +35,7 @@ public class TypingGameApp extends Application {
     private Parent createContent() {
         root.setPrefSize(800, 600);
 
+
         showNextWord();
 
         return root;
@@ -42,10 +43,13 @@ public class TypingGameApp extends Application {
 
 
     private void showNextWord() {
+        // Randomly selects a word from our list/dictionary
         String word = selector.getNextWord();
 
+        // Create a word view object with the randomly selected word as input
         WordView view = new WordView(word);
 
+        // We put it on the stack
         root.getChildren().setAll(view);
 
         startTime = System.nanoTime();
@@ -55,21 +59,24 @@ public class TypingGameApp extends Application {
     private void onKeyPress(String letter) {
         WordView view = (WordView) root.getChildren().get(0);
         view.handleKeyPress(letter);
-
+        // Checks the is finished method in our WordView class
         if (view.isFinished()) {
+            // Calculates elapsed time
             long endTime = System.nanoTime() - startTime;
 
             // Prints to terminal
-            System.out.printf("Your Time: %.2f sec", endTime / 1000000000.0);
+            System.out.printf("Your Time: %.2f sec\n", endTime / 1000000000.0);
             showNextWord();
         }
     }
     @Override
     public void start(Stage stage) throws Exception {
+
         Scene scene = new Scene(createContent());
         scene.setOnKeyPressed(e -> onKeyPress(e.getCode().toString()));
-
+        // Putting the information on our window
         stage.setScene(scene);
+        // Displays our window
         stage.show();
     }
 
