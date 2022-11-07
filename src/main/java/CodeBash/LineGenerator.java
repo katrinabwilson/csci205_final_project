@@ -43,10 +43,6 @@ public class LineGenerator {
         sources[0] = "https://www.gutenberg.org/cache/epub/16643/pg16643.txt";
         // A Tale of Two Cities
         sources[1] = "https://www.gutenberg.org/files/98/98-0.txt";
-        // Pride and Prejudice
-        //sources[2] = "https://www.gutenberg.org/files/1342/1342-0.txt";
-        // Huckleberry Finn
-        //sources[3] = "https://www.gutenberg.org/files/76/76-0.txt";
         // The Adventures of Sherlock Holmes
         sources[2] = "https://www.gutenberg.org/files/1661/1661-0.txt";
 
