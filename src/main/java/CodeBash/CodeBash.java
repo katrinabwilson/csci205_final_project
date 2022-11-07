@@ -3,7 +3,7 @@
  * Fall2022
  * Instructor: Prof. Brian King
  *
- * Name: Nolan Sauers
+ * Name: Nolan Sauers, Katrina Wilson, Nahom Ayele, Harmony Yeung
  * Section: 01 - 9am
  * Date: 11/4/2022
  * Time: 9:42 AM
@@ -13,7 +13,7 @@
  * Class: CodeBash
  *
  * Description:
- *
+ * The main class for our project.
  * ****************************************
  */
 
