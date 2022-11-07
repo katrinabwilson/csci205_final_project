@@ -22,8 +22,6 @@ package TypingGame;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 /**
@@ -34,8 +32,11 @@ public class WordView extends HBox {
     /** The letters */
     private char[] letters;
 
-    /** The number of collect letters */
-    private int correctLetters = 0;
+    /** The current letter the user is on, correct or not */
+    private int currentLetter = 0;
+
+    /** The number of correctly typed letters */
+    private int numCorrectLetters = 0;
 
     /**
      * Splits the words into individual characters and controls the font and size of the text
@@ -65,15 +66,20 @@ public class WordView extends HBox {
         if (isFinished())
             return;
         // List of letters of the goal word
-        char c = letters[correctLetters];
+        char c = letters[currentLetter];
 
         // When the user correctly guesses the letter, the letter disappears
         if (letter.charAt(0) == c) {
-            getChildren().get(correctLetters).setVisible(false);
-            correctLetters++;
-
-        } else {
-            // incorrectly typed - up to us to decided
+            getChildren().get(currentLetter).setStyle("-fx-fill: green");
+            currentLetter++;
+            numCorrectLetters++;
+        }
+        else if (letter.charAt(0) == '\b') {
+            currentLetter--;
+        }
+        else {
+            getChildren().get(currentLetter).setStyle("-fx-fill: red");
+            currentLetter++;
         }
     }
 
@@ -82,6 +88,6 @@ public class WordView extends HBox {
      * @return boolean true if finished
      */
     public boolean isFinished() {
-        return correctLetters == letters.length;
+        return currentLetter == letters.length;
     }
 }
