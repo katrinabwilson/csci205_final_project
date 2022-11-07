@@ -17,7 +17,7 @@
  * ****************************************
  */
 
-package CodeBash;
+package CodeBashModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +28,7 @@ public class LineGenerator {
     private String[] sources;
 
     /** A record of every possible sentence, common or not */
-    private HashMap<String, Integer> sentenceList;
+    private ArrayList<String> sentenceList;
 
     private int minSentenceLength;
 
@@ -49,7 +49,7 @@ public class LineGenerator {
         minSentenceLength = 30;
         maxSentenceLength = 100;
 
-        sentenceList = new HashMap<>();
+        sentenceList = new ArrayList<>();
     }
 
     /**
@@ -73,7 +73,7 @@ public class LineGenerator {
                 word = word.replaceAll("[^A-Za-z!?().,\":;\\s-]","");
                 // Check for valid sentence length
                 if (word.length() >= minSentenceLength && word.length() <= maxSentenceLength) {
-                    sentenceList.merge(word.toLowerCase(), 1, (old, missing) -> old + missing);
+                    sentenceList.add(word);
                 }
             }
             in.close();
@@ -85,10 +85,11 @@ public class LineGenerator {
      *
      * @return sentenceList.keySet(), the set of all the possible sentences
      */
-    public Set<String> getSentenceList(){
-        return this.sentenceList.keySet();
+    public ArrayList<String> getSentenceList(){
+        return this.sentenceList;
     }
 
+    /** Temporary test method */
     public static void main(String[] args) throws IOException {
         LineGenerator lineGenerator = new LineGenerator();
         lineGenerator.scanDocuments();
