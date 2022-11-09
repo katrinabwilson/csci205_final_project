@@ -51,4 +51,23 @@ public class LetterEvaluator {
     public boolean analyzeKeyPress() {
         return (correctLetter.equals(typedLetter));
     }
+
+    public static void main(String[] args) {
+        LetterEvaluator letterEvaluator = new LetterEvaluator('c', 'f');
+        if (!letterEvaluator.analyzeKeyPress()) {
+            System.out.println("false! this is supposed to happen.");
+        }
+        else {
+            System.out.println("yikes. not supposed to happen.");
+        }
+
+        letterEvaluator = new LetterEvaluator('c', 'c');
+        if (letterEvaluator.analyzeKeyPress()) {
+            System.out.println("true! this is supposed to happen.");
+        }
+        else {
+            System.out.println("yikes. not supposed to happen.");
+        }
+
+    }
 }
