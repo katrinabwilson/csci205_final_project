@@ -41,4 +41,6 @@ class LetterEvaluatorTest {
         boolean correctInput = letterEvaluator.analyzeKeyPress();
         assertTrue(correctInput);
     }
+
+
 }
