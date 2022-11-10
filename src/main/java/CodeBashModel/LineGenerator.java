@@ -85,7 +85,7 @@ public class LineGenerator {
                 }
 
                 // Replace ALL non-valid characters (like symbols)
-                line = line.replaceAll("[^A-Za-z!?().,\":;\\s-]","");
+                line = line.replaceAll("[^A-Za-z!?().,\"':;\\s-]","");
 
                 // Discard any lines that end with an incomplete phrase
                 if (line.contains("Mr.") || line.contains("Mrs.") || line.contains("St.") || line.contains("Gutenberg")) {
