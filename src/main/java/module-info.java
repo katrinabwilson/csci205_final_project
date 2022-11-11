@@ -10,4 +10,7 @@ module csci205_final_project{
     opens TypingGame to javafx.fxml;
     exports TypingGame2;
     opens TypingGame2 to javafx.fxml;
+
+    exports CodeBash;
+    opens CodeBash to javafx.fxml;
     }
