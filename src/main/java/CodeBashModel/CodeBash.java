@@ -26,6 +26,9 @@ public class CodeBash {
     /** Generates a list of possible sentences and stores them */
     private LineGenerator lineGenerator;
 
+    /** Evaluates each letter as it's typed */
+    private LetterEvaluator letterEvaluator;
+
     /** Instance of Random to choose a sentence randomly */
     private Random rand;
 
@@ -44,4 +47,5 @@ public class CodeBash {
     public String getNextSentence() {
         return lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
     }
+
 }
