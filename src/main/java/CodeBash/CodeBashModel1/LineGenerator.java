@@ -17,13 +17,11 @@
  * ****************************************
  */
 
-package CodeBashModel2;
+package CodeBash.CodeBashModel1;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class LineGenerator {
     /** An array of the URLs to be used for the lines */
@@ -48,7 +46,7 @@ public class LineGenerator {
         // The Adventures of Sherlock Holmes
         sources[2] = "https://www.gutenberg.org/files/1661/1661-0.txt";
 
-        minSentenceLength = 50;
+        minSentenceLength = 30;
         maxSentenceLength = 100;
 
         sentenceList = new ArrayList<>();
@@ -67,40 +65,16 @@ public class LineGenerator {
         for (int i = 1; i < sources.length; i++) {
             URL novel = new URL(sources[i]);
             Scanner in = new Scanner(novel.openStream());
-            // Regex for a sentence; line must start with a capital and end with punctuation
-            Pattern p = Pattern.compile("^[A-Z][^!?.]+[!?.]");
+            in.useDelimiter("[?!.]");
 
-            while (in.hasNextLine()) {
-                String line = in.nextLine();
-
-                // Trim line to just the sentence, if applicable
-                if (line.contains(".")) {
-                    line = line.substring(0, line.indexOf(".") + 1);
+            while (in.hasNext()) {
+                String word = in.next();
+                // Replace ALL non-valid characters
+                word = word.replaceAll("[^A-Za-z!?().,\":;\\s-]","");
+                // Check for valid sentence length
+                if (word.length() >= minSentenceLength && word.length() <= maxSentenceLength) {
+                    sentenceList.add(word);
                 }
-                else if (line.contains("!")) {
-                    line = line.substring(0, line.indexOf("!") + 1);
-                }
-                else if (line.contains("?")) {
-                    line = line.substring(0, line.indexOf("?") + 1);
-                }
-
-                // Replace ALL non-valid characters (like symbols)
-                line = line.replaceAll("[^A-Za-z!?().,\"':;\\s-]","");
-
-                // Discard any lines that end with an incomplete phrase
-                if (line.contains("Mr.") || line.contains("Mrs.") || line.contains("St.") || line.contains("Gutenberg")) {
-                    line = "";
-                }
-
-                // If the sentence has valid regex, accept it into the pool (given its length is valid)
-                Matcher m = p.matcher(line);
-                if (m.matches()) {
-                    // Check for valid sentence length
-                    if (line.length() >= minSentenceLength && line.length() <= maxSentenceLength) {
-                        sentenceList.add(line);
-                    }
-                }
-
             }
             in.close();
         }

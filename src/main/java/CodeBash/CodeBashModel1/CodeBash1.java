@@ -17,23 +17,20 @@
  * ****************************************
  */
 
-package CodeBashModel2;
+package CodeBash.CodeBashModel1;
 
 import java.io.IOException;
 import java.util.Random;
 
-public class CodeBash {
+public class CodeBash1 {
     /** Generates a list of possible sentences and stores them */
     private LineGenerator lineGenerator;
-
-    /** Evaluates each letter as it's typed */
-    private LetterEvaluator letterEvaluator;
 
     /** Instance of Random to choose a sentence randomly */
     private Random rand;
 
     /** Creates a new instance of the main model class */
-    public CodeBash() throws IOException {
+    public CodeBash1() throws IOException {
         lineGenerator = new LineGenerator();
         lineGenerator.scanDocuments();
         rand = new Random();
@@ -47,5 +44,4 @@ public class CodeBash {
     public String getNextSentence() {
         return lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
     }
-
 }
