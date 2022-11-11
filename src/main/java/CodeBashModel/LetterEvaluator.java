@@ -52,6 +52,7 @@ public class LetterEvaluator {
         return (correctLetter.equals(typedLetter));
     }
 
+    /** A temporary test class used when the JUnit tests didn't work */
     public static void main(String[] args) {
         LetterEvaluator letterEvaluator = new LetterEvaluator('c', 'f');
         if (!letterEvaluator.analyzeKeyPress()) {
