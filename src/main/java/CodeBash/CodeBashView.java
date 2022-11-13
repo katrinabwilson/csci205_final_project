@@ -36,11 +36,17 @@ public class CodeBashView {
     /** The button that starts game and timer */
     private Button startBtn;
 
-    /** topPane is the layout container for the top of the view*/
+    /** topPane is the layout container for the top of the view */
     private FlowPane topPane;
+
+    /** Displays each letter in order */
+    private HBox letterDisplay;
 
     /** Displays the current sentence to be typed */
     private Text sentence;
+
+    /** Stores each letter in the given sentence */
+    private ArrayList<Text> textObjects;
 
     public CodeBashView (CodeBashModel theModel){
         this.theModel = theModel;
@@ -63,6 +69,7 @@ public class CodeBashView {
     private void initSceneGraph() {
         root = new VBox();
         sentence = new Text();
+        letterDisplay = new HBox();
 
         // Add title text
         root.getChildren().add(new Label("CodeBash"));

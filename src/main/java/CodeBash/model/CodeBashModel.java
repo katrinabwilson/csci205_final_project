@@ -29,6 +29,10 @@ public class CodeBashModel {
     /** Instance of Random to choose a sentence randomly */
     private Random rand;
 
+    private LetterEvaluator letterEvaluator;
+
+    private String currentSentence;
+
     /** Creates a new instance of the main model class */
     public CodeBashModel() throws IOException {
         letterEvaluator = new LetterEvaluator();
@@ -45,5 +49,15 @@ public class CodeBashModel {
     public String getNextSentence() {
         currentSentence = lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
         return currentSentence;
+    }
+
+    public String getCurrentSentence() {
+        return currentSentence;
+    }
+
+
+
+    public LetterEvaluator getLetterEvaluator() {
+        return letterEvaluator;
     }
 }
