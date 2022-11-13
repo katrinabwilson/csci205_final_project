@@ -25,6 +25,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
@@ -88,8 +89,6 @@ public class CodeBashView {
         root.getChildren().add(startBtn);
         root.getChildren().add(letterDisplay);
 
-
-
     }
 
     /**
@@ -110,6 +109,7 @@ public class CodeBashView {
         for (int i = 0; i < sentence.length(); i++) {
             Text letter = new Text();
             letter.setText(sentence.charAt(i) + "");
+            letter.setFont(Font.font("Georgia",40));
             textObjects.add(letter);
             letterDisplay.getChildren().add(letter);
         }
