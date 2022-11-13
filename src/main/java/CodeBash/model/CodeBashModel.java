@@ -43,6 +43,7 @@ public class CodeBashModel {
      * @return a random sentence from the list held in lineGenerator
      */
     public String getNextSentence() {
-        return lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
+        currentSentence = lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
+        return currentSentence;
     }
 }

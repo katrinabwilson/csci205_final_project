@@ -40,6 +40,7 @@ public class CodeBashMain extends Application {
         super.init();
         this.theModel = new CodeBashModel();
         this.theView = new CodeBashView(theModel);
+        this.theController = new CodeBashController(theModel, theView);
 
     }
 
@@ -56,6 +57,7 @@ public class CodeBashMain extends Application {
         Scene scene = new Scene(theView.getRoot());
 //        scene.setOnKeyPressed(e -> theController.handleKeyPress(e.getCode().toString()));
         stage.setScene(scene);
+
         stage.sizeToScene();
         // Displays our window
         stage.show();
@@ -68,6 +70,7 @@ public class CodeBashMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 
 }
 

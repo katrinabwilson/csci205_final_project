@@ -22,6 +22,8 @@ import javafx.event.ActionEvent;
 public class CodeBashController {
     private CodeBashModel theModel;
     private CodeBashView theView;
+    private int currentLetter;
+    private char[] letters;
 
     /**
      * Construct a controller that connects the model and the view for our
@@ -33,6 +35,8 @@ public class CodeBashController {
     public CodeBashController(CodeBashModel theModel, CodeBashView theView) {
         this.theModel = theModel;
         this.theView = theView;
+        currentLetter = 0;
+        letters = theModel.getCurrentSentence().toCharArray();
 
         initEventHandlers();
         initBindings();
