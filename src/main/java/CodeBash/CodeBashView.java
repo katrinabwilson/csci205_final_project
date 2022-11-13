@@ -1,19 +1,23 @@
 /* *****************************************
- * CSCI205 -Software Engineering and Design
- * Fall2022* Instructor: Prof. Brian King
+ * CSCI205 - Software Engineering and Design
+ * Fall 2022
+ * Instructor: Prof. Brian King
  *
- * Name: Nahom Ayele
- * Section: Section 01-9am
- * Date: 11/10/22
- * Time: 10:24 AM
+ * Name: Nahom Ayele, Nolan Sauers, Katrina Wilson, Harmony Yeung
+ * Section: 9am - 01
+ * Date: 11/11/22
+ * Time: 9:30AM
  *
  * Project: csci205_final_project
- * Package: CodeBashView
- * Class: View
+ * Package: CodeBash
+ * Class: CodeBashView
  *
- * Description:
+ * Description: This represents the basic GUI part of CodeBash.
+ * This includes the code to display the text the user has to type
+ * and other settings.
  *
- * *****************************************/
+ * ****************************************
+ */
 package CodeBash;
 
 import CodeBash.model.CodeBashModel;
@@ -22,7 +26,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 
@@ -75,14 +78,9 @@ public class CodeBashView {
         root.getChildren().add(new Label("CodeBash"));
         root.setAlignment(Pos.CENTER);
 
-
         // Place topPane in between start button and title
-        //sentence.setText(theModel.getNextSentence());
-        createLetterTexts(theModel.getNextSentence());
-       // sentence.setTextAlignment(TextAlignment.CENTER);
-        //root.getChildren().add(sentence);
-        //root.setSpacing(10);
-
+        theModel.createNextSentence();
+        createLetterTexts(theModel.getCurrentSentence());
 
         // Set up the button to initiate typing
         startBtn = new Button("Start!");

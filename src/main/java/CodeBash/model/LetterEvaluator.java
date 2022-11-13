@@ -33,9 +33,9 @@ public class LetterEvaluator {
      * Initialize an object of LetterEvaluator with the correct letter
      * and the typed letter
      */
-    public LetterEvaluator() {
-        this.correctLetter = ' ';
-        this.typedLetter = ' ';
+    public LetterEvaluator(char correctLetter, char typedLetter) {
+        this.correctLetter = correctLetter;
+        this.typedLetter = typedLetter;
     }
 
     /**

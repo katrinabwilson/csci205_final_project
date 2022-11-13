@@ -13,7 +13,11 @@
  * Class: CodeBash
  *
  * Description:
- * The main class for our project.
+ * The model for the CodeBash app that deals
+ * with system data and logic that exist independent of
+ * CodeBashView. In this case, such logic includes
+ * methods to analyze the correctness of key presses and
+ * the generation of random lines.
  * ****************************************
  */
 
@@ -35,7 +39,6 @@ public class CodeBashModel {
 
     /** Creates a new instance of the main model class */
     public CodeBashModel() throws IOException {
-        letterEvaluator = new LetterEvaluator();
         lineGenerator = new LineGenerator();
         lineGenerator.scanDocuments();
         rand = new Random();
@@ -46,9 +49,9 @@ public class CodeBashModel {
      *
      * @return a random sentence from the list held in lineGenerator
      */
-    public String getNextSentence() {
+    public void createNextSentence() {
         currentSentence = lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
-        return currentSentence;
+        //return currentSentence;
     }
 
     public String getCurrentSentence() {
@@ -56,8 +59,4 @@ public class CodeBashModel {
     }
 
 
-
-    public LetterEvaluator getLetterEvaluator() {
-        return letterEvaluator;
-    }
 }
