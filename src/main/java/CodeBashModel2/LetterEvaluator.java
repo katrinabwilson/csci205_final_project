@@ -20,7 +20,7 @@
  */
 
 
-package CodeBashModel;
+package CodeBashModel2;
 
 public class LetterEvaluator {
 

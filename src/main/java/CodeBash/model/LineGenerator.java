@@ -1,28 +1,29 @@
 /* *****************************************
  * CSCI205 -Software Engineering and Design
- * Fall2022* Instructor: Prof. Brian King
+ * Fall2022
+ * Instructor: Prof. Brian King
  *
- * Name: Nahom Ayele
- * Section: Section 01-9am
- * Date: 11/10/22
- * Time: 3:29 PM
+ * Name: Nolan Sauers
+ * Section: 01 - 9am
+ * Date: 11/6/2022
+ * Time: 8:23 PM
  *
  * Project: csci205_final_project
  * Package: CodeBash
- * Class: CodeBashModel
+ * Class: LineGenerator
  *
  * Description:
  *
- * *****************************************/
-package CodeBash;
+ * ****************************************
+ */
+
+package CodeBash.model;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
-public class CodeBashModel2 {
-
+public class LineGenerator {
     /** An array of the URLs to be used for the lines */
     private String[] sources;
 
@@ -36,7 +37,7 @@ public class CodeBashModel2 {
     /**
      * Create a new TextProcessor and assign the novels to given indexes
      */
-    public CodeBashModel2() {
+    public LineGenerator() {
         sources = new String[3];
         // The Essays of Ralph Waldo Emerson
         sources[0] = "https://www.gutenberg.org/cache/epub/16643/pg16643.txt";
@@ -88,10 +89,12 @@ public class CodeBashModel2 {
         return this.sentenceList;
     }
 
-    public String getRandomSentence(ArrayList<String> sentenceList){
-        return sentenceList.get((int) (Math.random() * sentenceList.size()));
+    /** Temporary test method */
+    public static void main(String[] args) throws IOException {
+        LineGenerator lineGenerator = new LineGenerator();
+        lineGenerator.scanDocuments();
+        for (String line : lineGenerator.getSentenceList()) {
+            System.out.println(line + "\n");
+        }
     }
-
-
 }
-

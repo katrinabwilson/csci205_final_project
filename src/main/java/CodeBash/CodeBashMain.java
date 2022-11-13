@@ -16,7 +16,7 @@
  * *****************************************/
 package CodeBash;
 
-import CodeBash.CodeBashModel1.CodeBash1;
+import CodeBash.model.CodeBashModel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -26,7 +26,7 @@ import static javafx.application.Application.launch;
 public class CodeBashMain extends Application {
 
 
-    private CodeBash1 theModel;
+    private CodeBashModel theModel;
     private CodeBashView theView;
     private CodeBashController theController;
 
@@ -38,7 +38,7 @@ public class CodeBashMain extends Application {
     @Override
     public void init() throws Exception {
         super.init();
-        this.theModel = new CodeBash1();
+        this.theModel = new CodeBashModel();
         this.theView = new CodeBashView(theModel);
 
     }
@@ -54,10 +54,7 @@ public class CodeBashMain extends Application {
     public void start(Stage stage) throws Exception {
 
         Scene scene = new Scene(theView.getRoot());
-//
-//        scene.setOnKeyPressed(e -> onKeyPress(e.getCode().toString()));
-        // Putting the information on our window
-
+//        scene.setOnKeyPressed(e -> theController.handleKeyPress(e.getCode().toString()));
         stage.setScene(scene);
         stage.sizeToScene();
         // Displays our window

@@ -16,15 +16,19 @@
  * *****************************************/
 package CodeBash;
 
-import CodeBash.CodeBashModel1.CodeBash1;
+import CodeBash.model.CodeBashModel;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+
+import java.util.ArrayList;
 
 public class CodeBashView {
     /** The model that contains the data and logic behind this view */
-    private CodeBash1 theModel;
+    private CodeBashModel theModel;
 
     /** Root node for the scene graph */
     private VBox root;
@@ -38,7 +42,7 @@ public class CodeBashView {
     /** Displays the current sentence to be typed */
     private Text sentence;
 
-    public CodeBashView (CodeBash1 theModel){
+    public CodeBashView (CodeBashModel theModel){
         this.theModel = theModel;
         initSceneGraph();
         initStyling();
@@ -58,23 +62,26 @@ public class CodeBashView {
      */
     private void initSceneGraph() {
         root = new VBox();
-        topPane = new FlowPane();
         sentence = new Text();
 
         // Add title text
         root.getChildren().add(new Label("CodeBash"));
+        root.setAlignment(Pos.CENTER);
+
 
         // Place topPane in between start button and title
-        root.getChildren().add(topPane);
+        //sentence.setText(theModel.getNextSentence());
+        createLetterTexts(theModel.getNextSentence());
+       // sentence.setTextAlignment(TextAlignment.CENTER);
+        //root.getChildren().add(sentence);
+        //root.setSpacing(10);
 
-        topPane.getChildren().add(sentence);
 
         // Set up the button to initiate typing
         startBtn = new Button("Start!");
+        startBtn.setAlignment(Pos.TOP_CENTER);
         root.getChildren().add(startBtn);
-
-
-
+        root.getChildren().add(letterDisplay);
 
 
 
@@ -85,21 +92,28 @@ public class CodeBashView {
      * for this view
      */
     public void initStyling() {
-        root.setPrefSize(800, 600);
+        root.setPrefSize(800, 200);
     }
 
+    /** ArrayList getter method that returns our text objects */
+    public Text getTextObjectAt(int i){
+        return textObjects.get(i);
+    }
+    
+    public void createLetterTexts(String sentence) {
+        textObjects = new ArrayList<>();
+        for (int i = 0; i < sentence.length(); i++) {
+            Text letter = new Text();
+            letter.setText(sentence.charAt(i) + "");
+            textObjects.add(letter);
+            letterDisplay.getChildren().add(letter);
+        }
+        letterDisplay.setAlignment(Pos.CENTER);
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    public HBox getLetterDisplay() {
+        return letterDisplay;
+    }
 }
 

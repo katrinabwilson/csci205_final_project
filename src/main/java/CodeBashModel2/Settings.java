@@ -18,7 +18,7 @@
  */
 
 
-package CodeBashModel;
+package CodeBashModel2;
 
 import javafx.scene.control.ToggleButton;
 

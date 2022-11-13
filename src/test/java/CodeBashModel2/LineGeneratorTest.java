@@ -1,4 +1,4 @@
-package CodeBashModel;
+package CodeBashModel2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

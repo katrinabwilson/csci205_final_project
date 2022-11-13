@@ -15,9 +15,7 @@
  *
  * ****************************************
  */
-package CodeBashModel;
-
-import org.team05.Main;
+package CodeBashModel2;
 
 import javax.swing.*;
 import java.awt.*;
