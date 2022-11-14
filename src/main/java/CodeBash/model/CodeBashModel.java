@@ -54,10 +54,16 @@ public class CodeBashModel {
         //return currentSentence;
     }
 
+    /**
+     * @return - the current sentence displayed on the interface
+     */
     public String getCurrentSentence() {
         return currentSentence;
     }
 
+    /**
+     * @return - the lineGenerator object being used
+     */
     public LineGenerator getLineGenerator() { return lineGenerator;}
 
 }

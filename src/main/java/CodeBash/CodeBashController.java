@@ -22,11 +22,9 @@ package CodeBash;
 
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.LetterEvaluator;
-import CodeBash.model.LineGenerator;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyCode;
 
-import javax.sound.sampled.Line;
 import java.util.ArrayList;
 
 /**
@@ -48,14 +46,6 @@ public class CodeBashController {
 
     /** A character array of all the letters in the randomly generated sentence */
     private ArrayList<Character> letters;
-
-    public void setLetters(String sentence) {
-        letters.clear();
-        char[] letterList = sentence.toCharArray();
-        for (char c : letterList) {
-            letters.add(c);
-        }
-    }
 
     /**
      * Construct a controller that connects the model and the view for our
@@ -79,42 +69,18 @@ public class CodeBashController {
      * This is an internal helper method to initialize the event handlers
      */
     private void initEventHandlers() {
-//        this.theView.getStartBtn().setOnMouseClicked(event -> {
-//            System.out.println("button was clicked");
-//        });
-
-        /*this.theView.getStartBtn().setOnAction(event -> {
-            if (letters.get(currentLetter) != ' ') {
-                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: red");
-            }
-            currentLetter++;
-        });*/
         this.theView.getRoot().setOnKeyPressed((key) -> {
-            // TODO - ask king about view button problem
-            // System.out.print(key.getText());
-
-            // If the user is done typing the sentence
-            if (currentLetter == letters.size()) {
-                //theView.resetTextObjects();
-                currentLetter = 0;
-                theModel.createNextSentence();
-                setLetters(theModel.getCurrentSentence());
-                theView.createLetterTexts(theModel.getCurrentSentence());
-            }
-
-            LetterEvaluator letterEvaluator;
             // Evaluate key pressed
-            System.out.println("The current correct letter: " + letters.get(currentLetter));
-            //System.out.println("The typed letter: " + key.getText().charAt(0));
+            LetterEvaluator letterEvaluator;
 
             // If correct, change color to green
-            if ((key.getCode() != KeyCode.BACK_SPACE) && (key.getCode() != KeyCode.ENTER)) {
+            if ((key.getCode() != KeyCode.BACK_SPACE) && (key.getCode() != KeyCode.ENTER) && (key.getCode() != KeyCode.SHIFT)) {
                 char correctLetter = letters.get(currentLetter);
                 char typedLetter = key.getText().charAt(0);
                 letterEvaluator = new LetterEvaluator(correctLetter, typedLetter);
 
                 if (letterEvaluator.analyzeKeyPress()) {
-                    System.out.println("they match!");
+                    //System.out.println("they match!");
                     theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: green");
                 }
 
@@ -125,28 +91,20 @@ public class CodeBashController {
                 currentLetter++;
             }
 
+            // If the user presses enter, a new sentence is shown for the user to type
             else if (key.getCode() == KeyCode.ENTER) {
                 currentLetter = 0;
                 theModel.createNextSentence();
                 setLetters(theModel.getCurrentSentence());
                 theView.createLetterTexts(theModel.getCurrentSentence());
-
             }
 
-            // Edge case for backspace entered (set previous color and decrement 1)
+            // When backspace entered and the user wants to try again
             else if (key.getCode() == KeyCode.BACK_SPACE){
                 System.out.println("backspace");
                 currentLetter--;
                 theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: black");
             }
-
-            // Edge case for space key entered (is supposed to consume the input)
-            // DOES NOT WORK (yet)
-           else if (key.getCode() == KeyCode.SPACE) {
-
-                currentLetter++;
-            }
-
         });
 
     }
@@ -166,6 +124,19 @@ public class CodeBashController {
      */
     public void handleActionEvent(ActionEvent event) {
 
+    }
+
+    /**
+     * This method takes a sentence, clears the ArrayList letters, and adds its
+     * letters to letters
+     * @param sentence - the next sentence the user is to guess
+     */
+    public void setLetters(String sentence) {
+        letters.clear();
+        char[] letterList = sentence.toCharArray();
+        for (char c : letterList) {
+            letters.add(c);
+        }
     }
 }
 

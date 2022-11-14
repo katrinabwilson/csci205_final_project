@@ -122,7 +122,6 @@ public class CodeBashView {
         letterDisplay.setAlignment(Pos.CENTER);
 
     }
-//    public Button getStartBtn(){return startBtn;}
 
     public HBox getLetterDisplay() {
         return letterDisplay;

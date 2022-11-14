@@ -1,12 +1,34 @@
-package CodeBashModel2;
+/* *****************************************
+ * CSCI205 - Software Engineering and Design
+ * Fall 2022
+ * Instructor: Prof. Brian King
+ *
+ * Name: Katrina Wilson
+ * Section: 9am - 01
+ * Date: 11/14/22
+ * Time: 2:16 PM
+ *
+ * Project: csci205_final_project
+ * Package: CodeBash
+ * Class: LetterEvaluatorTest
+ *
+ * Description: A basic test file that checks if
+ * the class LetterEvaluator compares two characters
+ * correctly.
+ *
+ * ****************************************
+ */
 
+package CodeBash;
+
+import CodeBashModel2.LetterEvaluator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LetterEvaluatorTest {
-
     /** The LetterEvaluator object used in these tests */
     private LetterEvaluator letterEvaluator;
 
@@ -41,6 +63,4 @@ class LetterEvaluatorTest {
         boolean correctInput = letterEvaluator.analyzeKeyPress();
         assertTrue(correctInput);
     }
-
-
 }
