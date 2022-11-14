@@ -24,6 +24,7 @@ import CodeBash.model.CodeBashModel;
 import CodeBash.model.LetterEvaluator;
 import javafx.event.ActionEvent;
 
+import javax.sound.sampled.Line;
 import java.util.ArrayList;
 
 /**
@@ -46,6 +47,14 @@ public class CodeBashController {
     /** A character array of all the letters in the randomly generated sentence */
     private ArrayList<Character> letters;
 
+    public void setLetters(String sentence) {
+        letters.clear();
+        char[] letterList = sentence.toCharArray();
+        for (char c : letterList) {
+            letters.add(c);
+        }
+    }
+
     /**
      * Construct a controller that connects the model and the view for our
      * temperature conversion program
@@ -56,7 +65,6 @@ public class CodeBashController {
     public CodeBashController(CodeBashModel theModel, CodeBashView theView) {
         this.theModel = theModel;
         this.theView = theView;
-        currentLetter = 1;
         letters = new ArrayList<>();
         currentLetter = 0;
         setLetters(theModel.getCurrentSentence());
@@ -77,7 +85,7 @@ public class CodeBashController {
             currentLetter++;
         });
         this.theView.getRoot().setOnKeyPressed((key) -> {
-            // TODO - ask king about view problem
+            // TODO - ask king about view button problem
             // System.out.print(key.getText());
 
             // If the user is done typing the sentence
@@ -103,8 +111,9 @@ public class CodeBashController {
             if (letterEvaluator.analyzeKeyPress()) {
                 System.out.println("they match!");
                 theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: green");
-
+                currentLetter++;
             }
+
             // Edge case for backspace entered (set previous color and decrement 1)
             else if (key.getCode() == KeyCode.BACK_SPACE){
                 currentLetter--;

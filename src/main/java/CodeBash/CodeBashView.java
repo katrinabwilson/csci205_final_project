@@ -84,8 +84,13 @@ public class CodeBashView {
         createLetterTexts(theModel.getCurrentSentence());
 
         // Set up the button to initiate typing
-        startBtn = new Button("Start!");
+        startBtn = new Button();
         startBtn.setAlignment(Pos.TOP_CENTER);
+        //startBtn.setVisible(false);
+        startBtn.setBorder(new Border(new BorderStroke(null,
+                BorderStrokeStyle.NONE,
+                new CornerRadii(4),
+                BorderWidths.DEFAULT)));
         root.getChildren().add(startBtn);
         root.getChildren().add(letterDisplay);
 
@@ -120,6 +125,10 @@ public class CodeBashView {
 
     public HBox getLetterDisplay() {
         return letterDisplay;
+    }
+
+    public void resetTextObjects() {
+        textObjects = new ArrayList<>();
     }
 }
 

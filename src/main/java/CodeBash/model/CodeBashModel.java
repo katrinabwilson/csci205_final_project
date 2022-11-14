@@ -58,5 +58,6 @@ public class CodeBashModel {
         return currentSentence;
     }
 
+    public LineGenerator getLineGenerator() { return lineGenerator;}
 
 }
