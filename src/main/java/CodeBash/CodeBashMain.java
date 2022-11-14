@@ -73,6 +73,8 @@ public class CodeBashMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Scene scene = new Scene(theView.getRoot());
+        scene.getStylesheets().add(
+                getClass().getResource("/CodeBash/CodeBash.css").toExternalForm());
 
         // Putting the information on our window
         stage.setScene(scene);

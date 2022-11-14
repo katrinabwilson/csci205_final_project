@@ -58,17 +58,8 @@ public class CodeBashController {
         this.theView = theView;
         currentLetter = 1;
         letters = new ArrayList<>();
-        //theModel.createNextSentence();
-        char[] letterList = theModel.getCurrentSentence().toCharArray();
-        for (char c : letterList) {
-            letters.add(c);
-        }
-        //letters.remove(0);
-        System.out.print("the letter array: [");
-        for (char c : letters) {
-            System.out.print(c + ", ");
-        }
-        System.out.println("]");
+        currentLetter = 0;
+        setLetters(theModel.getCurrentSentence());
 
         initEventHandlers();
         initBindings();
@@ -78,9 +69,26 @@ public class CodeBashController {
      * This is an internal helper method to initialize the event handlers
      */
     private void initEventHandlers() {
+
+        this.theView.getStartBtn().setOnAction(event -> {
+            if (letters.get(currentLetter) != ' ') {
+                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: red");
+            }
+            currentLetter++;
+        });
         this.theView.getRoot().setOnKeyPressed((key) -> {
             // TODO - ask king about view problem
             // System.out.print(key.getText());
+
+            // If the user is done typing the sentence
+            if (currentLetter == letters.size()) {
+                //theView.resetTextObjects();
+                currentLetter = 0;
+
+                theModel.createNextSentence();
+                setLetters(theModel.getCurrentSentence());
+                theView.createLetterTexts(theModel.getCurrentSentence());
+            }
 
             LetterEvaluator letterEvaluator;
             // Evaluate key pressed
@@ -98,15 +106,26 @@ public class CodeBashController {
 
             }
             // Edge case for backspace entered (set previous color and decrement 1)
-//            else if (){
+            else if (key.getCode() == KeyCode.BACK_SPACE){
+                currentLetter--;
+                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: black");
+            }
+
+            // Edge case for space key entered (is supposed to consume the input)
+            // DOES NOT WORK (yet)
+//            else if (key.getCode() == KeyCode.SPACE) {
 //
+//                currentLetter++;
+//                key.consume();
 //            }
-//            // Otherwise, change color to red
-//            else {
-//
-//            }
-            // THIS NEEDS TO BE FIXED
-            currentLetter++;
+
+            // Otherwise, change color to red
+            else {
+                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: red");
+                currentLetter++;
+            }
+
+
 
         });
 
