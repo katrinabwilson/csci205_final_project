@@ -79,13 +79,16 @@ public class CodeBashController {
      * This is an internal helper method to initialize the event handlers
      */
     private void initEventHandlers() {
+//        this.theView.getStartBtn().setOnMouseClicked(event -> {
+//            System.out.println("button was clicked");
+//        });
 
-        this.theView.getStartBtn().setOnAction(event -> {
+        /*this.theView.getStartBtn().setOnAction(event -> {
             if (letters.get(currentLetter) != ' ') {
                 theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: red");
             }
             currentLetter++;
-        });
+        });*/
         this.theView.getRoot().setOnKeyPressed((key) -> {
             // TODO - ask king about view button problem
             // System.out.print(key.getText());
@@ -94,7 +97,6 @@ public class CodeBashController {
             if (currentLetter == letters.size()) {
                 //theView.resetTextObjects();
                 currentLetter = 0;
-
                 theModel.createNextSentence();
                 setLetters(theModel.getCurrentSentence());
                 theView.createLetterTexts(theModel.getCurrentSentence());
@@ -106,7 +108,7 @@ public class CodeBashController {
             //System.out.println("The typed letter: " + key.getText().charAt(0));
 
             // If correct, change color to green
-            if (key.getCode() != KeyCode.BACK_SPACE) {
+            if ((key.getCode() != KeyCode.BACK_SPACE) && (key.getCode() != KeyCode.ENTER)) {
                 char correctLetter = letters.get(currentLetter);
                 char typedLetter = key.getText().charAt(0);
                 letterEvaluator = new LetterEvaluator(correctLetter, typedLetter);
@@ -122,6 +124,14 @@ public class CodeBashController {
                 }
                 currentLetter++;
             }
+            
+            else if (key.getCode() == KeyCode.ENTER) {
+                currentLetter = 0;
+                theModel.createNextSentence();
+                setLetters(theModel.getCurrentSentence());
+                theView.createLetterTexts(theModel.getCurrentSentence());
+
+            }
 
             // Edge case for backspace entered (set previous color and decrement 1)
             else if (key.getCode() == KeyCode.BACK_SPACE){
@@ -132,15 +142,10 @@ public class CodeBashController {
 
             // Edge case for space key entered (is supposed to consume the input)
             // DOES NOT WORK (yet)
-//            else if (key.getCode() == KeyCode.SPACE) {
-//
-//                currentLetter++;
-//                key.consume();
-//            }
+           else if (key.getCode() == KeyCode.SPACE) {
 
-
-
-
+                currentLetter++;
+            }
 
         });
 
