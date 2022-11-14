@@ -124,7 +124,7 @@ public class CodeBashController {
                 }
                 currentLetter++;
             }
-            
+
             else if (key.getCode() == KeyCode.ENTER) {
                 currentLetter = 0;
                 theModel.createNextSentence();
