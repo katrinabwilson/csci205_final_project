@@ -22,7 +22,9 @@ package CodeBash;
 
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.LetterEvaluator;
+import CodeBash.model.LineGenerator;
 import javafx.event.ActionEvent;
+import javafx.scene.input.KeyCode;
 
 import javax.sound.sampled.Line;
 import java.util.ArrayList;

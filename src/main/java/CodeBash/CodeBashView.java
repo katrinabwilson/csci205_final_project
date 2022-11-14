@@ -110,6 +110,7 @@ public class CodeBashView {
     }
     
     public void createLetterTexts(String sentence) {
+        letterDisplay.getChildren().clear();
         textObjects = new ArrayList<>();
         for (int i = 0; i < sentence.length(); i++) {
             Text letter = new Text();
