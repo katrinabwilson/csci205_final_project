@@ -38,7 +38,7 @@ public class CodeBashView {
     private VBox root;
 
     /** The button that starts game and timer */
-    private Button startBtn;
+//    private Button startBtn;
 
     /** topPane is the layout container for the top of the view */
     private FlowPane topPane;
@@ -84,14 +84,14 @@ public class CodeBashView {
         createLetterTexts(theModel.getCurrentSentence());
 
         // Set up the button to initiate typing
-        startBtn = new Button();
-        startBtn.setAlignment(Pos.TOP_CENTER);
-        //startBtn.setVisible(false);
-        startBtn.setBorder(new Border(new BorderStroke(null,
-                BorderStrokeStyle.NONE,
-                new CornerRadii(4),
-                BorderWidths.DEFAULT)));
-        root.getChildren().add(startBtn);
+//        startBtn = new Button();
+//        startBtn.setAlignment(Pos.TOP_CENTER);
+//        //startBtn.setVisible(false);
+//        startBtn.setBorder(new Border(new BorderStroke(null,
+//                BorderStrokeStyle.NONE,
+//                new CornerRadii(4),
+//                BorderWidths.DEFAULT)));
+//        root.getChildren().add(startBtn);
         root.getChildren().add(letterDisplay);
 
     }
@@ -122,7 +122,7 @@ public class CodeBashView {
         letterDisplay.setAlignment(Pos.CENTER);
 
     }
-    public Button getStartBtn(){return startBtn;}
+//    public Button getStartBtn(){return startBtn;}
 
     public HBox getLetterDisplay() {
         return letterDisplay;

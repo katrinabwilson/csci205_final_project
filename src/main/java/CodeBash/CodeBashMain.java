@@ -81,6 +81,7 @@ public class CodeBashMain extends Application {
         stage.sizeToScene();
         // Displays our window
         stage.show();
+        theView.getRoot().requestFocus();
     }
 }
 
