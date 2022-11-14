@@ -103,21 +103,29 @@ public class CodeBashController {
             LetterEvaluator letterEvaluator;
             // Evaluate key pressed
             System.out.println("The current correct letter: " + letters.get(currentLetter));
-            System.out.println("The typed letter: " + key.getText().charAt(0));
+            //System.out.println("The typed letter: " + key.getText().charAt(0));
 
-            char correctLetter = letters.get(currentLetter);
-            char typedLetter = key.getText().charAt(0);
-
-            letterEvaluator = new LetterEvaluator(correctLetter, typedLetter);
             // If correct, change color to green
-            if (letterEvaluator.analyzeKeyPress()) {
-                System.out.println("they match!");
-                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: green");
+            if (key.getCode() != KeyCode.BACK_SPACE) {
+                char correctLetter = letters.get(currentLetter);
+                char typedLetter = key.getText().charAt(0);
+                letterEvaluator = new LetterEvaluator(correctLetter, typedLetter);
+
+                if (letterEvaluator.analyzeKeyPress()) {
+                    System.out.println("they match!");
+                    theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: green");
+                }
+
+                // Otherwise, change color to red
+                else {
+                    theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: red");
+                }
                 currentLetter++;
             }
 
             // Edge case for backspace entered (set previous color and decrement 1)
             else if (key.getCode() == KeyCode.BACK_SPACE){
+                System.out.println("backspace");
                 currentLetter--;
                 theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: black");
             }
@@ -130,11 +138,7 @@ public class CodeBashController {
 //                key.consume();
 //            }
 
-            // Otherwise, change color to red
-            else {
-                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: red");
-                currentLetter++;
-            }
+
 
 
 
