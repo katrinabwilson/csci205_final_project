@@ -40,9 +40,6 @@ public class CodeBashView {
     /** The button that ends game and timer */
     private Button quitBtn;
 
-//    /** topPane is the layout container for the top of the view */
-//    private FlowPane topPane;
-
     /** Displays each letter in order */
     private HBox letterDisplay;
 
