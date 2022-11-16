@@ -37,11 +37,11 @@ public class CodeBashView {
     /** Root node for the scene graph */
     private VBox root;
 
-    /** The button that starts game and timer */
-//    private Button startBtn;
+    /** The button that ends game and timer */
+    private Button quitBtn;
 
-    /** topPane is the layout container for the top of the view */
-    private FlowPane topPane;
+//    /** topPane is the layout container for the top of the view */
+//    private FlowPane topPane;
 
     /** Displays each letter in order */
     private HBox letterDisplay;
@@ -74,6 +74,7 @@ public class CodeBashView {
         root = new VBox();
         sentence = new Text();
         letterDisplay = new HBox();
+        letterDisplay.setId("letterDisplay");
 
         // Add title text
         root.getChildren().add(new Label("CodeBash"));
@@ -84,17 +85,14 @@ public class CodeBashView {
         createLetterTexts(theModel.getCurrentSentence());
 
         // Set up the button to initiate typing
-//        startBtn = new Button();
-//        startBtn.setAlignment(Pos.TOP_CENTER);
-//        //startBtn.setVisible(false);
-//        startBtn.setBorder(new Border(new BorderStroke(null,
-//                BorderStrokeStyle.NONE,
-//                new CornerRadii(4),
-//                BorderWidths.DEFAULT)));
-//        root.getChildren().add(startBtn);
+        quitBtn = new Button("Quit");
+        quitBtn.setAlignment(Pos.TOP_CENTER);
+
         root.getChildren().add(letterDisplay);
+        root.getChildren().add(quitBtn);
 
     }
+    public Button getQuitBtn(){return quitBtn;}
 
     /**
      * Apply appropriate styles to all the content in the scene graph
@@ -114,6 +112,7 @@ public class CodeBashView {
         textObjects = new ArrayList<>();
         for (int i = 0; i < sentence.length(); i++) {
             Text letter = new Text();
+            letter.setId("letter");
             letter.setText(sentence.charAt(i) + "");
             letter.setFont(Font.font("Georgia",40));
             textObjects.add(letter);
