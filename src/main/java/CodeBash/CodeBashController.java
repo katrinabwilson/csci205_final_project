@@ -101,7 +101,6 @@ public class CodeBashController {
 
             // When backspace entered and the user wants to try again
             else if (key.getCode() == KeyCode.BACK_SPACE){
-                System.out.println("backspace");
                 currentLetter--;
                 theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: black");
             }
