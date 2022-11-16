@@ -1,0 +1,10 @@
+.root{
+    -fx-background-color: Black;
+    -fx-border-color: Orange;
+}
+#Title{
+    -fx-text-fill: Orange;
+
+}
+
+

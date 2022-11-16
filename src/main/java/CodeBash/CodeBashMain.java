@@ -35,6 +35,12 @@ public class CodeBashMain extends Application {
     /** The view that contains the visual representation of the data behind this app */
     private CodeBashView theView;
 
+    /** The view that contains the visual representation of the welcome screen */
+    private CodeBashWelcome theWelcome;
+
+    /** The view that contains the visual representation of the results screen */
+    private CodeBashResults theResults;
+
     /**
      * The controller that contains instructions for how the program deals with
      * user interaction
@@ -60,6 +66,8 @@ public class CodeBashMain extends Application {
         this.theModel = new CodeBashModel();
         this.theView = new CodeBashView(theModel);
         this.theController = new CodeBashController(theModel, theView);
+        this.theWelcome = new CodeBashWelcome();
+        this.theResults = new CodeBashResults();
 
     }
 
@@ -72,16 +80,34 @@ public class CodeBashMain extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
+        stage.setTitle("Code Bash");
         Scene scene = new Scene(theView.getRoot());
-        scene.getStylesheets().add(
-                getClass().getResource("/CodeBash/CodeBash.css").toExternalForm());
+        Scene welcomeScene = new Scene(theWelcome.getRoot());
+        Scene resultScene = new Scene(theResults.getRoot());
+
+        String css = this.getClass().getResource("/CodeBash/CodeBash.css").toExternalForm();
+        scene.getStylesheets().add(css);
 
         // Putting the information on our window
-        stage.setScene(scene);
+        stage.setScene(welcomeScene);
+        welcomeScene.getStylesheets().add(
+                getClass().getResource("/CodeBash/Welcome.css").toExternalForm());
+
+        theWelcome.getStartBtn().setOnMouseClicked(event->stage.setScene(scene));
+        theView.getQuitBtn().setOnMouseClicked( event -> stage.setScene(resultScene));
+
+
+
+        resultScene.getStylesheets().add(
+                getClass().getResource("/CodeBash/Welcome.css").toExternalForm());
+
+
         stage.sizeToScene();
         // Displays our window
         stage.show();
+
         theView.getRoot().requestFocus();
+//        theView.getQuitBtn().requestFocus();
     }
 }
 

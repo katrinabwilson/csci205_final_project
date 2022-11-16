@@ -56,7 +56,7 @@ public class FXTimer extends Application {
         // Configure the Label
         timerLabel.setText(timeSeconds.toString());
         timerLabel.setTextFill(Color.BLACK);
-        timerLabel.setStyle("-fx-font-size: 1em;");
+        timerLabel.setStyle("-fx-font-size: 3em;");
 
         // Create and configure the Button
         Button button = new Button();
