@@ -33,9 +33,14 @@ public class CodeBashModel {
     /** Instance of Random to choose a sentence randomly */
     private Random rand;
 
+    /** Evaluates each letter as it's typed */
     private LetterEvaluator letterEvaluator;
 
+    /** Stores the sentence being displayed on screen */
     private String currentSentence;
+
+    /** An enumeration representing the current state of the game */
+    private GameState gameState;
 
     /** Creates a new instance of the main model class */
     public CodeBashModel() throws IOException {
@@ -51,7 +56,6 @@ public class CodeBashModel {
      */
     public void createNextSentence() {
         currentSentence = lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
-        //return currentSentence;
     }
 
     /**

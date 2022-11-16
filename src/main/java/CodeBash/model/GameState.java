@@ -1,0 +1,11 @@
+package CodeBash.model;
+
+/**
+ * A simple enumeration representing the current progress of the game
+ */
+public enum GameState {
+    NEW_GAME,
+    CONT_GAME,
+    IN_PROGRESS,
+    GAME_END
+}
