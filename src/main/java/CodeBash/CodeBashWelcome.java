@@ -18,15 +18,18 @@ package CodeBash;
 
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class CodeBashWelcome {
     /** Root node for the scene graph */
     private VBox root;
+
+    private HBox toggleButtonsSpace;
     private Button startBtn;
+
+    private ToggleGroup group;
 
     private Label title;
 
@@ -47,18 +50,33 @@ public class CodeBashWelcome {
 
     private void initSceneGraph() {
         root = new VBox();
+
         title = new Label(" Welcome to CodeBash");
         title.setId("Title");
         // Add title text
         root.getChildren().add(title);
 
-
         root.setAlignment(Pos.CENTER);
+
 
         // Set up the button to initiate typing
         startBtn = new Button("Start");
         startBtn.setAlignment(Pos.TOP_CENTER);
         root.getChildren().add(startBtn);
+
+        // Set up light or dark mode toggle button
+        toggleButtonsSpace = new HBox();
+        toggleButtonsSpace.setAlignment(Pos.TOP_LEFT);
+
+        group = new ToggleGroup();
+        ToggleButton light = new ToggleButton("Light");
+        ToggleButton dark = new ToggleButton("Dark");
+
+        light.setToggleGroup(group);
+        light.setSelected(true);
+        dark.setToggleGroup(group);
+        toggleButtonsSpace.getChildren().add(light);
+        toggleButtonsSpace.getChildren().add(dark);
 
 
     }
