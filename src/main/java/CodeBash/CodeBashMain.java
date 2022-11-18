@@ -14,8 +14,8 @@
  *
  * Description:
  * A class file to present a GUI to analyze key presses and their accuracy
- * against the printed sentence on the interface. It
- *
+ * against the printed sentence on the interface. It instantiates a game play
+ * screen, welcome screen, and a results screen.
  * ****************************************
  */
 
@@ -23,9 +23,18 @@ package CodeBash;
 
 import CodeBash.model.CodeBashModel;
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+/**
+ * A simple enumeration representing the kinds of color themes for our app
+ */
+enum ColorMode {
+    DARK_MODE,
+    LIGHT_MODE
+}
 
 public class CodeBashMain extends Application {
 
@@ -46,6 +55,14 @@ public class CodeBashMain extends Application {
      * user interaction
      */
     private CodeBashController theController;
+
+    /** Will hold the path to the dark mode css file */
+    private String darkModeUrl;
+
+    /** Will hold the path to the light mode css file */
+    private String lightModeUrl;
+
+    private ColorMode colorMode;
 
     /**
      * Our standard main program for a JavaFX application
@@ -84,6 +101,10 @@ public class CodeBashMain extends Application {
         Scene scene = new Scene(theView.getRoot());
         Scene welcomeScene = new Scene(theWelcome.getRoot());
         Scene resultScene = new Scene(theResults.getRoot());
+        colorMode = ColorMode.DARK_MODE;
+
+        darkModeUrl = getClass().getResource("WelcomeDark.css").toExternalForm();
+        lightModeUrl = getClass().getResource("WelcomeLight.css").toExternalForm();
 
         String css = this.getClass().getResource("/CodeBash/CodeBash.css").toExternalForm();
         scene.getStylesheets().add(css);
@@ -91,23 +112,54 @@ public class CodeBashMain extends Application {
         // Putting the information on our window
         stage.setScene(welcomeScene);
         welcomeScene.getStylesheets().add(
-                getClass().getResource("/CodeBash/Welcome.css").toExternalForm());
+                getClass().getResource("/CodeBash/WelcomeDark.css").toExternalForm());
+        theWelcome.getToggleBtn().textProperty().set("dark mode");
 
         theWelcome.getStartBtn().setOnMouseClicked(event->stage.setScene(scene));
+
+        theWelcome.inLightModeProperty().bind(theWelcome.getToggleBtn().selectedProperty());
+
+        theWelcome.getToggleBtn().textProperty().bind(Bindings.when(theWelcome.inLightModeProperty())
+                .then("dark mode")
+                .otherwise("light mode"));
+        theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene));
+
         theView.getQuitBtn().setOnMouseClicked( event -> stage.setScene(resultScene));
 
+        // Start the display in dark mode
+        resultScene.getStylesheets().add(darkModeUrl);
 
-
-        resultScene.getStylesheets().add(
-                getClass().getResource("/CodeBash/Welcome.css").toExternalForm());
-
-
-        stage.sizeToScene();
         // Displays our window
+        stage.sizeToScene();
         stage.show();
 
         theView.getRoot().requestFocus();
 //        theView.getQuitBtn().requestFocus();
     }
+
+    public void changeColorDisplay(Scene welcomeScene) {
+
+        if (theWelcome.isInLightMode()) {
+            welcomeScene.getStylesheets().remove(darkModeUrl);
+            welcomeScene.getStylesheets().add(lightModeUrl);
+            colorMode = ColorMode.LIGHT_MODE;
+        }
+        else {
+            welcomeScene.getStylesheets().remove(lightModeUrl);
+            welcomeScene.getStylesheets().add(darkModeUrl);
+            colorMode = ColorMode.DARK_MODE;
+        }
+    }
+
+    /**
+     * This method will set the color theme in the view for the other scenes
+     * @param stage
+     * @param scene
+     */
+   /* public void passColorMode(Stage stage, Scene scene) {
+        stage.setScene(scene);
+        theView.setColorMode(colorMode);
+
+    }*/
 }
 
