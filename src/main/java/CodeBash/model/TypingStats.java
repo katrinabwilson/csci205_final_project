@@ -24,11 +24,17 @@ package CodeBash.model;
  */
 public class TypingStats {
 
-    /** The number of correct keypresses */
+    /** The number of correct key presses */
     private int correctLetters;
 
-    /** The number of incorrect keypresses */
+    /** The number of incorrect key presses */
     private int errors;
+
+    /** The total number of times the player typed */
+    private int totalLetters;
+
+    /** Keeps track of the number of spaces pressed, and therefore words */
+    private int numWords;
 
     /**
      * Constructs a new TypingStats object
@@ -43,6 +49,7 @@ public class TypingStats {
      */
     public void typedCorrect() {
         correctLetters++;
+        totalLetters++;
     }
 
     /**
@@ -50,6 +57,24 @@ public class TypingStats {
      */
     public void typedIncorrect() {
         errors++;
+        totalLetters++;
+    }
+
+    /**
+     * Helps the class keep track of the number of spaces/enters pressed
+     */
+    public void wordCompleted() {
+        numWords++;
+    }
+
+    /**
+     * Calculates the user's words per minute based on the amount of time they played
+     *
+     * @param time the amount of time in seconds someone played
+     * @return the words per minute typed
+     */
+    public double getWPM(double time) {
+        return numWords / time;
     }
 
     public int getCorrectLetters() {

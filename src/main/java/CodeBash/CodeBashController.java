@@ -79,6 +79,12 @@ public class CodeBashController {
                 char typedLetter = key.getText().charAt(0);
                 letterEvaluator = new LetterEvaluator(correctLetter, typedLetter);
 
+                // Add a word to the stats class every time space is pressed
+                // Better implementation for this?
+                if (key.getCode() == KeyCode.SPACE) {
+                    theModel.getStats().wordCompleted();
+                }
+
                 if (letterEvaluator.analyzeKeyPress()) {
                     //System.out.println("they match!");
                     theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: green");
@@ -96,6 +102,7 @@ public class CodeBashController {
             // If the user presses enter, a new sentence is shown for the user to type
             else if (key.getCode() == KeyCode.ENTER) {
                 currentLetter = 0;
+                theModel.getStats().wordCompleted();
                 theModel.createNextSentence();
                 setLetters(theModel.getCurrentSentence());
                 theView.createLetterTexts(theModel.getCurrentSentence());
