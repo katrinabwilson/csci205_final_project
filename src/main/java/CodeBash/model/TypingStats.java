@@ -77,6 +77,15 @@ public class TypingStats {
         return numWords / time;
     }
 
+    /**
+     * Simply calculates the user's overall accuracy (should round to 2 decimal points)
+     *
+     * @return the player's accuracy per letter
+     */
+    public double calculateAccuracy() {
+        return (double) correctLetters / totalLetters;
+    }
+
     public int getCorrectLetters() {
         return correctLetters;
     }
