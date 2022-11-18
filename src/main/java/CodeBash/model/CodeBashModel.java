@@ -42,8 +42,12 @@ public class CodeBashModel {
     /** An enumeration representing the current state of the game */
     private GameState gameState;
 
+    /** Keeps track of user progress */
+    private TypingStats stats;
+
     /** Creates a new instance of the main model class */
     public CodeBashModel() throws IOException {
+        stats = new TypingStats();
         lineGenerator = new LineGenerator();
         lineGenerator.scanDocuments();
         rand = new Random();
@@ -70,4 +74,15 @@ public class CodeBashModel {
      */
     public LineGenerator getLineGenerator() { return lineGenerator;}
 
+    public TypingStats getStats() {
+        return stats;
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
 }

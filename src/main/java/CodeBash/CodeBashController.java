@@ -82,11 +82,13 @@ public class CodeBashController {
                 if (letterEvaluator.analyzeKeyPress()) {
                     //System.out.println("they match!");
                     theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: green");
+                    theModel.getStats().typedCorrect();
                 }
 
                 // Otherwise, change color to red
                 else {
                     theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: red");
+                    theModel.getStats().typedIncorrect();
                 }
                 currentLetter++;
             }
