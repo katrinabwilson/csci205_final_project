@@ -16,24 +16,40 @@
  * *****************************************/
 package CodeBash;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+
+import java.awt.*;
 
 public class CodeBashWelcome {
-    /** Root node for the scene graph */
-    private VBox root;
 
-    private HBox toggleButtonsSpace;
+    /** Used to display the start button and title */
+    private VBox vBox;
+
+    /** Root node for the scene graph */
+    private BorderPane root;
+
+    /** A toggle button for light or dark mode */
+    private ToggleButton toggle;
+
+    /** Used to display our toggle button*/
+    private HBox topPane;
+
+    /** The button that starts game play */
     private Button startBtn;
 
-    private ToggleGroup group;
-
+    /** Represents the title of our game */
     private Label title;
 
-    private HBox top;
+    /** If the game is in light mode */
+    private SimpleBooleanProperty inLightMode;
+    private SimpleBooleanProperty inDarkMode;
 
     /** This constructs our welcome Screen */
     public CodeBashWelcome (){
@@ -44,43 +60,64 @@ public class CodeBashWelcome {
     }
 
     private void initStyling() {
-        root.setPrefSize(800, 200);
-        root.setSpacing(20);
+        vBox.setPrefSize(800, 200);
+        vBox.setSpacing(20);
     }
 
     private void initSceneGraph() {
-        root = new VBox();
+        root = new BorderPane();
+        vBox = new VBox();
+        topPane = new HBox();
 
+        // Add title text
         title = new Label(" Welcome to CodeBash");
         title.setId("Title");
-        // Add title text
-        root.getChildren().add(title);
 
-        root.setAlignment(Pos.CENTER);
-
+        vBox.getChildren().add(title);
+        vBox.setAlignment(Pos.CENTER);
 
         // Set up the button to initiate typing
         startBtn = new Button("Start");
         startBtn.setAlignment(Pos.TOP_CENTER);
-        root.getChildren().add(startBtn);
+        vBox.getChildren().add(startBtn);
+        vBox.setAlignment(Pos.TOP_CENTER);
 
         // Set up light or dark mode toggle button
-        toggleButtonsSpace = new HBox();
-        toggleButtonsSpace.setAlignment(Pos.TOP_LEFT);
 
-        group = new ToggleGroup();
-        ToggleButton light = new ToggleButton("Light");
-        ToggleButton dark = new ToggleButton("Dark");
+        toggle = new ToggleButton();
+        inLightMode = new SimpleBooleanProperty(true);
 
-        light.setToggleGroup(group);
-        light.setSelected(true);
-        dark.setToggleGroup(group);
-        toggleButtonsSpace.getChildren().add(light);
-        toggleButtonsSpace.getChildren().add(dark);
+        topPane.getChildren().add(toggle);
+        topPane.setAlignment(Pos.BASELINE_RIGHT);
 
-
+        // Organize the BorderPane
+        root.setTop(topPane);
+        root.setBottom(vBox);
     }
+
     public Parent getRoot(){return root;}
     public Button getStartBtn (){return startBtn;}
+
+    public ToggleButton getToggleBtn() {return toggle;}
+
+    public boolean isInLightMode() {
+        return inLightMode.get();
+    }
+
+    public SimpleBooleanProperty inLightModeProperty() {
+        toggle.getStylesheets().add(this.getClass().getResource("ColorModeButton.css").toExternalForm());
+        return inLightMode;
+    }
+
+    public boolean isInDarkMode() {
+        return inDarkMode.get();
+    }
+
+    public SimpleBooleanProperty inDarkModeProperty() {
+        return inDarkMode;
+    }
+
+
+
 }
 
