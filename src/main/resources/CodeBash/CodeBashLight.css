@@ -1,0 +1,30 @@
+/* Used setID for these */
+#root{
+    -fx-background-color: White;
+    -fx-border-color: Orange;
+    -fx-border-width: 5;
+}
+
+
+#letter {
+    -fx-fill: Orange;
+    -fx-font-size: 30;
+}
+
+#quit {
+    -fx-text-fill: Orange;
+    -fx-background-color: transparent;
+    -fx-font: Arial;
+    -fx-font-size: 30;
+    -fx-font-weight: bold;}
+
+/*.button {
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

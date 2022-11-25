@@ -62,6 +62,7 @@ public class CodeBashMain extends Application {
     /** Will hold the path to the light mode css file */
     private String lightModeUrl;
 
+    /** The current color mode of the game*/
     private ColorMode colorMode;
 
     /**
@@ -97,69 +98,95 @@ public class CodeBashMain extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("Code Bash");
+        stage.setTitle("CodeBash");
         Scene scene = new Scene(theView.getRoot());
         Scene welcomeScene = new Scene(theWelcome.getRoot());
         Scene resultScene = new Scene(theResults.getRoot());
         colorMode = ColorMode.DARK_MODE;
 
+        // URLs to the css files for the welcome screen
         darkModeUrl = getClass().getResource("WelcomeDark.css").toExternalForm();
         lightModeUrl = getClass().getResource("WelcomeLight.css").toExternalForm();
 
-        String css = this.getClass().getResource("/CodeBash/CodeBash.css").toExternalForm();
+        // Change the display of the game play screen
+        //changeColorDisplay(scene);
+        String css = this.getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
         scene.getStylesheets().add(css);
 
         // Putting the information on our window
         stage.setScene(welcomeScene);
         welcomeScene.getStylesheets().add(
                 getClass().getResource("/CodeBash/WelcomeDark.css").toExternalForm());
-        theWelcome.getToggleBtn().textProperty().set("dark mode");
 
+        // When you hit the start button, the game starts
         theWelcome.getStartBtn().setOnMouseClicked(event->stage.setScene(scene));
 
+        // Create bindings for the light/dark mode toggle button
         theWelcome.inLightModeProperty().bind(theWelcome.getToggleBtn().selectedProperty());
-
         theWelcome.getToggleBtn().textProperty().bind(Bindings.when(theWelcome.inLightModeProperty())
-                .then("dark mode")
-                .otherwise("light mode"));
-        theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene));
+                .then("DARK MODE")
+                .otherwise("LIGHT MODE"));
 
-        theView.getQuitBtn().setOnMouseClicked( event -> stage.setScene(resultScene));
+        // In the game play interface, when "QUIT" is clicked, bring the user to a result screen
+        theView.getQuitBtn().setOnMouseClicked(event -> stage.setScene(resultScene));
+
+        // When the "PLAY AGAIN" button is hit, bring the user back to the welcome screen
+        theResults.getPlayAgain().setOnMouseClicked(event -> stage.setScene(welcomeScene));
 
         // Start the display in dark mode
         resultScene.getStylesheets().add(darkModeUrl);
+
+        // Change the color display of the 3 interfaces
+        theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene, scene, resultScene));
 
         // Displays our window
         stage.sizeToScene();
         stage.show();
 
         theView.getRoot().requestFocus();
-//        theView.getQuitBtn().requestFocus();
-    }
-
-    public void changeColorDisplay(Scene welcomeScene) {
-
-        if (theWelcome.isInLightMode()) {
-            welcomeScene.getStylesheets().remove(darkModeUrl);
-            welcomeScene.getStylesheets().add(lightModeUrl);
-            colorMode = ColorMode.LIGHT_MODE;
-        }
-        else {
-            welcomeScene.getStylesheets().remove(lightModeUrl);
-            welcomeScene.getStylesheets().add(darkModeUrl);
-            colorMode = ColorMode.DARK_MODE;
-        }
     }
 
     /**
-     * This method will set the color theme in the view for the other scenes
-     * @param stage
-     * @param scene
+     * This method changes the coloring of the 3 screens the user interacts with,
+     * based on the setting they choose with the toggle button.
+     *
+     * @param welcomeScene - the start of the game, user picks the settings and hits start
+     * @param gamePlayScene - where the user plays the game
+     * @param resultsScene - where the user's stats are displayed
      */
-   /* public void passColorMode(Stage stage, Scene scene) {
-        stage.setScene(scene);
-        theView.setColorMode(colorMode);
+    public void changeColorDisplay(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene) {
 
-    }*/
+        if (theWelcome.isInLightMode()) {
+
+            // Adjust the welcome screen to light mode
+            welcomeScene.getStylesheets().remove(darkModeUrl);
+            welcomeScene.getStylesheets().add(lightModeUrl);
+            colorMode = ColorMode.LIGHT_MODE;
+
+            // Adjust the game play screen to light mode
+            String css = this.getClass().getResource("/CodeBash/CodeBashLight.css").toExternalForm();
+            gamePlayScene.getStylesheets().add(css);
+
+            // Adjust the results screen to light mode
+            css = this.getClass().getResource("/CodeBash/WelcomeLight.css").toExternalForm();
+            resultsScene.getStylesheets().add(css);
+        }
+        else {
+
+            // Adjust the welcome screen to dark mode
+            welcomeScene.getStylesheets().remove(lightModeUrl);
+            welcomeScene.getStylesheets().add(darkModeUrl);
+            colorMode = ColorMode.DARK_MODE;
+
+            // Adjust the game play screen to dark mode
+            System.out.println("trying to change the game play to dark mode");
+            String css = this.getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
+            gamePlayScene.getStylesheets().add(css);
+
+            // Adjust the results screen to light mode
+            css = this.getClass().getResource("/CodeBash/WelcomeDark.css").toExternalForm();
+            resultsScene.getStylesheets().add(css);
+        }
+    }
 }
 

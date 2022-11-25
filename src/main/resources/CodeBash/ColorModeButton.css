@@ -1,9 +1,15 @@
 .toggle-button {
-    -fx-text-fill: white;
+    -fx-text-fill: Orange;
     -fx-background-color: transparent;
+    -fx-font: Arial;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
 }
 
 .toggle-button:selected {
-    -fx-text-fill: black;
+    -fx-text-fill: Orange;
     -fx-background-color: transparent;
+
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
 }

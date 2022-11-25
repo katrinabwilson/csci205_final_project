@@ -1,0 +1,11 @@
+#root{
+    -fx-background-color: Black;
+    -fx-border-color: Orange;
+    -fx-text-fill: Orange;
+
+}
+
+#Title {
+    -fx-font: Arial;
+    -fx-font-size: 30;
+}

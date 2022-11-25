@@ -7,4 +7,19 @@
 
 }
 
+#start {
+    -fx-background-color: transparent;
+    -fx-text-fill: Orange;
+
+    -fx-font-size: 15;
+    -fx-padding: 15;
+    -fx-font-weight: bold;
+}
+
+#playAgain {
+    -fx-background-color: transparent;
+    -fx-text-fill: Orange;
+
+}
+
 

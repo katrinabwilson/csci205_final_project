@@ -49,21 +49,25 @@ public class CodeBashWelcome {
 
     /** If the game is in light mode */
     private SimpleBooleanProperty inLightMode;
-    private SimpleBooleanProperty inDarkMode;
 
     /** This constructs our welcome Screen */
-    public CodeBashWelcome (){
-
+    public CodeBashWelcome(){
         initSceneGraph();
         initStyling();
-
     }
 
+    /**
+     * Apply appropriate styles to all the content in the scene graph
+     * for this Welcome screen
+     */
     private void initStyling() {
         vBox.setPrefSize(800, 200);
         vBox.setSpacing(20);
     }
 
+    /**
+     * Initialize the entire scene graph
+     */
     private void initSceneGraph() {
         root = new BorderPane();
         vBox = new VBox();
@@ -77,15 +81,17 @@ public class CodeBashWelcome {
         vBox.setAlignment(Pos.CENTER);
 
         // Set up the button to initiate typing
-        startBtn = new Button("Start");
+        startBtn = new Button("START");
         startBtn.setAlignment(Pos.TOP_CENTER);
+        startBtn.setId("start");
         vBox.getChildren().add(startBtn);
         vBox.setAlignment(Pos.TOP_CENTER);
 
         // Set up light or dark mode toggle button
 
         toggle = new ToggleButton();
-        inLightMode = new SimpleBooleanProperty(true);
+
+        inLightMode = new SimpleBooleanProperty(false);
 
         topPane.getChildren().add(toggle);
         topPane.setAlignment(Pos.BASELINE_RIGHT);
@@ -95,29 +101,38 @@ public class CodeBashWelcome {
         root.setBottom(vBox);
     }
 
+    /**
+     * @return - the root BorderPane node
+     */
     public Parent getRoot(){return root;}
+
+    /**
+     * @return - the start button for the game to start
+     */
     public Button getStartBtn (){return startBtn;}
 
+    /**
+     * @return - the toggle button that controls light/dark mode
+     */
     public ToggleButton getToggleBtn() {return toggle;}
 
+    /**
+     * @return true if the game is in light mode, false otherwise
+     */
     public boolean isInLightMode() {
         return inLightMode.get();
     }
 
+    /**
+     * Assigns a css file to the button that controls light/dark mode
+     * and returns a SimpleBooleanProperty describing the state of
+     * the color mode
+     *
+     * @return - true if in light mode, false otherwise
+     */
     public SimpleBooleanProperty inLightModeProperty() {
         toggle.getStylesheets().add(this.getClass().getResource("ColorModeButton.css").toExternalForm());
         return inLightMode;
     }
-
-    public boolean isInDarkMode() {
-        return inDarkMode.get();
-    }
-
-    public SimpleBooleanProperty inDarkModeProperty() {
-        return inDarkMode;
-    }
-
-
-
 }
 

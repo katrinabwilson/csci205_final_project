@@ -44,11 +44,14 @@ public class CodeBashView {
     private HBox letterDisplay;
 
     /** Displays the current sentence to be typed */
-    private Text sentence;
+    private TextArea sentence;
 
     /** Stores each letter in the given sentence */
     private ArrayList<Text> textObjects;
 
+    /**
+     * Initialize a new CodeBashView
+     */
     public CodeBashView (CodeBashModel theModel){
         this.theModel = theModel;
         initSceneGraph();
@@ -69,21 +72,24 @@ public class CodeBashView {
      */
     private void initSceneGraph() {
         root = new VBox();
-        sentence = new Text();
+        sentence = new TextArea();
         letterDisplay = new HBox();
         letterDisplay.setId("letterDisplay");
 
         // Add title text
-        root.getChildren().add(new Label("CodeBash"));
+        root.getChildren().add(new Label("")); // was CodeBash
         root.setAlignment(Pos.CENTER);
+
+        root.setId("root");
 
         // Place topPane in between start button and title
         theModel.createNextSentence();
         createLetterTexts(theModel.getCurrentSentence());
 
         // Set up the button to initiate typing
-        quitBtn = new Button("Quit");
+        quitBtn = new Button("QUIT");
         quitBtn.setAlignment(Pos.TOP_CENTER);
+        quitBtn.setId("quit");
 
         root.getChildren().add(letterDisplay);
         root.getChildren().add(quitBtn);
@@ -103,7 +109,15 @@ public class CodeBashView {
     public Text getTextObjectAt(int i){
         return textObjects.get(i);
     }
-    
+
+    /**
+     * This creates Text objects that are then added to the game
+     * play screen that the user types on. These letters are from
+     * a randomly generated sentence.
+     *
+     * @param sentence - the sentence that we want the user to type
+     */
+    // Useful to when we choose the font we want: https://www.delftstack.com/howto/java/setfont-java/
     public void createLetterTexts(String sentence) {
         letterDisplay.getChildren().clear();
         textObjects = new ArrayList<>();
@@ -111,20 +125,13 @@ public class CodeBashView {
             Text letter = new Text();
             letter.setId("letter");
             letter.setText(sentence.charAt(i) + "");
-            letter.setFont(Font.font("Georgia",40));
+            //letter.setFont(Font.font("Arial",30));
             textObjects.add(letter);
+
+            // Add the letter to the overall letter display
             letterDisplay.getChildren().add(letter);
         }
         letterDisplay.setAlignment(Pos.CENTER);
-
-    }
-
-    public HBox getLetterDisplay() {
-        return letterDisplay;
-    }
-
-    public void resetTextObjects() {
-        textObjects = new ArrayList<>();
     }
 }
 
