@@ -1,0 +1,71 @@
+/* *****************************************
+*CSCI205 -Software Engineering and Design
+* Fall2022
+* Instructor: Professor King
+* Section: 9am - 9:50am
+*
+* Name: Harmony Yeung
+* Date: 10/25/2022
+*
+*Lab / Assignment: lab10
+*
+*Description:
+* The CSS file for TempConverter
+* *****************************************/
+
+/*
+ * CSS file for our TempConverter MVC program
+ */
+
+.root {
+    -fx-pref-width: 800;
+    -fx-pref-height: 600;
+    -fx-padding: 50px;
+}
+
+#flowPane {
+    -fx-orientation: horizontal;
+    -fx-alignment: center;
+    -fx-hgap: 20;
+}
+
+#lblResult {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+#label {
+    -fx-font-style: oblique;
+}
+
+.button{
+    -fx-transition-duration: 0.4s;
+    -fx-border-color: transparent;
+    -fx-border-width: 1, 1;
+    -fx-background-radius: 1, 1;
+    -fx-border-insets: 1 1 1 1, 0;
+    -fx-background-color: transparent;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 1em; /* 12 */
+    -fx-text-fill: black;
+}
+
+.button:hover {
+    -fx-border-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-text-fill: blue;
+    -fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), linear-gradient(#dddddd 0%, #f6f6f6 50%);;
+    -fx-background-radius: 8px;
+    -fx-border-width: 1, 1;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(#f8f8ff, #f8f8ff), linear-gradient(#fcfcfc 0%, #f8f8ff 20%, #f8f8ff 100%), linear-gradient(#afeeee 0%, #87ceeb 70%);;
+    -fx-text-fill: blue;
+}
+
+.button-selected {
+    -fx-background-color: skyblue;
+    -fx-text-fill: maroon;
+}
