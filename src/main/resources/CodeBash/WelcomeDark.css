@@ -15,7 +15,7 @@
 #start {
     -fx-text-fill: Orange;
     -fx-background-color: transparent;
-    -fx-font-size: 15;
+    -fx-font-size: 18;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: Bold;
 }

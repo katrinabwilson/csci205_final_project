@@ -122,6 +122,7 @@ public class CodeBashWelcome {
         // Set up light or dark mode toggle button
 
         toggle = new ToggleButton();
+        toggle.setId("toggleBtn");
 
         inLightMode = new SimpleBooleanProperty(false);
 

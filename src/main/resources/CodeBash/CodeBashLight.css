@@ -3,7 +3,7 @@
 
 #root{
     -fx-background-color: #DCDCDC;
-    -fx-border-color: #e2b714;
+    -fx-border-color: #107896;
 }
 
 
@@ -17,7 +17,7 @@
 }
 
 #quit {
-    -fx-text-fill: Orange;
+    -fx-text-fill: #107896;
     -fx-background-color: transparent;
     -fx-font-size: 15;
     -fx-font-family: "Roboto Mono", sans-serif;

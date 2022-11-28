@@ -1,6 +1,6 @@
 .root{
     -fx-background-color: #a9a9a9;
-    -fx-border-color: #e2b714;
+    -fx-border-color: #107896;
 }
 #Title{
     -fx-text-fill: #323437;
@@ -8,22 +8,24 @@
     -fx-font-size: 30;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: 400;
-
 }
 
+#toggleBtn {
+    -fx-text-fill: #107896;
+    -fx-background-color: transparent;
+}
 #start {
     -fx-background-color: transparent;
-    -fx-text-fill: Orange;
-    -fx-font: Arial;
-    -fx-font-size: 15;
+    -fx-text-fill: #107896;
+    -fx-font: "Roboto Mono", sans-serif;
+    -fx-font-size: 18;
     -fx-padding: 15;
     -fx-font-weight: bold;
 }
 
 #playAgain {
     -fx-background-color: transparent;
-    -fx-text-fill: Orange;
-
+    -fx-text-fill: #107896;
 }
 
 #label {
