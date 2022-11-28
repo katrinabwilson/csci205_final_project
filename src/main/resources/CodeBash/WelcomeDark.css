@@ -1,24 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 .root{
-    -fx-background-color: Black;
-    -fx-border-color: Orange;
+    -fx-background-color: #323437;
+    -fx-border-color: #e2b714;
 }
 #Title{
-    -fx-text-fill: Orange;
+    -fx-text-fill: #646669;
+    -fx-fill: #646669;
+    -fx-font-size: 30;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-weight: 400;
 
 }
 
 #start {
-    -fx-background-color: transparent;
     -fx-text-fill: Orange;
-
+    -fx-background-color: transparent;
     -fx-font-size: 15;
-    -fx-padding: 15;
-    -fx-font-weight: bold;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-weight: Bold;
 }
 
 #playAgain {
-    -fx-background-color: transparent;
     -fx-text-fill: Orange;
+    -fx-background-color: transparent;
+    -fx-font-size: 15;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-weight: Bold;
 
 }
 

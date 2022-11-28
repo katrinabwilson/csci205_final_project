@@ -125,7 +125,6 @@ public class CodeBashView {
             Text letter = new Text();
             letter.setId("letter");
             letter.setText(sentence.charAt(i) + "");
-            //letter.setFont(Font.font("Arial",30));
             textObjects.add(letter);
 
             // Add the letter to the overall letter display
