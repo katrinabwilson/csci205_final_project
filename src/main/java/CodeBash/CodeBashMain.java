@@ -57,10 +57,14 @@ public class CodeBashMain extends Application {
     private CodeBashController theController;
 
     /** Will hold the path to the dark mode css file */
-    private String darkModeUrl;
+    private String welcomeDarkModeUrl;
 
     /** Will hold the path to the light mode css file */
-    private String lightModeUrl;
+    private String welcomeLightModeUrl;
+
+    private String gameplayDarkModeUrl;
+
+    private String gameplayLightModeUrl;
 
     /** The current color mode of the game*/
     private ColorMode colorMode;
@@ -105,11 +109,12 @@ public class CodeBashMain extends Application {
         colorMode = ColorMode.DARK_MODE;
 
         // URLs to the css files for the welcome screen
-        darkModeUrl = getClass().getResource("WelcomeDark.css").toExternalForm();
-        lightModeUrl = getClass().getResource("WelcomeLight.css").toExternalForm();
+        welcomeDarkModeUrl = getClass().getResource("WelcomeDark.css").toExternalForm();
+        welcomeLightModeUrl = getClass().getResource("WelcomeLight.css").toExternalForm();
+        gameplayDarkModeUrl = getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
+        gameplayLightModeUrl = getClass().getResource("/CodeBash/CodeBashLight.css").toExternalForm();
 
         // Change the display of the game play screen
-        //changeColorDisplay(scene);
         String css = this.getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
         scene.getStylesheets().add(css);
 
@@ -135,7 +140,7 @@ public class CodeBashMain extends Application {
         theResults.getPlayAgain().setOnMouseClicked(event -> stage.setScene(welcomeScene));
 
         // Start the display in dark mode
-        resultScene.getStylesheets().add(darkModeUrl);
+        resultScene.getStylesheets().add(welcomeDarkModeUrl);
 
         // Change the color display of the 3 interfaces
         theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene, scene, resultScene,stage));
@@ -160,13 +165,14 @@ public class CodeBashMain extends Application {
         if (theWelcome.isInLightMode()) {
 
             // Adjust the welcome screen to light mode
-            welcomeScene.getStylesheets().remove(darkModeUrl);
-            welcomeScene.getStylesheets().add(lightModeUrl);
+            welcomeScene.getStylesheets().remove(welcomeDarkModeUrl);
+            welcomeScene.getStylesheets().add(welcomeLightModeUrl);
             colorMode = ColorMode.LIGHT_MODE;
 
             // Adjust the game play screen to light mode
-            String css = this.getClass().getResource("/CodeBash/CodeBashLight.css").toExternalForm();
-            gamePlayScene.getStylesheets().add(css);
+            //String css = this.getClass().getResource("/CodeBash/CodeBashLight.css").toExternalForm();
+            gamePlayScene.getStylesheets().remove(welcomeDarkModeUrl);
+            gamePlayScene.getStylesheets().add(gameplayLightModeUrl);
 
             // Adjust the results screen to light mode
             //css = this.getClass().getResource("/CodeBash/WelcomeLight.css").toExternalForm();
@@ -177,14 +183,15 @@ public class CodeBashMain extends Application {
         else {
 
             // Adjust the welcome screen to dark mode
-            welcomeScene.getStylesheets().remove(lightModeUrl);
-            welcomeScene.getStylesheets().add(darkModeUrl);
+            welcomeScene.getStylesheets().remove(welcomeLightModeUrl);
+            welcomeScene.getStylesheets().add(welcomeDarkModeUrl);
             colorMode = ColorMode.DARK_MODE;
 
             // Adjust the game play screen to dark mode
             System.out.println("trying to change the game play to dark mode");
-            String css = this.getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
-            gamePlayScene.getStylesheets().add(css);
+            gamePlayScene.getStylesheets().remove(gameplayLightModeUrl);
+            //String css = this.getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
+            gamePlayScene.getStylesheets().add(gameplayDarkModeUrl);
 
             // Adjust the results screen to light mode
             resultsScene.getStylesheets().remove(welcomeLightModeUrl);
