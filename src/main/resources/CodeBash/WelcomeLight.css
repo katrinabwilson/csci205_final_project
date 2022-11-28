@@ -17,7 +17,7 @@
 #start {
     -fx-background-color: transparent;
     -fx-text-fill: #107896;
-    -fx-font: "Roboto Mono", sans-serif;
+    -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-size: 18;
     -fx-padding: 15;
     -fx-font-weight: bold;

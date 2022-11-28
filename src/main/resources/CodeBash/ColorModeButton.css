@@ -1,7 +1,7 @@
 .toggle-button {
     -fx-text-fill: Orange;
     -fx-background-color: transparent;
-    -fx-font: Arial;
+    -fx-font-family: Arial;
     -fx-font-weight: bold;
 }
 
