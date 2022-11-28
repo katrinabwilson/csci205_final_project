@@ -76,7 +76,13 @@ public class CodeBashController {
             // If correct, change color to green
             if ((key.getCode() != KeyCode.BACK_SPACE) && (key.getCode() != KeyCode.ENTER) && (key.getCode() != KeyCode.SHIFT)) {
                 char correctLetter = letters.get(currentLetter);
-                char typedLetter = key.getText().charAt(0);
+                char typedLetter;
+                if (!key.isShiftDown()) {
+                    typedLetter = key.getText().charAt(0);
+                }
+                else {
+                    typedLetter = key.getText().toUpperCase().charAt(0);
+                }
                 letterEvaluator = new LetterEvaluator(correctLetter, typedLetter);
 
                 // Add a word to the stats class every time space is pressed
