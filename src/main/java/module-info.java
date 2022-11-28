@@ -13,4 +13,6 @@ module csci205_final_project{
 
     exports CodeBash;
     opens CodeBash to javafx.fxml;
+
+    exports CodeBash.model.TimingClass;
     }

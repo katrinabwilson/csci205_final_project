@@ -62,7 +62,7 @@ public class Times {
 
     }
 
-    public void countdown() {
+    public String countdown() {
         time = new Timer(1000, new ActionListener() {
 
             @Override
@@ -84,6 +84,7 @@ public class Times {
                 }
             }
         });
+        return counterLabel.getText();
     }
 }
 
