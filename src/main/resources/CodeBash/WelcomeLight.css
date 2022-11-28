@@ -1,9 +1,9 @@
 .root{
-    -fx-background-color: #323437;
+    -fx-background-color: #d3d3d3;
     -fx-border-color: #e2b714;
 }
 #Title{
-    -fx-text-fill: Orange;
+    -fx-text-fill: #323437;
     -fx-fill: #646669;
     -fx-font-size: 30;
     -fx-font-family: "Roboto Mono", sans-serif;
