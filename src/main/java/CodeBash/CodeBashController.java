@@ -77,6 +77,8 @@ public class CodeBashController {
             if ((key.getCode() != KeyCode.BACK_SPACE) && (key.getCode() != KeyCode.ENTER) && (key.getCode() != KeyCode.SHIFT)) {
                 char correctLetter = letters.get(currentLetter);
                 char typedLetter;
+
+                // Fix window's shift key bug
                 if (!key.isShiftDown()) {
                     typedLetter = key.getText().charAt(0);
                 }

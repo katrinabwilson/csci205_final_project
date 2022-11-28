@@ -42,6 +42,8 @@ public class TypingStats {
     public TypingStats() {
         correctLetters = 0;
         errors = 0;
+        totalLetters = 0;
+        numWords = 0;
     }
 
     /**

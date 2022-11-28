@@ -17,6 +17,7 @@
  * *****************************************/
 package CodeBash;
 
+import CodeBash.model.TypingStats;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -31,19 +32,33 @@ public class CodeBashResults {
     /** A message displayed to the user */
     private Label title;
 
+    /** The number of incorrect letters typed by the user */
+    private Label errors;
+
+    /** Displays the user's speed in words per minute */
+    private Label wpm;
+
+    /** Displays the user's accuracy as a percentage */
+    private Label accuracy;
+
     /** A button that brings the player back to the welcome screen*/
     private Button playAgain;
+
+    /** Keeps track of the current stats in the game */
+    private TypingStats stats;
 
     /**
      * Initialize a new CodeBashResults scene
      */
-    public CodeBashResults(){
+    public CodeBashResults(TypingStats stats){
+        this.stats = stats;
+
         initSceneGraph();
         initStyling();
     }
 
     /**
-     * This method initalizes how big the original display is
+     * This method initializes how big the original display is
      */
     private void initStyling() {
         root.setPrefSize(800, 200);
@@ -57,8 +72,18 @@ public class CodeBashResults {
         root = new VBox();
         root.setId("root");
 
+        // TODO: Find a way to connect the chosen time to getWPM
+        errors = new Label("Errors: " + stats.getErrors());
+        wpm = new Label(String.format("Words per minute: %d", (int) stats.getWPM(30.00)));
+        accuracy = new Label(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
+
         title = new Label(" Good Game");
         title.setId("Title");
+
+        // Add results below label but above button
+        root.getChildren().add(errors);
+        root.getChildren().add(wpm);
+        root.getChildren().add(accuracy);
 
         // Add title text
         root.getChildren().add(title);

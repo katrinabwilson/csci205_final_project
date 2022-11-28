@@ -89,7 +89,7 @@ public class CodeBashMain extends Application {
         this.theView = new CodeBashView(theModel);
         this.theController = new CodeBashController(theModel, theView);
         this.theWelcome = new CodeBashWelcome();
-        this.theResults = new CodeBashResults();
+        this.theResults = new CodeBashResults(theModel.getStats());
 
     }
 
