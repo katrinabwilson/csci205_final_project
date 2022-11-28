@@ -25,3 +25,40 @@
     -fx-text-fill: Orange;
 
 }
+
+#label {
+    -fx-font-style: oblique;
+    -fx-text-fill: #323437;
+}
+
+#btnLabel {
+    -fx-text-fill: #323437;
+    -fx-font-family: "Roboto Mono", sans-serif;
+}
+
+.button{
+    -fx-transition-duration: 0.4s;
+    -fx-border-color: transparent;
+    -fx-border-width: 1, 1;
+    -fx-background-radius: 1, 1;
+    -fx-border-insets: 1 1 1 1, 0;
+    -fx-background-color: transparent;
+    -fx-font-family:"Roboto Mono", sans-serif;
+    -fx-font-size: 1em; /* 12 */
+    -fx-text-fill: #107896;
+}
+
+.button:hover {
+    -fx-border-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-text-fill: #107896;
+    -fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), linear-gradient(#dddddd 0%, #f6f6f6 50%);;
+    -fx-background-radius: 8px;
+    -fx-border-width: 1, 1;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:pressed {
+    -fx-background-color: transparent;
+    -fx-text-fill: #323437;
+}

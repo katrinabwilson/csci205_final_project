@@ -52,6 +52,19 @@ public class CodeBashWelcome {
     /** If the game is in light mode */
     private SimpleBooleanProperty inLightMode;
 
+    /** The buttons for the timer */
+    private Button time15;
+
+    private Button time30;
+
+    private Button time45;
+
+    private Button time60;
+
+    /** Button label */
+    private Label btnLabel;
+
+
     /** This constructs our welcome Screen */
     public CodeBashWelcome(){
         initSceneGraph();
@@ -74,7 +87,7 @@ public class CodeBashWelcome {
         root = new BorderPane();
         vBox = new VBox();
         topPane = new HBox();
-
+        bottomPane = new HBox();
 
         // Add title text
         title = new Label(" Welcome to CodeBash");
@@ -97,6 +110,14 @@ public class CodeBashWelcome {
 //        vBox.getChildren().add(Instructions);
 //        vBox.setAlignment(Pos.CENTER);
 
+        // Setting up the timer buttons
+        time15 = new Button("15 Seconds");
+        time30 = new Button("30 Seconds");
+        time45 = new Button("45 Seconds");
+        time60 = new Button("60 Seconds");
+
+        btnLabel = new Label("Choose your timer");
+        btnLabel.setId("btnLabel");
 
         // Set up light or dark mode toggle button
 
@@ -107,9 +128,17 @@ public class CodeBashWelcome {
         topPane.getChildren().add(toggle);
         topPane.setAlignment(Pos.BASELINE_RIGHT);
 
+        // Adding the buttons
+        bottomPane.getChildren().add(btnLabel);
+        bottomPane.getChildren().addAll(time15, time30, time45, time60);
+        bottomPane.setAlignment(Pos.CENTER);
+
         // Organize the BorderPane
         root.setTop(topPane);
-        root.setBottom(vBox);
+        root.setCenter(vBox);
+        root.setBottom(bottomPane);
+
+
     }
 
     /**
