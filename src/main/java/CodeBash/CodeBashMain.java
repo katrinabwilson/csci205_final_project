@@ -138,7 +138,7 @@ public class CodeBashMain extends Application {
         resultScene.getStylesheets().add(darkModeUrl);
 
         // Change the color display of the 3 interfaces
-        theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene, scene, resultScene));
+        theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene, scene, resultScene,stage));
 
         // Displays our window
         stage.sizeToScene();
@@ -155,7 +155,7 @@ public class CodeBashMain extends Application {
      * @param gamePlayScene - where the user plays the game
      * @param resultsScene - where the user's stats are displayed
      */
-    public void changeColorDisplay(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene) {
+    public void changeColorDisplay(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene, Stage stage) {
 
         if (theWelcome.isInLightMode()) {
 
@@ -169,8 +169,10 @@ public class CodeBashMain extends Application {
             gamePlayScene.getStylesheets().add(css);
 
             // Adjust the results screen to light mode
-            css = this.getClass().getResource("/CodeBash/WelcomeLight.css").toExternalForm();
-            resultsScene.getStylesheets().add(css);
+            //css = this.getClass().getResource("/CodeBash/WelcomeLight.css").toExternalForm();
+            resultsScene.getStylesheets().remove(welcomeDarkModeUrl);
+            resultsScene.getStylesheets().add(welcomeLightModeUrl);
+            //stage.setScene(gamePlayScene);
         }
         else {
 
@@ -185,8 +187,11 @@ public class CodeBashMain extends Application {
             gamePlayScene.getStylesheets().add(css);
 
             // Adjust the results screen to light mode
-            css = this.getClass().getResource("/CodeBash/WelcomeDark.css").toExternalForm();
-            resultsScene.getStylesheets().add(css);
+            resultsScene.getStylesheets().remove(welcomeLightModeUrl);
+            //css = this.getClass().getResource("/CodeBash/WelcomeDark.css").toExternalForm();
+            resultsScene.getStylesheets().add(welcomeDarkModeUrl);
+
+
         }
     }
 }

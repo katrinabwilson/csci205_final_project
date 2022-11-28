@@ -28,6 +28,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -37,7 +38,14 @@ public class FXTimer extends Application {
 
     // private class constant and some variables
     private static final Integer STARTTIME = 15;
+    private static final Integer STARTTIME1 = 30;
+    private static final Integer STARTTIME2 = 45;
     private Timeline timeline;
+    private Timeline timeline1;
+    private Timeline timeline2;
+
+
+    private HBox hbox;
     private Label timerLabel = new Label();
     private Integer timeSeconds = STARTTIME;
 
@@ -93,6 +101,41 @@ public class FXTimer extends Application {
             }
         });
 
+        Button button1 = new Button();
+        button1.setText("Start1");
+        button1.setOnAction(new EventHandler() {
+
+
+            @Override
+            public void handle(Event event) {
+                if (timeline1 != null) {
+                    timeline1.stop();
+                }
+                timeSeconds = STARTTIME1;
+
+                // update timerLabel
+                timerLabel.setText(timeSeconds.toString());
+                timeline1 = new Timeline();
+                timeline1.setCycleCount(Timeline.INDEFINITE);
+                timeline1.getKeyFrames().add(
+                        new KeyFrame(Duration.seconds(1),
+                                new EventHandler<ActionEvent>() {
+                                    // KeyFrame event handler
+                                    public void handle(ActionEvent event) {
+                                        timeSeconds--;
+                                        // update timerLabel
+                                        timerLabel.setText(
+                                                timeSeconds.toString());
+                                        if (timeSeconds <= 0) {
+                                            timeline.stop();
+                                        }
+                                    }
+                                }));
+                timeline1.playFromStart();
+            }
+        });
+
+
         // Create and configure VBox
         // gap between components is 20
         VBox vb = new VBox(100);
@@ -104,6 +147,7 @@ public class FXTimer extends Application {
         vb.setLayoutY(30);
         // Add the button and timerLabel to the VBox
         vb.getChildren().addAll(button, timerLabel);
+        vb.getChildren().addAll(button1, timerLabel);
         // Add the VBox to the root component
         root.getChildren().add(vb);
 
