@@ -97,6 +97,12 @@ public class CodeBashResults {
         root.setAlignment(Pos.CENTER);
     }
 
+    public void setStatsLabels() {
+        this.errors.setText("Errors: " + stats.getErrors());
+        this.wpm.setText(String.format("Words per minute: %d", (int) stats.getWPM(30.00)));
+        this.accuracy.setText(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
+    }
+
     /**
      * @return - the root node of the scene
      */

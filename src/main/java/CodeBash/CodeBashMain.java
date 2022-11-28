@@ -133,7 +133,11 @@ public class CodeBashMain extends Application {
                 .otherwise("LIGHT MODE"));
 
         // In the game play interface, when "QUIT" is clicked, bring the user to a result screen
-        theView.getQuitBtn().setOnMouseClicked(event -> stage.setScene(resultScene));
+        theView.getQuitBtn().setOnMouseClicked(event -> {
+                    stage.setScene(resultScene);
+                    theResults.setStatsLabels();
+                });
+
 
         // When the "PLAY AGAIN" button is hit, bring the user back to the welcome screen
         theResults.getPlayAgain().setOnMouseClicked(event -> stage.setScene(welcomeScene));
