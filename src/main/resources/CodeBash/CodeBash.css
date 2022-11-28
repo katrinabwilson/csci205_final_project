@@ -1,5 +1,7 @@
 .root{
-    -fx-background-color: Grey;
+    -fx-background-color: #323437;
+    -fx-display-caret: true;
+
 }
 .button {
     color: white;

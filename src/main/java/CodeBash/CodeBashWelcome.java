@@ -41,6 +41,8 @@ public class CodeBashWelcome {
     /** Used to display our toggle button*/
     private HBox topPane;
 
+    private HBox bottomPane;
+
     /** The button that starts game play */
     private Button startBtn;
 
@@ -73,6 +75,7 @@ public class CodeBashWelcome {
         vBox = new VBox();
         topPane = new HBox();
 
+
         // Add title text
         title = new Label(" Welcome to CodeBash");
         title.setId("Title");
@@ -86,6 +89,14 @@ public class CodeBashWelcome {
         startBtn.setId("start");
         vBox.getChildren().add(startBtn);
         vBox.setAlignment(Pos.TOP_CENTER);
+
+
+        Label Instructions = new Label("Choose a duration 15s ... 30s ... 60s ...\n" +
+                "\t\t Click 'Start' to begin");
+        Instructions.setId("Title");
+        vBox.getChildren().add(Instructions);
+        vBox.setAlignment(Pos.CENTER);
+
 
         // Set up light or dark mode toggle button
 

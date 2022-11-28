@@ -87,13 +87,14 @@ public class CodeBashController {
 
                 if (letterEvaluator.analyzeKeyPress()) {
                     //System.out.println("they match!");
-                    theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: green");
+                    theView.getTextObjectAt(currentLetter);
+                    theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #d1d0c5");
                     theModel.getStats().typedCorrect();
                 }
 
                 // Otherwise, change color to red
                 else {
-                    theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: red");
+                    theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #e2b714");
                     theModel.getStats().typedIncorrect();
                 }
                 currentLetter++;
@@ -111,7 +112,9 @@ public class CodeBashController {
             // When backspace entered and the user wants to try again
             else if (key.getCode() == KeyCode.BACK_SPACE){
                 currentLetter--;
-                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: black");
+
+                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #646669");
+
             }
         });
 
