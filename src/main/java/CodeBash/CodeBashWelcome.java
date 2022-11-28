@@ -91,11 +91,11 @@ public class CodeBashWelcome {
         vBox.setAlignment(Pos.TOP_CENTER);
 
 
-        Label Instructions = new Label("Choose a duration 15s ... 30s ... 60s ...\n" +
-                "\t\t Click 'Start' to begin");
-        Instructions.setId("Title");
-        vBox.getChildren().add(Instructions);
-        vBox.setAlignment(Pos.CENTER);
+//        Label Instructions = new Label("Choose a duration 15s ... 30s ... 45s ... 60s ...\n" +
+//                "\t\t Click 'Start' to begin");
+//        Instructions.setId("Title");
+//        vBox.getChildren().add(Instructions);
+//        vBox.setAlignment(Pos.CENTER);
 
 
         // Set up light or dark mode toggle button

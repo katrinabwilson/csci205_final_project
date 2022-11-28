@@ -47,6 +47,7 @@ public class FXTimer extends Application {
 
     private HBox hbox;
     private Label timerLabel = new Label();
+    private Label timerLabel1 = new Label();
     private Integer timeSeconds = STARTTIME;
 
     public static void main(String[] args) {
@@ -100,10 +101,15 @@ public class FXTimer extends Application {
                 timeline.playFromStart();
             }
         });
+        timerLabel1.setText(timeSeconds.toString());
+        timerLabel1.setTextFill(Color.BLACK);
+        timerLabel1.setStyle("-fx-font-size: 3em;");
+
 
         Button button1 = new Button();
-        button1.setText("Start1");
+        button1.setText("Start2");
         button1.setOnAction(new EventHandler() {
+
 
 
             @Override
@@ -114,7 +120,7 @@ public class FXTimer extends Application {
                 timeSeconds = STARTTIME1;
 
                 // update timerLabel
-                timerLabel.setText(timeSeconds.toString());
+                timerLabel1.setText(timeSeconds.toString());
                 timeline1 = new Timeline();
                 timeline1.setCycleCount(Timeline.INDEFINITE);
                 timeline1.getKeyFrames().add(
@@ -124,7 +130,7 @@ public class FXTimer extends Application {
                                     public void handle(ActionEvent event) {
                                         timeSeconds--;
                                         // update timerLabel
-                                        timerLabel.setText(
+                                        timerLabel1.setText(
                                                 timeSeconds.toString());
                                         if (timeSeconds <= 0) {
                                             timeline.stop();
@@ -147,7 +153,8 @@ public class FXTimer extends Application {
         vb.setLayoutY(30);
         // Add the button and timerLabel to the VBox
         vb.getChildren().addAll(button, timerLabel);
-        vb.getChildren().addAll(button1, timerLabel);
+        vb.setAlignment(Pos.BOTTOM_RIGHT);
+        vb.getChildren().addAll(button1, timerLabel1);
         // Add the VBox to the root component
         root.getChildren().add(vb);
 

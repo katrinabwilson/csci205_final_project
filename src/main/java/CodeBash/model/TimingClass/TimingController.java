@@ -17,9 +17,12 @@
  */
 package CodeBash.model.TimingClass;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -60,6 +63,7 @@ public class TimingController {
         theModel.second = 15;
         theModel.setSecond(theModel.second);
         theView.getLblResult().setText(timeSet + theModel.countdown());
+
     }
     // Create new text object and add it to the root
 
