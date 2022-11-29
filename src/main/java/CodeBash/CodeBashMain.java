@@ -22,6 +22,7 @@
 package CodeBash;
 
 import CodeBash.model.CodeBashModel;
+import CodeBash.model.GameState;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
@@ -69,6 +70,8 @@ public class CodeBashMain extends Application {
     /** The current color mode of the game*/
     private ColorMode colorMode;
 
+    private long startTime;
+
     /**
      * Our standard main program for a JavaFX application
      * @param args
@@ -107,6 +110,7 @@ public class CodeBashMain extends Application {
         Scene welcomeScene = new Scene(theWelcome.getRoot());
         Scene resultScene = new Scene(theResults.getRoot());
         colorMode = ColorMode.DARK_MODE;
+        theModel.setGameState(GameState.NEW_GAME);
 
         // URLs to the css files for the welcome screen
         welcomeDarkModeUrl = getClass().getResource("WelcomeDark.css").toExternalForm();
@@ -124,7 +128,11 @@ public class CodeBashMain extends Application {
                 getClass().getResource("/CodeBash/WelcomeDark.css").toExternalForm());
 
         // When you hit the start button, the game starts
-        theWelcome.getStartBtn().setOnMouseClicked(event->stage.setScene(scene));
+        theWelcome.getStartBtn().setOnMouseClicked(event-> {
+            stage.setScene(scene);
+            theModel.setGameState(GameState.IN_PROGRESS);
+            startTime = System.currentTimeMillis();
+        });
 
         // Create bindings for the light/dark mode toggle button
         theWelcome.inLightModeProperty().bind(theWelcome.getToggleBtn().selectedProperty());
@@ -134,13 +142,18 @@ public class CodeBashMain extends Application {
 
         // In the game play interface, when "QUIT" is clicked, bring the user to a result screen
         theView.getQuitBtn().setOnMouseClicked(event -> {
+                    long endTime = System.currentTimeMillis();
                     stage.setScene(resultScene);
-                    theResults.setStatsLabels();
+                    theModel.setGameState(GameState.GAME_END);
+                    theResults.setStatsLabels((endTime - startTime) / 1000.0);
                 });
 
 
         // When the "PLAY AGAIN" button is hit, bring the user back to the welcome screen
-        theResults.getPlayAgain().setOnMouseClicked(event -> stage.setScene(welcomeScene));
+        theResults.getPlayAgain().setOnMouseClicked(event -> {
+            stage.setScene(welcomeScene);
+            theModel.setGameState(GameState.CONT_GAME);
+        });
 
         // Start the display in dark mode
         resultScene.getStylesheets().add(welcomeDarkModeUrl);

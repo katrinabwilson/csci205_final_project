@@ -76,7 +76,7 @@ public class TypingStats {
      * @return the words per minute typed
      */
     public double getWPM(double time) {
-        return numWords / time;
+        return numWords / (time / 60);
     }
 
     /**

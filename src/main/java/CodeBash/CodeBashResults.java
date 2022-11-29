@@ -74,7 +74,7 @@ public class CodeBashResults {
 
         // TODO: Find a way to connect the chosen time to getWPM
         errors = new Label("Errors: " + stats.getErrors());
-        wpm = new Label(String.format("Words per minute: %d", (int) stats.getWPM(30.00)));
+        wpm = new Label(String.format("Words per minute: %d", (int) stats.getWPM(30)));
         accuracy = new Label(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
 
         title = new Label(" Good Game");
@@ -97,9 +97,9 @@ public class CodeBashResults {
         root.setAlignment(Pos.CENTER);
     }
 
-    public void setStatsLabels() {
+    public void setStatsLabels(double time) {
         this.errors.setText("Errors: " + stats.getErrors());
-        this.wpm.setText(String.format("Words per minute: %d", (int) stats.getWPM(30.00)));
+        this.wpm.setText(String.format("Words per minute: %d", (int) stats.getWPM(time)));
         this.accuracy.setText(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
     }
 
