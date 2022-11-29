@@ -85,7 +85,12 @@ public class TypingStats {
      * @return the player's accuracy per letter
      */
     public double calculateAccuracy() {
-        return (double) correctLetters / totalLetters * 100;
+        if (totalLetters > 0) {
+            return (double) correctLetters / totalLetters * 100;
+        }
+        else {
+            return (double) correctLetters * 100;
+        }
     }
 
     public int getCorrectLetters() {
