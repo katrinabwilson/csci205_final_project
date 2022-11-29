@@ -43,6 +43,8 @@ public class CodeBashWelcome {
 
     private HBox bottomPane;
 
+    private HBox colorSettings;
+
     /** The button that starts game play */
     private Button startBtn;
 
@@ -60,6 +62,12 @@ public class CodeBashWelcome {
     private Button time45;
 
     private Button time60;
+
+    private Button darkMode;
+
+    private Button lightMode;
+
+    private Button purpleMode;
 
     /** Button label */
     private Label btnLabel;
@@ -118,6 +126,11 @@ public class CodeBashWelcome {
 
         btnLabel = new Label("Choose your timer");
         btnLabel.setId("btnLabel");
+
+        // Set up the color settings buttons
+        darkMode = new Button("dark");
+        lightMode = new Button("light");
+        purpleMode = new Button("purple");
 
         // Set up light or dark mode toggle button
 
