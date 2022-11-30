@@ -10,6 +10,21 @@
     -fx-font-weight: 400;
 }
 
+#setting {
+    -fx-text-fill: #646669;
+    -fx-background-color: transparent;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 1em; /* 12 */
+}
+
+#setting:selected  {
+    -fx-text-fill: #107896;
+    -fx-background-color: transparent;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 1em; /* 12 */
+
+}
+
 #toggleBtn {
     -fx-text-fill: #107896;
     -fx-background-color: transparent;

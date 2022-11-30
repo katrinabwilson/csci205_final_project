@@ -16,16 +16,16 @@
  * *****************************************/
 package CodeBash;
 
+import CodeBash.model.ColorChanger;
+import CodeBash.model.ColorState;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-
-import java.awt.*;
 
 public class CodeBashWelcome {
 
@@ -36,14 +36,19 @@ public class CodeBashWelcome {
     private BorderPane root;
 
     /** A toggle button for light or dark mode */
-    private ToggleButton toggle;
+    //private ToggleButton toggle;
 
     /** Used to display our toggle button*/
     private HBox topPane;
 
-    private HBox bottomPane;
+    /** An HBox with the timer settings */
+    private HBox timerPane;
 
+    /** An HBox with the color settings */
     private HBox colorSettings;
+
+    /** A VBox with all the settings */
+    private VBox settingsPane;
 
     /** The button that starts game play */
     private Button startBtn;
@@ -52,31 +57,54 @@ public class CodeBashWelcome {
     private Label title;
 
     /** If the game is in light mode */
-    private SimpleBooleanProperty inLightMode;
+    //private SimpleBooleanProperty inLightMode;
 
     /** The buttons for the timer */
     private Button time15;
-
     private Button time30;
-
     private Button time45;
-
     private Button time60;
 
-    private Button darkMode;
+    /** the dark mode button */
+    private ToggleButton darkMode;
 
-    private Button lightMode;
+    /** the light mode button */
+    private ToggleButton lightMode;
 
-    private Button purpleMode;
+    /** the purple mode button*/
+    private ToggleButton purpleMode;
 
     /** Button label */
     private Label btnLabel;
 
+    /** the toggle group for color*/
+    private ToggleGroup colorGroup;
+
+    /** the initial welcome screen */
+    private Scene welcomeScene;
+
+    /** the game play screen */
+    private Scene gamePlayScene;
+
+    /** the scene with the stats and offering the user to play again */
+    private Scene resultScene;
+
+    /** an instance of ColorChanger that will alter the display's coloring */
+    private ColorChanger colorChanger;
 
     /** This constructs our welcome Screen */
     public CodeBashWelcome(){
+        colorChanger = new ColorChanger();
+
         initSceneGraph();
         initStyling();
+        initEventHandlers();
+    }
+
+    public void setScenes(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene) {
+        this.welcomeScene = welcomeScene;
+        this.gamePlayScene = gamePlayScene;
+        this.resultScene = resultsScene;
     }
 
     /**
@@ -95,7 +123,9 @@ public class CodeBashWelcome {
         root = new BorderPane();
         vBox = new VBox();
         topPane = new HBox();
-        bottomPane = new HBox();
+        timerPane = new HBox();
+        colorSettings = new HBox();
+        settingsPane = new VBox();
 
         // Add title text
         title = new Label(" Welcome to CodeBash");
@@ -128,29 +158,52 @@ public class CodeBashWelcome {
         btnLabel.setId("btnLabel");
 
         // Set up the color settings buttons
-        darkMode = new Button("dark");
-        lightMode = new Button("light");
-        purpleMode = new Button("purple");
+        // https://docs.oracle.com/javafx/2/ui_controls/toggle-button.htm
+        colorGroup = new ToggleGroup();
+
+        darkMode = new ToggleButton("dark");
+        darkMode.setId("setting");
+        darkMode.setToggleGroup(colorGroup);
+        darkMode.setSelected(true);
+
+        lightMode = new ToggleButton("light");
+        lightMode.setId("setting");
+        lightMode.setToggleGroup(colorGroup);
+
+        purpleMode = new ToggleButton("purple");
+        purpleMode.setId("setting");
+        purpleMode.setToggleGroup(colorGroup);
+
+        Label colorLabel = new Label("Choose your color mode");
+        colorLabel.setId("btnLabel");
 
         // Set up light or dark mode toggle button
 
-        toggle = new ToggleButton();
+        /*toggle = new ToggleButton();
         toggle.setId("toggleBtn");
 
         inLightMode = new SimpleBooleanProperty(false);
-
-        topPane.getChildren().add(toggle);
-        topPane.setAlignment(Pos.BASELINE_RIGHT);
+*/
+        /*topPane.getChildren().add(toggle);
+        topPane.setAlignment(Pos.BASELINE_RIGHT);*/
 
         // Adding the buttons
-        bottomPane.getChildren().add(btnLabel);
-        bottomPane.getChildren().addAll(time15, time30, time45, time60);
-        bottomPane.setAlignment(Pos.CENTER);
+        timerPane.getChildren().add(btnLabel);
+        timerPane.getChildren().addAll(time15, time30, time45, time60);
+        timerPane.setAlignment(Pos.CENTER);
+
+        // Adding the color settings
+        colorSettings.getChildren().add(colorLabel);
+        colorSettings.getChildren().addAll(darkMode, lightMode, purpleMode);
+        colorSettings.setAlignment(Pos.CENTER);
+
+        // Add the settings to the settingsPane VBox
+        settingsPane.getChildren().addAll(timerPane, colorSettings);
 
         // Organize the BorderPane
         root.setTop(topPane);
         root.setCenter(vBox);
-        root.setBottom(bottomPane);
+        root.setBottom(settingsPane);
 
 
     }
@@ -168,14 +221,14 @@ public class CodeBashWelcome {
     /**
      * @return - the toggle button that controls light/dark mode
      */
-    public ToggleButton getToggleBtn() {return toggle;}
+    //public ToggleButton getToggleBtn() {return toggle;}
 
     /**
      * @return true if the game is in light mode, false otherwise
      */
-    public boolean isInLightMode() {
+    /*public boolean isInLightMode() {
         return inLightMode.get();
-    }
+    }*/
 
     /**
      * Assigns a css file to the button that controls light/dark mode
@@ -184,9 +237,57 @@ public class CodeBashWelcome {
      *
      * @return - true if in light mode, false otherwise
      */
-    public SimpleBooleanProperty inLightModeProperty() {
+    /*public SimpleBooleanProperty inLightModeProperty() {
         toggle.getStylesheets().add(this.getClass().getResource("ColorModeButton.css").toExternalForm());
         return inLightMode;
+    }*/
+
+
+    private void initEventHandlers() {
+        darkMode.setOnAction(event -> {
+            colorChanger.changeColorDisplay(ColorState.DARK_MODE, welcomeScene, gamePlayScene, resultScene);
+            darkMode.setSelected(true);
+
+        });
+
+        lightMode.setOnAction(event -> {
+            colorChanger.changeColorDisplay(ColorState.LIGHT_MODE, welcomeScene, gamePlayScene, resultScene);
+            lightMode.setSelected(true);
+        });
     }
+
+    /*private void changeColorDisplay(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene, Stage stage) {
+
+        if (theWelcome.isInLightMode()) {
+
+            // Adjust the welcome screen to light mode
+            welcomeScene.getStylesheets().remove(welcomeDarkModeUrl);
+            welcomeScene.getStylesheets().add(welcomeLightModeUrl);
+            colorMode = ColorMode.LIGHT_MODE;
+
+            // Adjust the game play screen to light mode
+            gamePlayScene.getStylesheets().remove(gameplayDarkModeUrl);
+            gamePlayScene.getStylesheets().add(gameplayLightModeUrl);
+
+            // Adjust the results screen to light mode
+            resultsScene.getStylesheets().remove(welcomeDarkModeUrl);
+            resultsScene.getStylesheets().add(welcomeLightModeUrl);
+        }
+        else {
+
+            // Adjust the welcome screen to dark mode
+            welcomeScene.getStylesheets().remove(welcomeLightModeUrl);
+            welcomeScene.getStylesheets().add(welcomeDarkModeUrl);
+            colorMode = ColorMode.DARK_MODE;
+
+            // Adjust the game play screen to dark mode
+            gamePlayScene.getStylesheets().remove(gameplayLightModeUrl);
+            gamePlayScene.getStylesheets().add(gameplayDarkModeUrl);
+
+            // Adjust the results screen to light mode
+            resultsScene.getStylesheets().remove(welcomeLightModeUrl);
+            resultsScene.getStylesheets().add(welcomeDarkModeUrl);
+        }
+    }*/
 }
 

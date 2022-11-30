@@ -12,6 +12,20 @@
 
 }
 
+#setting {
+    -fx-text-fill: #646669;
+    -fx-background-color: transparent;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 1em; /* 12 */
+}
+
+#setting:selected  {
+    -fx-text-fill: Orange;
+    -fx-background-color: transparent;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 1em; /* 12 */
+
+}
 #start {
     -fx-text-fill: Orange;
     -fx-background-color: transparent;
@@ -30,12 +44,12 @@
 }
 
 #label {
-    -fx-text-fill: Orange;
+    -fx-text-fill: #a9a9a9;
     -fx-font-family: "Roboto Mono", sans-serif;
 }
 
 #btnLabel {
-    -fx-text-fill: Orange;
+    -fx-text-fill: #a9a9a9;
     -fx-font-family: "Roboto Mono", sans-serif;
 
 }

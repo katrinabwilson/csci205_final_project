@@ -57,20 +57,12 @@ public class CodeBashMain extends Application {
      */
     private CodeBashController theController;
 
-    /** Will hold the path to the dark mode css file */
-    private String welcomeDarkModeUrl;
-
-    /** Will hold the path to the light mode css file */
-    private String welcomeLightModeUrl;
-
-    private String gameplayDarkModeUrl;
-
-    private String gameplayLightModeUrl;
-
     /** The current color mode of the game*/
     private ColorMode colorMode;
 
     private long startTime;
+
+    private String welcomeDarkModeUrl;
 
     /**
      * Our standard main program for a JavaFX application
@@ -109,14 +101,14 @@ public class CodeBashMain extends Application {
         Scene scene = new Scene(theView.getRoot());
         Scene welcomeScene = new Scene(theWelcome.getRoot());
         Scene resultScene = new Scene(theResults.getRoot());
+        theWelcome.setScenes(welcomeScene, scene, resultScene);
+
         colorMode = ColorMode.DARK_MODE;
         theModel.setGameState(GameState.NEW_GAME);
 
         // URLs to the css files for the welcome screen
         welcomeDarkModeUrl = getClass().getResource("WelcomeDark.css").toExternalForm();
-        welcomeLightModeUrl = getClass().getResource("WelcomeLight.css").toExternalForm();
-        gameplayDarkModeUrl = getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
-        gameplayLightModeUrl = getClass().getResource("/CodeBash/CodeBashLight.css").toExternalForm();
+
 
         // Change the display of the game play screen
         String css = this.getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
@@ -135,10 +127,10 @@ public class CodeBashMain extends Application {
         });
 
         // Create bindings for the light/dark mode toggle button
-        theWelcome.inLightModeProperty().bind(theWelcome.getToggleBtn().selectedProperty());
-        theWelcome.getToggleBtn().textProperty().bind(Bindings.when(theWelcome.inLightModeProperty())
+        //theWelcome.inLightModeProperty().bind(theWelcome.getToggleBtn().selectedProperty());
+        /*theWelcome.getToggleBtn().textProperty().bind(Bindings.when(theWelcome.inLightModeProperty())
                 .then("DARK MODE")
-                .otherwise("LIGHT MODE"));
+                .otherwise("LIGHT MODE"));*/
 
         // In the game play interface, when "QUIT" is clicked, bring the user to a result screen
         theView.getQuitBtn().setOnMouseClicked(event -> {
@@ -159,7 +151,7 @@ public class CodeBashMain extends Application {
         resultScene.getStylesheets().add(welcomeDarkModeUrl);
 
         // Change the color display of the 3 interfaces when the toggle button is pressed
-        theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene, scene, resultScene,stage));
+        //theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene, scene, resultScene,stage));
 
         // Displays our window
         stage.sizeToScene();
@@ -176,7 +168,7 @@ public class CodeBashMain extends Application {
      * @param gamePlayScene - where the user plays the game
      * @param resultsScene - where the user's stats are displayed
      */
-    public void changeColorDisplay(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene, Stage stage) {
+    /*private void changeColorDisplay(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene, Stage stage) {
 
         if (theWelcome.isInLightMode()) {
 
@@ -208,6 +200,6 @@ public class CodeBashMain extends Application {
             resultsScene.getStylesheets().remove(welcomeLightModeUrl);
             resultsScene.getStylesheets().add(welcomeDarkModeUrl);
         }
-    }
+    }*/
 }
 
