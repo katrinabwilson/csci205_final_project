@@ -3,7 +3,7 @@
 
 #root{
     -fx-background-color: #323437;
-    -fx-border-color: #e2b714;
+    -fx-border-color: Orange;
 
 }
 
@@ -23,14 +23,80 @@
     -fx-font-weight: Bold;
 }
 
+#Title{
+    -fx-text-fill: #646669;
+    -fx-fill: #646669;
+    -fx-font-size: 30;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-weight: 400;
 
-/*.button {
-    color: pink;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
 }
+
+#setting {
+    -fx-text-fill: #646669;
+    -fx-background-color: transparent;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 1em; /* 12 */
+}
+
+#setting:selected  {
+    -fx-text-fill: Orange;
+    -fx-background-color: transparent;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 1em; /* 12 */
+
+}
+#start {
+    -fx-text-fill: Orange;
+    -fx-background-color: transparent;
+    -fx-font-size: 18;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-weight: Bold;
+}
+
+#playAgain {
+    -fx-text-fill: Orange;
+    -fx-background-color: transparent;
+    -fx-font-size: 15;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-weight: Bold;
+
+}
+
+#label {
+    -fx-text-fill: #a9a9a9;
+    -fx-font-family: "Roboto Mono", sans-serif;
+}
+
+#btnLabel {
+    -fx-text-fill: #a9a9a9;
+    -fx-font-family: "Roboto Mono", sans-serif;
+
+}
+.button{
+    -fx-transition-duration: 0.4s;
+    -fx-border-color: transparent;
+    -fx-border-width: 1, 1;
+    -fx-background-radius: 1, 1;
+    -fx-border-insets: 1 1 1 1, 0;
+    -fx-background-color: transparent;
+    -fx-font-family:"Roboto Mono", sans-serif;
+    -fx-font-size: 1em; /* 12 */
+    -fx-text-fill: #646669;
+}
+
+.button:hover {
+    -fx-border-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-text-fill: blue;
+    -fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), linear-gradient(#dddddd 0%, #f6f6f6 50%);;
+    -fx-background-radius: 8px;
+    -fx-border-width: 1, 1;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(#f8f8ff, #f8f8ff), linear-gradient(#fcfcfc 0%, #f8f8ff 20%, #f8f8ff 100%), linear-gradient(#afeeee 0%, #87ceeb 70%);;
+    -fx-text-fill: blue;
+}
+

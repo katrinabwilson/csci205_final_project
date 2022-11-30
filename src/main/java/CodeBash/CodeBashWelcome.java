@@ -16,6 +16,7 @@
  * *****************************************/
 package CodeBash;
 
+import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorChanger;
 import CodeBash.model.ColorState;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -92,10 +93,15 @@ public class CodeBashWelcome {
     /** an instance of ColorChanger that will alter the display's coloring */
     private ColorChanger colorChanger;
 
+    private ColorState currentColorMode;
+
+    private CodeBashModel theModel;
+
     /** This constructs our welcome Screen */
-    public CodeBashWelcome(){
+    public CodeBashWelcome(CodeBashModel codeBashModel){
         colorChanger = new ColorChanger();
 
+        this.theModel = codeBashModel;
         initSceneGraph();
         initStyling();
         initEventHandlers();
@@ -126,6 +132,7 @@ public class CodeBashWelcome {
         timerPane = new HBox();
         colorSettings = new HBox();
         settingsPane = new VBox();
+        currentColorMode = ColorState.DARK_MODE;
 
         // Add title text
         title = new Label(" Welcome to CodeBash");
@@ -219,75 +226,36 @@ public class CodeBashWelcome {
     public Button getStartBtn (){return startBtn;}
 
     /**
-     * @return - the toggle button that controls light/dark mode
+     * Handles when settings are pressed
      */
-    //public ToggleButton getToggleBtn() {return toggle;}
-
-    /**
-     * @return true if the game is in light mode, false otherwise
-     */
-    /*public boolean isInLightMode() {
-        return inLightMode.get();
-    }*/
-
-    /**
-     * Assigns a css file to the button that controls light/dark mode
-     * and returns a SimpleBooleanProperty describing the state of
-     * the color mode
-     *
-     * @return - true if in light mode, false otherwise
-     */
-    /*public SimpleBooleanProperty inLightModeProperty() {
-        toggle.getStylesheets().add(this.getClass().getResource("ColorModeButton.css").toExternalForm());
-        return inLightMode;
-    }*/
-
-
     private void initEventHandlers() {
         darkMode.setOnAction(event -> {
-            colorChanger.changeColorDisplay(ColorState.DARK_MODE, welcomeScene, gamePlayScene, resultScene);
+            currentColorMode = ColorState.DARK_MODE;
+            colorChanger.changeColorDisplay(currentColorMode, welcomeScene, gamePlayScene, resultScene);
             darkMode.setSelected(true);
+            theModel.setCurrentColorState(ColorState.DARK_MODE);
 
         });
 
         lightMode.setOnAction(event -> {
-            colorChanger.changeColorDisplay(ColorState.LIGHT_MODE, welcomeScene, gamePlayScene, resultScene);
+            currentColorMode = ColorState.LIGHT_MODE;
+            colorChanger.changeColorDisplay(currentColorMode, welcomeScene, gamePlayScene, resultScene);
             lightMode.setSelected(true);
+            theModel.setCurrentColorState(ColorState.LIGHT_MODE);
+
+        });
+
+        purpleMode.setOnAction(event -> {
+            currentColorMode = ColorState.PURPLE_MODE;
+            colorChanger.changeColorDisplay(currentColorMode, welcomeScene, gamePlayScene, resultScene);
+            purpleMode.setSelected(true);
+            theModel.setCurrentColorState(ColorState.PURPLE_MODE);
+
         });
     }
 
-    /*private void changeColorDisplay(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene, Stage stage) {
-
-        if (theWelcome.isInLightMode()) {
-
-            // Adjust the welcome screen to light mode
-            welcomeScene.getStylesheets().remove(welcomeDarkModeUrl);
-            welcomeScene.getStylesheets().add(welcomeLightModeUrl);
-            colorMode = ColorMode.LIGHT_MODE;
-
-            // Adjust the game play screen to light mode
-            gamePlayScene.getStylesheets().remove(gameplayDarkModeUrl);
-            gamePlayScene.getStylesheets().add(gameplayLightModeUrl);
-
-            // Adjust the results screen to light mode
-            resultsScene.getStylesheets().remove(welcomeDarkModeUrl);
-            resultsScene.getStylesheets().add(welcomeLightModeUrl);
-        }
-        else {
-
-            // Adjust the welcome screen to dark mode
-            welcomeScene.getStylesheets().remove(welcomeLightModeUrl);
-            welcomeScene.getStylesheets().add(welcomeDarkModeUrl);
-            colorMode = ColorMode.DARK_MODE;
-
-            // Adjust the game play screen to dark mode
-            gamePlayScene.getStylesheets().remove(gameplayLightModeUrl);
-            gamePlayScene.getStylesheets().add(gameplayDarkModeUrl);
-
-            // Adjust the results screen to light mode
-            resultsScene.getStylesheets().remove(welcomeLightModeUrl);
-            resultsScene.getStylesheets().add(welcomeDarkModeUrl);
-        }
-    }*/
+    public ColorState getCurrentColorMode() {
+        return currentColorMode;
+    }
 }
 

@@ -64,6 +64,8 @@ public class CodeBashMain extends Application {
 
     private String welcomeDarkModeUrl;
 
+    private String gameplayDarkModeUrl;
+
     /**
      * Our standard main program for a JavaFX application
      * @param args
@@ -81,9 +83,9 @@ public class CodeBashMain extends Application {
     public void init() throws Exception {
         super.init();
         this.theModel = new CodeBashModel();
+        this.theWelcome = new CodeBashWelcome(theModel);
         this.theView = new CodeBashView(theModel);
         this.theController = new CodeBashController(theModel, theView);
-        this.theWelcome = new CodeBashWelcome();
         this.theResults = new CodeBashResults(theModel.getStats());
 
     }
@@ -108,6 +110,7 @@ public class CodeBashMain extends Application {
 
         // URLs to the css files for the welcome screen
         welcomeDarkModeUrl = getClass().getResource("WelcomeDark.css").toExternalForm();
+        gameplayDarkModeUrl = getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
 
 
         // Change the display of the game play screen
@@ -148,7 +151,7 @@ public class CodeBashMain extends Application {
         });
 
         // Start the display in dark mode
-        resultScene.getStylesheets().add(welcomeDarkModeUrl);
+        resultScene.getStylesheets().add(gameplayDarkModeUrl);
 
         // Change the color display of the 3 interfaces when the toggle button is pressed
         //theWelcome.getToggleBtn().setOnMouseClicked(event->changeColorDisplay(welcomeScene, scene, resultScene,stage));

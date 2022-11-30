@@ -45,12 +45,16 @@ public class CodeBashModel {
     /** Keeps track of user progress */
     private TypingStats stats;
 
+    /** The current color theme of the game */
+    private ColorState currentColorState;
+
     /** Creates a new instance of the main model class */
     public CodeBashModel() throws IOException {
         stats = new TypingStats();
         lineGenerator = new LineGenerator();
         lineGenerator.scanDocuments();
         rand = new Random();
+        this.currentColorState = ColorState.DARK_MODE;
     }
 
     /**
@@ -84,5 +88,13 @@ public class CodeBashModel {
 
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public ColorState getCurrentColorState() {
+        return currentColorState;
+    }
+
+    public void setCurrentColorState(ColorState currentColorState) {
+        this.currentColorState = currentColorState;
     }
 }

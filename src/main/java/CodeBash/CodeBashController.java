@@ -21,6 +21,7 @@
 package CodeBash;
 
 import CodeBash.model.CodeBashModel;
+import CodeBash.model.ColorState;
 import CodeBash.model.LetterEvaluator;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyCode;
@@ -88,22 +89,40 @@ public class CodeBashController {
                 letterEvaluator = new LetterEvaluator(correctLetter, typedLetter);
 
                 // Add a word to the stats class every time space is pressed
-                // Better implementation for this?
+                // Better implementation for this? -- we should refactor this! - Katrina
                 if (key.getCode() == KeyCode.SPACE) {
                     theModel.getStats().wordCompleted();
                 }
 
+                // If the typed letter is correct
                 if (letterEvaluator.analyzeKeyPress()) {
-                    //System.out.println("they match!");
                     theView.getTextObjectAt(currentLetter);
-                    theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #d1d0c5");
+
+                    // Change the coloring depending on what the current color theme is
+                    if (theModel.getCurrentColorState() == ColorState.DARK_MODE) {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #d1d0c5");
+                    }
+                    else if (theModel.getCurrentColorState() == ColorState.LIGHT_MODE) {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #d1d0c5");
+
+                    }
+
                     theModel.getStats().typedCorrect();
                 }
 
-                // Otherwise, change color to red
+                // If the typed letter is incorrect
                 else {
-                    theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #e2b714");
+
+                    if (theModel.getCurrentColorState() == ColorState.DARK_MODE) {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: Orange");
+                    }
+                    else if (theModel.getCurrentColorState() == ColorState.LIGHT_MODE) {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #107896");
+
+                    }
+                    //theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: white");
                     theModel.getStats().typedIncorrect();
+
                 }
                 currentLetter++;
             }
