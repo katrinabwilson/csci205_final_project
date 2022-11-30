@@ -72,7 +72,6 @@ public class CodeBashResults {
         root = new VBox();
         root.setId("root");
 
-        // TODO: Find a way to connect the chosen time to getWPM
         errors = new Label("Errors: " + stats.getErrors());
         wpm = new Label(String.format("Words per minute: %d", (int) stats.getWPM(30)));
         accuracy = new Label(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));

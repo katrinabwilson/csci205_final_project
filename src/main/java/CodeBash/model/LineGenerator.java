@@ -40,9 +40,14 @@ public class LineGenerator {
     /** A record of every possible sentence, common or not */
     private ArrayList<String> sentenceList;
 
+    /** The minimum number of characters in a generated sentence */
     private int minSentenceLength;
 
+    /** The maximum number of characters in a generated sentence */
     private int maxSentenceLength;
+
+    /** Represents which mode has been chosen by the user */
+    private GameMode mode;
 
     /**
      * Create a new TextProcessor and assign the novels to given indexes
