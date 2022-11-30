@@ -147,7 +147,8 @@ public class CodeBashMain extends Application {
         // When the "PLAY AGAIN" button is hit, bring the user back to the welcome screen
         theResults.getPlayAgain().setOnMouseClicked(event -> {
             stage.setScene(welcomeScene);
-            theModel.setGameState(GameState.CONT_GAME);
+            theModel.setGameState(GameState.NEW_GAME);
+            theController.setLetters(theModel.getCurrentSentence());
         });
 
         // Start the display in dark mode

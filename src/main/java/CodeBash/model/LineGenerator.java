@@ -24,6 +24,14 @@ import java.net.URL;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.io.FileReader;
+import java.util.Iterator;
+import java.util.Map;
+
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.*;
+
 
 public class LineGenerator {
     /** An array of the URLs to be used for the lines */
@@ -117,6 +125,7 @@ public class LineGenerator {
 
     /** Temporary test method */
     public static void main(String[] args) throws IOException {
+
         LineGenerator lineGenerator = new LineGenerator();
         lineGenerator.scanDocuments();
         for (String line : lineGenerator.getSentenceList()) {

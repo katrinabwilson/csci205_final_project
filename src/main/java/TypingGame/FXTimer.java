@@ -49,6 +49,7 @@ public class FXTimer extends Application {
     private Label timerLabel = new Label();
     private Label timerLabel1 = new Label();
     private Integer timeSeconds = STARTTIME;
+    private Integer timeSeconds1 = STARTTIME1;
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -117,7 +118,7 @@ public class FXTimer extends Application {
                 if (timeline1 != null) {
                     timeline1.stop();
                 }
-                timeSeconds = STARTTIME1;
+                timeSeconds1 = STARTTIME1;
 
                 // update timerLabel
                 timerLabel1.setText(timeSeconds.toString());
@@ -128,11 +129,11 @@ public class FXTimer extends Application {
                                 new EventHandler<ActionEvent>() {
                                     // KeyFrame event handler
                                     public void handle(ActionEvent event) {
-                                        timeSeconds--;
+                                        timeSeconds1--;
                                         // update timerLabel
                                         timerLabel1.setText(
-                                                timeSeconds.toString());
-                                        if (timeSeconds <= 0) {
+                                                timeSeconds1.toString());
+                                        if (timeSeconds1 <= 0) {
                                             timeline.stop();
                                         }
                                     }
@@ -140,7 +141,6 @@ public class FXTimer extends Application {
                 timeline1.playFromStart();
             }
         });
-
 
         // Create and configure VBox
         // gap between components is 20

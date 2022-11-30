@@ -25,8 +25,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
+/**
+ * This is a class that does that timing calculations for our Timing Class
+ */
 public class TimingModel {
-
+    /** This label is mutable and can be used to show the change in time display*/
     private JLabel counterLabel = new JLabel("");
     private javax.swing.Timer time;
     private SimpleBooleanProperty time15;
@@ -71,7 +74,7 @@ public class TimingModel {
         return time15;
     }
 
-    TimingModel() {
+    TimingModel( ) {
         this.time15 = new SimpleBooleanProperty(false);
         this.time30 = new SimpleBooleanProperty(false);
         this.time45 = new SimpleBooleanProperty(false);
