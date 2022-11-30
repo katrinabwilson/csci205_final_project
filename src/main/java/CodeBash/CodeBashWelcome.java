@@ -61,10 +61,12 @@ public class CodeBashWelcome {
     //private SimpleBooleanProperty inLightMode;
 
     /** The buttons for the timer */
-    private Button time15;
-    private Button time30;
-    private Button time45;
-    private Button time60;
+    private ToggleButton time15;
+    private ToggleButton time30;
+    private ToggleButton time45;
+    private ToggleButton time60;
+
+    private ToggleGroup timers;
 
     /** the dark mode button */
     private ToggleButton darkMode;
@@ -107,6 +109,7 @@ public class CodeBashWelcome {
         initSceneGraph();
         initStyling();
         initEventHandlers();
+        initEventHandling();
     }
 
     /**
@@ -159,10 +162,18 @@ public class CodeBashWelcome {
         vBox.setAlignment(Pos.TOP_CENTER);
 
         // Setting up the timer buttons
-        time15 = new Button("15 Seconds");
-        time30 = new Button("30 Seconds");
-        time45 = new Button("45 Seconds");
-        time60 = new Button("60 Seconds");
+        time15 = new ToggleButton("15 Seconds");
+        time30 = new ToggleButton("30 Seconds");
+        time45 = new ToggleButton("45 Seconds");
+        time60 = new ToggleButton("60 Seconds");
+
+        timers = new ToggleGroup();
+        time15.setToggleGroup(timers);
+        time30.setToggleGroup(timers);
+        time45.setToggleGroup(timers);
+        time60.setToggleGroup(timers);
+
+        time15.setSelected(true);
 
         btnLabel = new Label("Choose your timer");
         btnLabel.setId("btnLabel");
@@ -243,6 +254,19 @@ public class CodeBashWelcome {
             theModel.setCurrentColorState(ColorState.PURPLE_MODE);
 
         });
+    }
+
+    /**
+     * Handles when settings are pressed
+     */
+    private void initEventHandling() {
+        time15.setOnAction(event -> time15.setSelected(true));
+
+        time30.setOnAction(event -> time30.setSelected(true));
+
+        time45.setOnAction(event -> time45.setSelected(true));
+
+        time60.setOnAction(event -> time60.setSelected(true));
     }
 
     public ColorState getCurrentColorMode() {
