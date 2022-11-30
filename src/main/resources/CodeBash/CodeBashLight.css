@@ -16,6 +16,11 @@
 
 }
 
+#stats {
+    -fx-fill: #323437;
+    -fx-font-family: "Roboto Mono", sans-serif;
+}
+
 #quit {
     -fx-text-fill: #107896;
     -fx-background-color: transparent;

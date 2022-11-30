@@ -77,6 +77,10 @@ public class CodeBashResults {
         wpm = new Label(String.format("Words per minute: %d", (int) stats.getWPM(30)));
         accuracy = new Label(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
 
+        errors.setId("stats");
+        wpm.setId("stats");
+        accuracy.setId("stats");
+
         title = new Label(" Good Game");
         title.setId("Title");
 

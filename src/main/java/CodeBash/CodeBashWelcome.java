@@ -93,8 +93,10 @@ public class CodeBashWelcome {
     /** an instance of ColorChanger that will alter the display's coloring */
     private ColorChanger colorChanger;
 
+    /** The current color theme the game is in */
     private ColorState currentColorMode;
 
+    /** The current CodeBashModel being used */
     private CodeBashModel theModel;
 
     /** This constructs our welcome Screen */
@@ -107,6 +109,14 @@ public class CodeBashWelcome {
         initEventHandlers();
     }
 
+    /**
+     * When called, this method assigns scenes to the CodeBashWelcome object,
+     * later to be used in changing their color styling.
+     *
+     * @param welcomeScene - the first scene the user is prompted with
+     * @param gamePlayScene - the scene where the user plays the game
+     * @param resultsScene - where the results are posted and the user is prompted to play again
+     */
     public void setScenes(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene) {
         this.welcomeScene = welcomeScene;
         this.gamePlayScene = gamePlayScene;
@@ -148,13 +158,6 @@ public class CodeBashWelcome {
         vBox.getChildren().add(startBtn);
         vBox.setAlignment(Pos.TOP_CENTER);
 
-
-//        Label Instructions = new Label("Choose a duration 15s ... 30s ... 45s ... 60s ...\n" +
-//                "\t\t Click 'Start' to begin");
-//        Instructions.setId("Title");
-//        vBox.getChildren().add(Instructions);
-//        vBox.setAlignment(Pos.CENTER);
-
         // Setting up the timer buttons
         time15 = new Button("15 Seconds");
         time30 = new Button("30 Seconds");
@@ -184,16 +187,6 @@ public class CodeBashWelcome {
         Label colorLabel = new Label("Choose your color mode");
         colorLabel.setId("btnLabel");
 
-        // Set up light or dark mode toggle button
-
-        /*toggle = new ToggleButton();
-        toggle.setId("toggleBtn");
-
-        inLightMode = new SimpleBooleanProperty(false);
-*/
-        /*topPane.getChildren().add(toggle);
-        topPane.setAlignment(Pos.BASELINE_RIGHT);*/
-
         // Adding the buttons
         timerPane.getChildren().add(btnLabel);
         timerPane.getChildren().addAll(time15, time30, time45, time60);
@@ -211,8 +204,6 @@ public class CodeBashWelcome {
         root.setTop(topPane);
         root.setCenter(vBox);
         root.setBottom(settingsPane);
-
-
     }
 
     /**
