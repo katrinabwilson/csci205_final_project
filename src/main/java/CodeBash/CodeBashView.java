@@ -132,6 +132,8 @@ public class CodeBashView {
         }
         letterDisplay.setAlignment(Pos.CENTER);
     }
+
+
 }
 
 

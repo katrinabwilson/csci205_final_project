@@ -42,10 +42,12 @@ public class ColorChanger {
             // Adjust the welcome screen to light mode
             welcomeScene.getStylesheets().remove(darkModeUrl);
             welcomeScene.getStylesheets().add(lightModeUrl);
+            System.out.println("changing the welcome screen to light mode");
 
             // Adjust the game play screen to light mode
             gamePlayScene.getStylesheets().remove(darkModeUrl);
             gamePlayScene.getStylesheets().add(lightModeUrl);
+
 
             // Adjust the results screen to light mode
             resultsScene.getStylesheets().remove(darkModeUrl);
@@ -57,6 +59,7 @@ public class ColorChanger {
             // Adjust the welcome screen to dark mode
             welcomeScene.getStylesheets().remove(lightModeUrl);
             welcomeScene.getStylesheets().add(darkModeUrl);
+            System.out.println("changing the welcome screen to dark mode");
 
             // Adjust the game play screen to dark mode
             gamePlayScene.getStylesheets().remove(lightModeUrl);

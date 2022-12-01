@@ -28,15 +28,6 @@ import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-/**
- * A simple enumeration representing the kinds of color themes for our app
- */
-enum ColorMode {
-    DARK_MODE,
-    LIGHT_MODE
-}
-
 public class CodeBashMain extends Application {
 
     /** The model that contains the data and logic behind this app */
@@ -57,14 +48,13 @@ public class CodeBashMain extends Application {
      */
     private CodeBashController theController;
 
-    /** The current color mode of the game*/
-    private ColorMode colorMode;
-
     /** When start is pressed, a start time is recorded */
     private long startTime;
 
     /** The URL to the CSS file that contains the dark mode styling */
     private String darkModeUrl;
+
+    private CodeBashWelcomeView welcomeView;
 
     /**
      * Our standard main program for a JavaFX application
@@ -84,9 +74,13 @@ public class CodeBashMain extends Application {
         super.init();
         this.theModel = new CodeBashModel();
         this.theWelcome = new CodeBashWelcome(theModel);
+        //this.welcomeView = new CodeBashWelcomeView();
         this.theView = new CodeBashView(theModel);
         this.theController = new CodeBashController(theModel, theView);
         this.theResults = new CodeBashResults(theModel.getStats());
+
+        // URL for the initial css styling
+        darkModeUrl = getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
 
     }
 
@@ -101,15 +95,12 @@ public class CodeBashMain extends Application {
     public void start(Stage stage) throws Exception {
         stage.setTitle("CodeBash");
         Scene scene = new Scene(theView.getRoot());
-        Scene welcomeScene = new Scene(theWelcome.getRoot());
+        Scene welcomeScene = new Scene(theWelcome.getWelcomeView().getRoot());
         Scene resultScene = new Scene(theResults.getRoot());
-        theWelcome.setScenes(welcomeScene, scene, resultScene);
+        theWelcome.getWelcomeView().setScenes(welcomeScene, scene, resultScene);
 
-        colorMode = ColorMode.DARK_MODE;
+        // Start a new game
         theModel.setGameState(GameState.NEW_GAME);
-
-        // URLs to the css files for the welcome screen
-        darkModeUrl = getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
 
         // Change the display of the game play screen
         scene.getStylesheets().add(darkModeUrl);
@@ -118,8 +109,22 @@ public class CodeBashMain extends Application {
         stage.setScene(welcomeScene);
         welcomeScene.getStylesheets().add(darkModeUrl);
 
+        initEventHandlers(stage, scene, welcomeScene, resultScene);
+
+        // Start the display in dark mode
+        resultScene.getStylesheets().add(darkModeUrl);
+
+        // Displays our window
+        stage.sizeToScene();
+        stage.show();
+
+        theView.getRoot().requestFocus();
+    }
+
+    // TODO - Move this to CodeBashController
+    private void initEventHandlers(Stage stage, Scene scene, Scene welcomeScene, Scene resultScene) {
         // When you hit the start button, the game starts
-        theWelcome.getStartBtn().setOnMouseClicked(event-> {
+        theWelcome.getWelcomeView().getStartBtn().setOnMouseClicked(event-> {
             stage.setScene(scene);
             theModel.setGameState(GameState.IN_PROGRESS);
             startTime = System.currentTimeMillis();
@@ -140,15 +145,6 @@ public class CodeBashMain extends Application {
             theModel.setGameState(GameState.NEW_GAME);
             theController.setLetters(theModel.getCurrentSentence());
         });
-
-        // Start the display in dark mode
-        resultScene.getStylesheets().add(darkModeUrl);
-
-        // Displays our window
-        stage.sizeToScene();
-        stage.show();
-
-        theView.getRoot().requestFocus();
     }
 }
 
