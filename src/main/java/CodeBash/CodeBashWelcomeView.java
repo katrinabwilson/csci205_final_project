@@ -186,7 +186,7 @@ public class CodeBashWelcomeView {
      * for this Welcome screen
      */
     private void initStyling() {
-        vBox.setPrefSize(800, 200);
+        vBox.setPrefSize(1000, 300);
         vBox.setSpacing(20);
     }
 

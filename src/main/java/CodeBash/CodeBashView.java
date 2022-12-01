@@ -102,7 +102,7 @@ public class CodeBashView {
      * for this view
      */
     public void initStyling() {
-        root.setPrefSize(800, 200);
+        root.setPrefSize(1000, 300);
     }
 
     /** ArrayList getter method that returns our text objects */

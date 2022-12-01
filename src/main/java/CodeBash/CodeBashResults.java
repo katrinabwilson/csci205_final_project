@@ -61,7 +61,7 @@ public class CodeBashResults {
      * This method initializes how big the original display is
      */
     private void initStyling() {
-        root.setPrefSize(800, 200);
+        root.setPrefSize(1000, 300);
         root.setSpacing(20);
     }
 
@@ -80,7 +80,7 @@ public class CodeBashResults {
         wpm.setId("stats");
         accuracy.setId("stats");
 
-        title = new Label(" Good Game");
+        title = new Label("");
         title.setId("Title");
 
         // Add results below label but above button
@@ -104,6 +104,63 @@ public class CodeBashResults {
         this.errors.setText("Errors: " + stats.getErrors());
         this.wpm.setText(String.format("Words per minute: %d", (int) stats.getWPM(time)));
         this.accuracy.setText(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
+    }
+
+    /**
+     * Changes the end screen text based on how well you did. This is based on both your accuracy AND words
+     * per minute.
+     */
+    public void setEndLabel(double time) {
+        double wpm = stats.getWPM(time);
+        double accuracy = stats.calculateAccuracy();
+        if (wpm > 80 && accuracy == 100) {
+            title.setText("I don't know why you're even here...");
+        }
+        else if (wpm > 60 && accuracy == 100) {
+            title.setText("Perfect!");
+        }
+        else if (wpm > 40 && accuracy == 100) {
+            title.setText("Get that speed up!");
+        }
+        else if (accuracy == 100) {
+            title.setText("Are you looking down at your keyboard?");
+        }
+        else if (wpm > 80 && accuracy >= 90) {
+            title.setText("You Bashed it out there!");
+        }
+        else if (wpm > 60 && accuracy >= 90) {
+            title.setText("Nice work!");
+        }
+        else if (wpm > 40 && accuracy >= 90) {
+            title.setText("A bit slow, but you're getting there!");
+        }
+        else if (accuracy >= 90) {
+            title.setText("You're putting me to sleep with that speed...");
+        }
+        else if (wpm > 80 && accuracy >= 70) {
+            title.setText("Slow down there, cowboy.");
+        }
+        else if (wpm > 60 && accuracy >= 70) {
+            title.setText("Slow down and make sure you know where the keys are.");
+        }
+        else if (wpm > 40 && accuracy >= 70) {
+            title.setText("How old are you?");
+        }
+        else if (accuracy >= 70) {
+            title.setText("At least you're passing...?");
+        }
+        else if (wpm > 80) {
+            title.setText("Let me guess, your cat walked on your keyboard?");
+        }
+        else if (wpm > 60) {
+            title.setText("Are you pressing buttons at random?");
+        }
+        else if (wpm > 40) {
+            title.setText("You should take some time to look at your keyboard.");
+        }
+        else {
+            title.setText("Yikes, man.");
+        }
     }
 
     /**

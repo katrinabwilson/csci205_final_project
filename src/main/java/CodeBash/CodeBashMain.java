@@ -136,6 +136,7 @@ public class CodeBashMain extends Application {
                     stage.setScene(resultScene);
                     theModel.setGameState(GameState.GAME_END);
                     theResults.setStatsLabels((endTime - startTime) / 1000.0);
+                    theResults.setEndLabel((endTime - startTime) / 1000.0);
                 });
 
 
