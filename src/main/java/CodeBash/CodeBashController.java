@@ -83,6 +83,15 @@ public class CodeBashController {
                 if (!key.isShiftDown()) {
                     typedLetter = key.getText().charAt(0);
                 }
+                // check for ? edge case
+                else if (key.getText().charAt(0) == '/'){
+                    typedLetter = '?';
+                }
+                // check for ! edge case
+                else if (key.getText().charAt(0) == '1') {
+                    typedLetter = '!';
+                }
+                // otherwise, capitalize letter
                 else {
                     typedLetter = key.getText().toUpperCase().charAt(0);
                 }
