@@ -14,7 +14,7 @@
  * Description:
  *
  * *****************************************/
-package TypingGame;
+package CodeBash.model.FXTime;
 
 
 import javafx.animation.KeyFrame;
