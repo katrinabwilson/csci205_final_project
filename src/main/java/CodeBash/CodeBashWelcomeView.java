@@ -23,10 +23,7 @@ import CodeBash.model.ColorChanger;
 import CodeBash.model.ColorState;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -55,6 +52,12 @@ public class CodeBashWelcomeView {
 
     /** Represents the title of our game */
     private Label title;
+
+    /** Represents the instructions for our game */
+    private Label instructions;
+
+    /** Asks the user to choose settings */
+    private Label settingsInstructions;
 
     /** The buttons for the timer */
     private ToggleButton time15;
@@ -110,25 +113,39 @@ public class CodeBashWelcomeView {
         settingsPane = new VBox();
         currentColorMode = ColorState.DARK_MODE;
 
+        /*Label desc1 = new Label("looking to improve your lightning fast typing skills?");
+        desc1.setId("btnLabel");
+        Label desc2 = new Label("forgetting syntax to certain programming language?");
+        desc2.setId("btnLabel");
+        Label desc3 = new Label("lucky you! you've come to the right place.");
+        desc3.setId("btnLabel");
+
+        topPane.getChildren().addAll(desc1, desc2, desc3);
+        topPane.setAlignment(Pos.CENTER);*/
+
         // Add title text
-        title = new Label(" Welcome to CodeBash");
+        title = new Label(" CodeBash");
         title.setId("Title");
+        topPane.getChildren().add(title);
+        topPane.setAlignment(Pos.TOP_LEFT);
 
-        vBox.getChildren().add(title);
-        vBox.setAlignment(Pos.CENTER);
+        // Add instructions
+        instructions = new Label("choose settings then, press start to bash");
+        instructions.setId("instructions");
+        topPane.getChildren().add(instructions);
+        //topPane.setAlignment(Pos.CENTER_RIGHT);
 
-        // Set up the button to initiate typing
-        startBtn = new Button("START");
-        startBtn.setAlignment(Pos.TOP_CENTER);
-        startBtn.setId("start");
-        vBox.getChildren().add(startBtn);
-        vBox.setAlignment(Pos.TOP_CENTER);
+        // Add setting instructions
+        //settingsInstructions = new Label("Choose your settings: ");
+        //settingsInstructions.setId("btnLabel");
+        //vBox.getChildren().add(settingsInstructions);
+        //vBox.setAlignment(Pos.CENTER);
 
         // Setting up the timer buttons
-        time15 = new ToggleButton("15 Seconds");
-        time30 = new ToggleButton("30 Seconds");
-        time45 = new ToggleButton("45 Seconds");
-        time60 = new ToggleButton("60 Seconds");
+        time15 = new ToggleButton("15");
+        time30 = new ToggleButton("30");
+        time45 = new ToggleButton("45");
+        time60 = new ToggleButton("60");
 
         timers = new ToggleGroup();
         time15.setToggleGroup(timers);
@@ -138,7 +155,7 @@ public class CodeBashWelcomeView {
 
         time15.setSelected(true);
 
-        btnLabel = new Label("Choose your timer");
+        btnLabel = new Label("time (seconds)");
         btnLabel.setId("btnLabel");
 
         // Set up the color settings buttons
@@ -158,27 +175,38 @@ public class CodeBashWelcomeView {
         purpleMode.setId("setting");
         purpleMode.setToggleGroup(colorGroup);
 
-        Label colorLabel = new Label("Choose your color mode");
+        Label colorLabel = new Label("| color");
         colorLabel.setId("btnLabel");
 
         // Adding the buttons
+        //timerPane.getChildren().add(settingsInstructions);
         timerPane.getChildren().add(btnLabel);
         timerPane.getChildren().addAll(time15, time30, time45, time60);
         timerPane.setAlignment(Pos.CENTER);
 
         // Adding the color settings
-        colorSettings.getChildren().add(colorLabel);
-        colorSettings.getChildren().addAll(darkMode, lightMode, purpleMode);
-        colorSettings.setAlignment(Pos.CENTER);
+        timerPane.getChildren().add(colorLabel);
+        timerPane.getChildren().addAll(darkMode, lightMode, purpleMode);
+        timerPane.setAlignment(Pos.CENTER);
 
         // Add the settings to the settingsPane VBox
-        settingsPane.getChildren().addAll(timerPane, colorSettings);
+        timerPane.setId("settingsBox");
+        settingsPane.getChildren().add(timerPane);
+
+
+
+        // Set up the button to initiate typing
+        startBtn = new Button("START");
+        startBtn.setAlignment(Pos.TOP_CENTER);
+        startBtn.setId("start");
+        vBox.getChildren().add(startBtn);
+        vBox.setAlignment(Pos.TOP_CENTER);
 
         // Organize the BorderPane
         root.setId("root");
         root.setTop(topPane);
-        root.setCenter(vBox);
-        root.setBottom(settingsPane);
+        root.setCenter(settingsPane);
+        root.setBottom(vBox);
     }
 
     /**

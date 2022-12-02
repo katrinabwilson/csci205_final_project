@@ -25,10 +25,19 @@ import CodeBash.model.GameState;
 
 public class CodeBashWelcomeController {
 
+    /** The Model used for this round */
     private CodeBashModel theModel;
 
+    /** The view representation of the Welcome interface */
     private CodeBashWelcomeView welcomeView;
 
+    /**
+     * Constructs a controller that connects the model and the view for our
+     * CodeBash game
+     *
+     * @param welcomeView - the current CodeBashWelcomeView
+     * @param theModel - the current CodeBashModel
+     */
     public CodeBashWelcomeController(CodeBashWelcomeView welcomeView, CodeBashModel theModel) {
         this.welcomeView = welcomeView;
         this.theModel = theModel;
@@ -41,7 +50,6 @@ public class CodeBashWelcomeController {
      * Handles when settings are pressed
      */
     private void initEventHandlers() {
-
 
         welcomeView.getDarkMode().setOnAction(event -> {
             welcomeView.setCurrentColorMode(ColorState.DARK_MODE);

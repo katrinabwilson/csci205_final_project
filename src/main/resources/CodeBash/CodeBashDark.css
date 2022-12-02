@@ -7,6 +7,10 @@
 
 }
 
+#settingsBox {
+    -fx-background-color: #25292e;
+}
+
 #letter {
     -fx-fill: #646669;
     -fx-font-size: 30;
@@ -16,7 +20,7 @@
 }
 
 #stats {
-    -fx-fill: #646669;
+    -fx-text-fill: #646669;
     -fx-font-family: "Roboto Mono", sans-serif;
 }
 #quit {
@@ -33,6 +37,7 @@
     -fx-font-size: 30;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: 400;
+    -fx-padding: 15px;
 
 }
 
@@ -60,6 +65,7 @@
     -fx-font-size: 18;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: Bold;
+    -fx-padding: 30px;
 }
 
 #playAgain {
@@ -80,6 +86,14 @@
     -fx-text-fill: #a9a9a9;
     -fx-font-family: "Roboto Mono", sans-serif;
 
+
+}
+
+#instructions {
+    -fx-text-fill: #a9a9a9;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-padding: 29px;
+    -fx-font-weight: Italic;
 }
 .toggle-button{
     -fx-transition-duration: 0.4s;
