@@ -41,6 +41,12 @@
 
 }
 
+#intro {
+    -fx-text-fill: #a9a9a9;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-padding: 15px;
+
+}
 #setting {
     -fx-text-fill: #646669;
     -fx-background-color: transparent;
@@ -59,7 +65,7 @@
     -fx-font-size: 1em; /* 12 */
 
 }
-#start {
+#transitionButton {
     -fx-text-fill: Orange;
     -fx-background-color: transparent;
     -fx-font-size: 18;
@@ -85,8 +91,6 @@
 #btnLabel {
     -fx-text-fill: #a9a9a9;
     -fx-font-family: "Roboto Mono", sans-serif;
-
-
 }
 
 #instructions {

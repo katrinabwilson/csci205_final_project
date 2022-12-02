@@ -94,7 +94,7 @@ public class CodeBashResults {
         // Set up the button to initiate typing
         playAgain = new Button("PLAY AGAIN");
         playAgain.setAlignment(Pos.TOP_CENTER);
-        playAgain.setId("playAgain");
+        playAgain.setId("transitionButton");
         root.getChildren().add(playAgain);
 
         root.setAlignment(Pos.CENTER);

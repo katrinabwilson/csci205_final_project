@@ -82,6 +82,11 @@ public class CodeBashWelcomeController {
         welcomeView.getTime45().setOnAction(event -> welcomeView.getTime45().setSelected(true));
 
         welcomeView.getTime60().setOnAction(event -> welcomeView.getTime60().setSelected(true));
+
+        welcomeView.getEnglish().setOnAction(event -> welcomeView.getEnglish().setSelected(true));
+        welcomeView.getJava().setOnAction(event -> welcomeView.getJava().setSelected(true));
+        welcomeView.getPython().setOnAction(event -> welcomeView.getPython().setSelected(true));
+
     }
 
 }

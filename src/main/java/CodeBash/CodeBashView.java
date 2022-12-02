@@ -88,7 +88,7 @@ public class CodeBashView {
         // Set up the button to initiate typing
         quitBtn = new Button("QUIT");
         quitBtn.setAlignment(Pos.TOP_CENTER);
-        quitBtn.setId("quit");
+        quitBtn.setId("transitionButton");
 
         root.getChildren().add(letterDisplay);
         root.getChildren().add(quitBtn);
@@ -101,7 +101,7 @@ public class CodeBashView {
      * for this view
      */
     public void initStyling() {
-        root.setPrefSize(1000, 300);
+        root.setPrefSize(800, 300);
     }
 
     /** ArrayList getter method that returns our text objects */
@@ -116,7 +116,6 @@ public class CodeBashView {
      *
      * @param sentence - the sentence that we want the user to type
      */
-    // Useful to when we choose the font we want: https://www.delftstack.com/howto/java/setfont-java/
     public void createLetterTexts(String sentence) {
         letterDisplay.getChildren().clear();
         textObjects = new ArrayList<>();

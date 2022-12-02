@@ -40,25 +40,27 @@ public class CodeBashIntro {
         root = new VBox();
         root.setId("root");
 
-        Label desc1 = new Label("looking to improve your lightning fast typing skills?");
-        desc1.setId("btnLabel");
-        Label desc2 = new Label("forgetting syntax to certain programming language?");
-        desc2.setId("btnLabel");
-        Label desc3 = new Label("lucky you! you've come to the right place.");
-        desc3.setId("btnLabel");
+        Label desc1 = new Label("looking to improve your lightning fast typing skills?\n " +
+                                "\n       forgetting syntax to certain programming language?\n" +
+                                "\nlucky you! you've come to the right place.");
+        desc1.setId("intro");
+        //Label desc2 = new Label("forgetting syntax to certain programming language?");
+        //desc2.setId("btnLabel");
+        //Label desc3 = new Label("lucky you! you've come to the right place.");
+        //desc3.setId("btnLabel");
 
-        root.getChildren().addAll(desc1, desc2, desc3);
+        root.getChildren().add(desc1);
         root.setAlignment(Pos.CENTER);
 
         tellMeMore = new Button("tell me more...");
-        tellMeMore.setId("start");
+        tellMeMore.setId("transitionButton");
         root.getChildren().add(tellMeMore);
 
 
     }
 
     public void initStyling() {
-        root.setPrefSize(800, 200);
+        root.setPrefSize(800, 300);
         root.setSpacing(20);
     }
 

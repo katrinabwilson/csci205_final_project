@@ -76,6 +76,12 @@ public class CodeBashWelcomeView {
     /** the purple mode button*/
     private ToggleButton purpleMode;
 
+    // The language buttons
+    private ToggleGroup languageGroup;
+    private ToggleButton english;
+    private ToggleButton java;
+    private ToggleButton python;
+
     /** Button label */
     private Label btnLabel;
 
@@ -133,7 +139,7 @@ public class CodeBashWelcomeView {
         instructions = new Label("choose settings then, press start to bash");
         instructions.setId("instructions");
         topPane.getChildren().add(instructions);
-        //topPane.setAlignment(Pos.CENTER_RIGHT);
+        topPane.setAlignment(Pos.TOP_LEFT);
 
         // Add setting instructions
         //settingsInstructions = new Label("Choose your settings: ");
@@ -155,12 +161,15 @@ public class CodeBashWelcomeView {
 
         time15.setSelected(true);
 
-        btnLabel = new Label("time (seconds)");
+        btnLabel = new Label("time (s)");
         btnLabel.setId("btnLabel");
 
         // Set up the color settings buttons
         // https://docs.oracle.com/javafx/2/ui_controls/toggle-button.htm
         colorGroup = new ToggleGroup();
+
+        Label colorLabel = new Label("| color");
+        colorLabel.setId("btnLabel");
 
         darkMode = new ToggleButton("dark");
         darkMode.setId("setting");
@@ -175,11 +184,25 @@ public class CodeBashWelcomeView {
         purpleMode.setId("setting");
         purpleMode.setToggleGroup(colorGroup);
 
-        Label colorLabel = new Label("| color");
-        colorLabel.setId("btnLabel");
+        // Set up the language buttons
+        languageGroup = new ToggleGroup();
+        Label langLabel = new Label("| language");
+        langLabel.setId("btnLabel");
 
-        // Adding the buttons
-        //timerPane.getChildren().add(settingsInstructions);
+        english = new ToggleButton("english");
+        english.setId("setting");
+        english.setToggleGroup(languageGroup);
+        english.setSelected(true);
+
+        java = new ToggleButton("java");
+        java.setId("setting");
+        java.setToggleGroup(languageGroup);
+
+        python = new ToggleButton("python");
+        python.setId("setting");
+        python.setToggleGroup(languageGroup);
+
+        // Adding the timer buttons
         timerPane.getChildren().add(btnLabel);
         timerPane.getChildren().addAll(time15, time30, time45, time60);
         timerPane.setAlignment(Pos.CENTER);
@@ -187,6 +210,11 @@ public class CodeBashWelcomeView {
         // Adding the color settings
         timerPane.getChildren().add(colorLabel);
         timerPane.getChildren().addAll(darkMode, lightMode, purpleMode);
+        timerPane.setAlignment(Pos.CENTER);
+
+        // Adding the language settings
+        timerPane.getChildren().add(langLabel);
+        timerPane.getChildren().addAll(english, java, python);
         timerPane.setAlignment(Pos.CENTER);
 
         // Add the settings to the settingsPane VBox
@@ -198,7 +226,7 @@ public class CodeBashWelcomeView {
         // Set up the button to initiate typing
         startBtn = new Button("START");
         startBtn.setAlignment(Pos.TOP_CENTER);
-        startBtn.setId("start");
+        startBtn.setId("transitionButton");
         vBox.getChildren().add(startBtn);
         vBox.setAlignment(Pos.TOP_CENTER);
 
@@ -225,6 +253,25 @@ public class CodeBashWelcomeView {
     }
 
 
+    public VBox getvBox() {
+        return vBox;
+    }
+
+    public ToggleGroup getLanguageGroup() {
+        return languageGroup;
+    }
+
+    public ToggleButton getEnglish() {
+        return english;
+    }
+
+    public ToggleButton getJava() {
+        return java;
+    }
+
+    public ToggleButton getPython() {
+        return python;
+    }
 
     public Button getStartBtn() {
         return startBtn;
