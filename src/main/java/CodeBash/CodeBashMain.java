@@ -176,7 +176,7 @@ public class CodeBashMain extends Application {
         theResults.getPlayAgain().setOnMouseClicked(event -> {
             stage.setScene(welcomeScene);
             theModel.setGameState(GameState.NEW_GAME);
-            theController.setLetters(theModel.getCurrentSentence());
+            theController.reset();
         });
     }
 }
