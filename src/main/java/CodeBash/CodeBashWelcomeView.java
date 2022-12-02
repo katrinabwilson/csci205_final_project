@@ -21,6 +21,8 @@ package CodeBash;
 
 import CodeBash.model.ColorChanger;
 import CodeBash.model.ColorState;
+import CodeBash.model.FXTime.FXModel;
+import CodeBash.model.FXTime.FXView;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -55,6 +57,9 @@ public class CodeBashWelcomeView {
 
     /** Represents the instructions for our game */
     private Label instructions;
+
+    /** A label that changes that displays the seconds passing */
+    public Label timerLabel;
 
     /** Asks the user to choose settings */
     private Label settingsInstructions;
@@ -118,6 +123,7 @@ public class CodeBashWelcomeView {
         colorSettings = new HBox();
         settingsPane = new VBox();
         currentColorMode = ColorState.DARK_MODE;
+        timerLabel = new Label("");
 
         /*Label desc1 = new Label("looking to improve your lightning fast typing skills?");
         desc1.setId("btnLabel");
@@ -242,7 +248,7 @@ public class CodeBashWelcomeView {
      * for this Welcome screen
      */
     private void initStyling() {
-        vBox.setPrefSize(1000, 300);
+//        vBox.setPrefSize(1000, 300);
         vBox.setSpacing(20);
     }
 

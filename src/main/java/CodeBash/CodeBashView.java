@@ -21,6 +21,8 @@
 package CodeBash;
 
 import CodeBash.model.CodeBashModel;
+import CodeBash.model.FXTime.FXModel;
+import CodeBash.model.FXTime.FXView;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -32,9 +34,23 @@ import java.util.ArrayList;
 public class CodeBashView {
     /** The model that contains the data and logic behind this view */
     private CodeBashModel theModel;
+    private CodeBashWelcome welcomeView;
+
+    public Label getTimerLabel() {
+        return timerLabel;
+    }
+
+    public void setTimerLabel(String text) {this.timerLabel.setText(text);}
+
+    /** Time label that will show passage of time */
+    private Label timerLabel;
 
     /** Root node for the scene graph */
     private VBox root;
+
+    private FXView viewTime;
+    private FXModel model;
+
 
     /** The button that ends game and timer */
     private Button quitBtn;
@@ -58,11 +74,15 @@ public class CodeBashView {
 
     }
 
+    private HBox showTimer;
+    public HBox getShowTimer(){
+        return showTimer;
+    }
     /**
      * Returns the root of our scene graph
      * @return
      */
-    public Parent getRoot(){
+    public VBox getRoot(){
         return root;
     }
 
@@ -71,13 +91,22 @@ public class CodeBashView {
      */
     private void initSceneGraph() {
         root = new VBox();
+        showTimer = new HBox();
+        viewTime = new FXView( model);
+
         sentence = new TextArea();
+        welcomeView = new CodeBashWelcome(theModel);
         letterDisplay = new HBox();
+        timerLabel = new Label("GO!");
+        showTimer.getChildren().add(timerLabel);
+
+        timerLabel.setStyle("-fx-text-fill: Orange");
+
         letterDisplay.setId("letterDisplay");
 
-        // Add title text
-        root.getChildren().add(new Label("")); // was CodeBash
-        root.setAlignment(Pos.CENTER);
+//        // Add title text
+//        root.getChildren().add(new Label("TEST")); // was CodeBash
+//        root.setAlignment(Pos.CENTER);
 
         root.setId("root");
 
@@ -90,8 +119,12 @@ public class CodeBashView {
         quitBtn.setAlignment(Pos.TOP_CENTER);
         quitBtn.setId("transitionButton");
 
+        //root.getChildren().addAll(welcomeView.getWelcomeView().getRoot().getTop());
+//        root.getChildren().add(viewTime.getRoot());
+        root.getChildren().add(timerLabel);
         root.getChildren().add(letterDisplay);
         root.getChildren().add(quitBtn);
+
 
     }
     public Button getQuitBtn(){return quitBtn;}
@@ -101,7 +134,8 @@ public class CodeBashView {
      * for this view
      */
     public void initStyling() {
-        root.setPrefSize(800, 300);
+//        root.setPrefSize(800, 300);
+
     }
 
     /** ArrayList getter method that returns our text objects */

@@ -40,7 +40,7 @@ public class FXMain  extends Application {
         primaryStage.setTitle("Timer");
         Scene scene = new Scene(theView.getRoot());
         scene.getStylesheets().add(
-                getClass().getResource("/CodeBash/Model/TimingClass/Timing.css")
+                getClass().getResource("/CodeBash/CodeBashDark.css")
                         .toExternalForm()
         );
         primaryStage.setScene(scene);

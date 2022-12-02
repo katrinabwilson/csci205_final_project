@@ -21,7 +21,14 @@ package CodeBash;
 
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorState;
+import CodeBash.model.FXTime.FXModel;
 import CodeBash.model.GameState;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.util.Duration;
 
 public class CodeBashWelcomeController {
 
@@ -30,6 +37,15 @@ public class CodeBashWelcomeController {
 
     /** The view representation of the Welcome interface */
     private CodeBashWelcomeView welcomeView;
+
+    /** A Timeline object that is handled frame by frame (helpful for showing decrease on screen)*/
+    private Timeline timeline;
+
+    /** The Model to get the timing information */
+    private FXModel timeModel;
+
+    private CodeBashView theView;
+
 
     /**
      * Constructs a controller that connects the model and the view for our

@@ -22,6 +22,8 @@
 package CodeBash;
 
 import CodeBash.model.CodeBashModel;
+import CodeBash.model.FXTime.FXModel;
+import CodeBash.model.FXTime.FXView;
 import CodeBash.model.GameState;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
@@ -32,6 +34,8 @@ public class CodeBashMain extends Application {
 
     /** The model that contains the data and logic behind this app */
     private CodeBashModel theModel;
+    /** The model that contains the data and logic behind the timer for the app */
+    private FXModel timeModel;
 
     /** The view that contains the visual representation of the data behind this app */
     private CodeBashView theView;
@@ -72,6 +76,8 @@ public class CodeBashMain extends Application {
         launch(args);
     }
 
+
+
     /**
      * The application initialization method. This method is called immediately
      * after the Application class is loaded and constructed, but before the
@@ -84,7 +90,8 @@ public class CodeBashMain extends Application {
         this.theModel = new CodeBashModel();
         this.theWelcome = new CodeBashWelcome(theModel);
         this.theView = new CodeBashView(theModel);
-        this.theController = new CodeBashController(theModel, theView);
+        theWelcome.setTheView(theView);
+        this.theController = new CodeBashController(theModel, theView, timeModel, theWelcome);
         this.theResults = new CodeBashResults(theModel.getStats());
 
 
@@ -103,11 +110,11 @@ public class CodeBashMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("CodeBash");
-        Scene introScene = new Scene(theIntro.getRoot());
+        Scene introScene = new Scene(theIntro.getRoot(),1200,700);
         introScene.getStylesheets().add(darkModeUrl);
-        gameScene = new Scene(theView.getRoot());
-        welcomeScene = new Scene(theWelcome.getWelcomeView().getRoot());
-        resultScene = new Scene(theResults.getRoot());
+        gameScene = new Scene(theView.getRoot(),1200,700);
+        welcomeScene = new Scene(theWelcome.getWelcomeView().getRoot(),1200,700);
+        resultScene = new Scene(theResults.getRoot(),1200,700);
         theWelcome.getWelcomeView().setScenes(welcomeScene, gameScene, resultScene);
 
         // Start a new game
@@ -152,6 +159,12 @@ public class CodeBashMain extends Application {
         });
         // When you hit the start button, the game starts
         theWelcome.getWelcomeView().getStartBtn().setOnMouseClicked(event-> {
+            stage.setScene(scene);
+            theModel.setGameState(GameState.IN_PROGRESS);
+            startTime = System.currentTimeMillis();
+        });
+        // When you hit the start button, the game starts
+        theWelcome.getWelcomeView().getTime15().setOnMouseClicked(event-> {
             stage.setScene(scene);
             theModel.setGameState(GameState.IN_PROGRESS);
             startTime = System.currentTimeMillis();

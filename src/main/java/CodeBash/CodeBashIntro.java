@@ -60,7 +60,7 @@ public class CodeBashIntro {
     }
 
     public void initStyling() {
-        root.setPrefSize(800, 300);
+//        root.setPrefSize(800, 300);
         root.setSpacing(20);
     }
 

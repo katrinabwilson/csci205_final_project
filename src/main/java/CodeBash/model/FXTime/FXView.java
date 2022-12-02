@@ -89,10 +89,10 @@ public class FXView {
 
 
         flowPane = new FlowPane();
-        flowPane.setId("flowPane");
+//        flowPane.setId("root");
 
         timerLabel = new Label("Choose your timer");
-        timerLabel.setId("label");
+        timerLabel.setId("Title");
 
 
         flowPane.getChildren().add(timerLabel);
@@ -105,6 +105,7 @@ public class FXView {
 
         // Add the VBox to the root component
         root.getChildren().add(vb);
+//        root.setId("root");
 
 
 
@@ -114,7 +115,7 @@ public class FXView {
 
     }
     public void initStyling() {
-        vb.setPrefSize(300, 250);
+//        vb.setPrefSize(300, 250);
     }
 }
 

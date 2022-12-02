@@ -49,7 +49,7 @@ public class FXController {
                     timeline.stop();
                 }
 
-                theModel.timeSeconds = theModel.STARTTIME;
+                theModel.timeSeconds = 15;
 
                 // update timerLabel
                 theView.timerLabel.setText(theModel.timeSeconds.toString());

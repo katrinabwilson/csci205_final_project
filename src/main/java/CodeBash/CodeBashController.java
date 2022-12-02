@@ -22,9 +22,15 @@ package CodeBash;
 
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorState;
+import CodeBash.model.FXTime.FXModel;
 import CodeBash.model.LetterEvaluator;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 
@@ -35,6 +41,15 @@ import java.util.ArrayList;
 public class CodeBashController {
     /** The model that contains the data and logic behind this controller */
     private CodeBashModel theModel;
+
+    /** We need the time buttons on the welcome screen*/
+    private CodeBashWelcome welcomeView;
+
+    /** The Model to get the timing information */
+    private FXModel timeModel;
+
+    /** A Timeline object that is handled frame by frame (helpful for showing decrease on screen)*/
+    private Timeline timeline;
 
     /** The view that contains the visual representation of the data*/
     private CodeBashView theView;
@@ -55,13 +70,14 @@ public class CodeBashController {
      * @param theModel - the current CodeBashModel
      * @param theView - the current CodeBashView
      */
-    public CodeBashController(CodeBashModel theModel, CodeBashView theView) {
+    public CodeBashController(CodeBashModel theModel, CodeBashView theView, FXModel timeModel, CodeBashWelcome welcomeView) {
         this.theModel = theModel;
         this.theView = theView;
+        this.timeModel = timeModel;
+        this.welcomeView =welcomeView;
         letters = new ArrayList<>();
         currentLetter = 0;
         setLetters(theModel.getCurrentSentence());
-
         initEventHandlers();
         initBindings();
     }
@@ -171,6 +187,48 @@ public class CodeBashController {
 
             }
         });
+
+        /*welcomeView.getWelcomeView().getTime15().setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                if (timeline != null) {
+                    timeline.stop();
+                }
+
+                timeModel.timeSeconds = timeModel.STARTTIME;
+
+                // update timerLabel
+                theView.timerLabel.setText(timeModel.timeSeconds.toString());
+
+                timeline = new Timeline();
+                timeline.setCycleCount(Timeline.INDEFINITE);
+                timeline.getKeyFrames().add(
+                        new KeyFrame(Duration.seconds(1),
+                                new EventHandler<ActionEvent>() {
+                                    // KeyFrame event handler
+                                    public void handle(ActionEvent event) {
+                                        timeModel.timeSeconds--;
+                                        // update timerLabel
+                                        theView.timerLabel.setText(
+                                                timeModel.timeSeconds.toString());
+                                        theView.getShowTimer().getChildren().add(theView.getTimerLabel());
+
+                                        welcomeView.getWelcomeView().getRoot().getChildren().addAll(theView.getTimerLabel());
+
+
+                                        if (timeModel.timeSeconds <= 0) {
+                                            timeline.stop();
+                                        }
+                                    }
+                                }));
+                timeline.playFromStart();
+            }
+        });
+*/
+
+
+
+
 
     }
 
