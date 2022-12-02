@@ -137,7 +137,6 @@ public class CodeBashView {
      * for this view
      */
     public void initStyling() {
-        root.setPrefSize(800, 300);
 
     }
 

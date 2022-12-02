@@ -99,17 +99,18 @@ public class CodeBashWelcomeController {
         welcomeView.getTime15().setOnAction(event -> {
             // keep that button selected
             welcomeView.getTime15().setSelected(true);
-
+            // Stop the Timeline object from changing frames if its null
             if (timeline != null) {
                 timeline.stop();
             };
+            // In the FXmodel set the start time <The default starttime is 15sec>
             timeModel.timeSeconds = timeModel.STARTTIME;
 
             // update timerLabel
             theView.setTimerLabel("15");
-            //theView.getRoot().getChildren().add(theView.getTimerLabel());//.setText(timeModel.timeSeconds.toString());
 
-            /*timeline = new Timeline();
+            // Instantiate the Timeline object and display new string after 1 second
+            timeline = new Timeline();
             timeline.setCycleCount(Timeline.INDEFINITE);
             timeline.getKeyFrames().add(
                     new KeyFrame(Duration.seconds(1),
@@ -118,60 +119,16 @@ public class CodeBashWelcomeController {
                                 public void handle(ActionEvent event) {
                                     timeModel.timeSeconds--;
                                     // update timerLabel
-                                    theView.timerLabel.setText(
-                                            timeModel.timeSeconds.toString());
-                                    theView.getShowTimer().getChildren().add(theView.getTimerLabel());
-
-                                    welcomeView.getRoot().getChildren().addAll(theView.getTimerLabel());
+                                    theView.setTimerLabel(timeModel.timeSeconds.toString());
 
                                     if (timeModel.timeSeconds <= 0) {
                                         timeline.stop();
                                     }
                                 }
-                            }));*/
+
+                            }));
+            timeline.playFromStart();
         });
-        // When the timer button is clicked, set the timer
-        /*welcomeView.getTime15().setOnAction(new EventHandler() {
-            welcomeView.getTime15().setSelected(true);
-            @Override
-            public void handle(Event event) {
-                if (timeline != null) {
-                    timeline.stop();
-                }
-
-                timeModel.timeSeconds = timeModel.STARTTIME;
-
-                // update timerLabel
-                theView.timerLabel.setText(timeModel.timeSeconds.toString());
-
-                timeline = new Timeline();
-                timeline.setCycleCount(Timeline.INDEFINITE);
-                timeline.getKeyFrames().add(
-                        new KeyFrame(Duration.seconds(1),
-                                new EventHandler<ActionEvent>() {
-                                    // KeyFrame event handler
-                                    public void handle(ActionEvent event) {
-                                        timeModel.timeSeconds--;
-                                        // update timerLabel
-                                        theView.timerLabel.setText(
-                                                timeModel.timeSeconds.toString());
-                                        theView.getShowTimer().getChildren().add(theView.getTimerLabel());
-
-                                        welcomeView.getWelcomeView().getRoot().getChildren().addAll(theView.getTimerLabel());
-
-
-                                        if (timeModel.timeSeconds <= 0) {
-                                            timeline.stop();
-                                        }
-                                    }
-                                }));
-                timeline.playFromStart();
-            }
-        });
-
-
-
-        });*/
 
         welcomeView.getTime30().setOnAction(event -> {
             welcomeView.getTime30().setSelected(true);
@@ -179,11 +136,33 @@ public class CodeBashWelcomeController {
             if (timeline != null) {
                 timeline.stop();
             };
-            timeModel.timeSeconds = timeModel.STARTTIME;
+
+            timeModel.timeSeconds = 30;
 
             // update timerLabel
             theView.setTimerLabel("30");
-            //theView.getRoot().getChildren().add(theView.getTimerLabel());//.setText(timeModel.timeSeconds.toString());
+
+
+            timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(1),
+                            new EventHandler<ActionEvent>() {
+                                // KeyFrame event handler
+                                public void handle(ActionEvent event) {
+                                    timeModel.timeSeconds--;
+                                    // update timerLabel
+                                    theView.setTimerLabel(timeModel.timeSeconds.toString());
+
+
+                                    if (timeModel.timeSeconds <= 0) {
+                                        timeline.stop();
+                                    }
+                                }
+
+                            }));
+            // After doing this once restart it until we reach timeline.stop
+            timeline.playFromStart();
         });
 
         welcomeView.getTime45().setOnAction(event -> {
@@ -193,22 +172,68 @@ public class CodeBashWelcomeController {
             if (timeline != null) {
                 timeline.stop();
             };
-            timeModel.timeSeconds = timeModel.STARTTIME;
+
+            timeModel.timeSeconds = 45;
 
             // update timerLabel
             theView.setTimerLabel("45");
+
+
+            timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(1),
+                            new EventHandler<ActionEvent>() {
+                                // KeyFrame event handler
+                                public void handle(ActionEvent event) {
+                                    timeModel.timeSeconds--;
+                                    // update timerLabel
+                                    theView.setTimerLabel(timeModel.timeSeconds.toString());
+
+
+                                    if (timeModel.timeSeconds <= 0) {
+                                        timeline.stop();
+                                    }
+                                }
+
+                            }));
+
+            timeline.playFromStart();
         });
         welcomeView.getTime60().setOnAction(event -> {
             // keep that button selected
             welcomeView.getTime60().setSelected(true);
-
+            // Stop the Timeline object from changing frames if its null
             if (timeline != null) {
                 timeline.stop();
             };
-            timeModel.timeSeconds = timeModel.STARTTIME;
+            // In the FXmodel set the start time
+            timeModel.timeSeconds = 60;
 
             // update timerLabel
             theView.setTimerLabel("60");
+
+            // Instantiate the Timeline object and display new string after 1 second
+            timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(1),
+                            new EventHandler<ActionEvent>() {
+                                // KeyFrame event handler
+                                public void handle(ActionEvent event) {
+                                    timeModel.timeSeconds--;
+                                    // update timerLabel <the new value>
+                                    theView.setTimerLabel(timeModel.timeSeconds.toString());
+
+
+                                    if (timeModel.timeSeconds <= 0) {
+                                        timeline.stop();
+                                    }
+                                }
+
+                            }));
+
+            timeline.playFromStart();
         });
 
         welcomeView.getEnglish().setOnAction(event -> welcomeView.getEnglish().setSelected(true));
