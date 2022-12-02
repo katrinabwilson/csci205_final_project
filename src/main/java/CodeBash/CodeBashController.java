@@ -261,5 +261,19 @@ public class CodeBashController {
             letters.add(c);
         }
     }
+
+    /**
+     * Resets the entire interface for a brand-new game when "play again" is clicked
+     */
+    public void reset() {
+        // Fix letter/sentence display
+        currentLetter = 0;
+        theModel.createNextSentence();
+        setLetters(theModel.getCurrentSentence());
+        theView.createLetterTexts(theModel.getCurrentSentence());
+
+        // Fix stats
+        theModel.getStats().reset();
+    }
 }
 
