@@ -45,6 +45,8 @@ public class CodeBashWelcome {
     public void setTheView(CodeBashView theView) {
         this.theView = theView;
         theController.setTheView(theView);
+        /*theController.changeCountDown(15, "15");
+        theController.handleCountDown();*/
     }
 
     /**
@@ -52,5 +54,9 @@ public class CodeBashWelcome {
      */
     public CodeBashWelcomeView getWelcomeView() {
         return welcomeView;
+    }
+
+    public CodeBashWelcomeController getTheController() {
+        return theController;
     }
 }

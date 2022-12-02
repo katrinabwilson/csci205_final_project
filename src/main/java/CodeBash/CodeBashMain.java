@@ -90,7 +90,9 @@ public class CodeBashMain extends Application {
         this.theWelcome = new CodeBashWelcome(theModel);
         this.theView = new CodeBashView(theModel);
         theWelcome.setTheView(theView);
+
         this.theController = new CodeBashController(theModel, theView, timeModel, theWelcome);
+
         this.theResults = new CodeBashResults(theModel.getStats());
 
 
@@ -161,6 +163,10 @@ public class CodeBashMain extends Application {
             stage.setScene(scene);
             theModel.setGameState(GameState.IN_PROGRESS);
             startTime = System.currentTimeMillis();
+
+            // Start the timer at 15 seconds if nothing else is clicked
+            theWelcome.getTheController().changeCountDown(15, "15");
+
         });
 
         // In the game play interface, when "QUIT" is clicked, bring the user to a result screen

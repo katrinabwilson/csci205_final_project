@@ -74,7 +74,7 @@ public class CodeBashController {
         this.theModel = theModel;
         this.theView = theView;
         this.timeModel = timeModel;
-        this.welcomeView =welcomeView;
+        this.welcomeView = welcomeView;
         letters = new ArrayList<>();
         currentLetter = 0;
         setLetters(theModel.getCurrentSentence());

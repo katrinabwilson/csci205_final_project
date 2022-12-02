@@ -96,7 +96,7 @@ public class CodeBashView {
         sentence = new TextArea();
         welcomeView = new CodeBashWelcome(theModel);
         letterDisplay = new HBox();
-        timerLabel = new Label("15-pre set");
+        timerLabel = new Label("15");
         timerLabel.setId("countDown");
         showTimer.getChildren().add(timerLabel);
         showTimer.setAlignment(Pos.BOTTOM_RIGHT);
