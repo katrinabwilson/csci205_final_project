@@ -35,7 +35,7 @@ public class CodeBashWelcomeView {
     private VBox vBox;
 
     /** Root node for the scene graph */
-    private BorderPane root;
+    private VBox root;
 
     /** Used to display our toggle button*/
     private HBox topPane;
@@ -116,7 +116,7 @@ public class CodeBashWelcomeView {
     }
 
     public void initSceneGraph() {
-        root = new BorderPane();
+        root = new VBox();
         vBox = new VBox();
         topPane = new HBox();
         timerPane = new HBox();
@@ -124,16 +124,6 @@ public class CodeBashWelcomeView {
         settingsPane = new VBox();
         currentColorMode = ColorState.DARK_MODE;
         timerLabel = new Label("");
-
-        /*Label desc1 = new Label("looking to improve your lightning fast typing skills?");
-        desc1.setId("btnLabel");
-        Label desc2 = new Label("forgetting syntax to certain programming language?");
-        desc2.setId("btnLabel");
-        Label desc3 = new Label("lucky you! you've come to the right place.");
-        desc3.setId("btnLabel");
-
-        topPane.getChildren().addAll(desc1, desc2, desc3);
-        topPane.setAlignment(Pos.CENTER);*/
 
         // Add title text
         title = new Label(" CodeBash");
@@ -227,20 +217,22 @@ public class CodeBashWelcomeView {
         timerPane.setId("settingsBox");
         settingsPane.getChildren().add(timerPane);
 
-
-
         // Set up the button to initiate typing
         startBtn = new Button("START");
-        startBtn.setAlignment(Pos.TOP_CENTER);
+        //startBtn.setAlignment(Pos.TOP_CENTER);
         startBtn.setId("transitionButton");
         vBox.getChildren().add(startBtn);
-        vBox.setAlignment(Pos.TOP_CENTER);
+        vBox.setAlignment(Pos.CENTER);
+        //vBox.setStyle("-fx-border-color: Orange");
 
         // Organize the BorderPane
         root.setId("root");
-        root.setTop(topPane);
-        root.setCenter(settingsPane);
-        root.setBottom(vBox);
+        root.getChildren().addAll(topPane, settingsPane, vBox);
+        root.setAlignment(Pos.TOP_CENTER);
+        //root.setTop(topPane);
+        //root.setCenter(settingsPane);
+        //root.setBottom(vBox);
+
     }
 
     /**
@@ -249,12 +241,12 @@ public class CodeBashWelcomeView {
      */
     private void initStyling() {
 //        vBox.setPrefSize(1000, 300);
-        vBox.setSpacing(20);
+        vBox.setSpacing(50);
     }
 
 
 
-    public BorderPane getRoot() {
+    public VBox getRoot() {
         return root;
     }
 

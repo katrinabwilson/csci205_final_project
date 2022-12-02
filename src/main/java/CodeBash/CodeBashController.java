@@ -138,30 +138,31 @@ public class CodeBashController {
                 // If the typed letter is correct
                 if (letterEvaluator.analyzeKeyPress()) {
                     theView.getTextObjectAt(currentLetter);
-
-                    // Change the coloring depending on what the current color theme is
-                    if (theModel.getCurrentColorState() == ColorState.DARK_MODE) {
-                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #d1d0c5");
-                    }
-                    else if (theModel.getCurrentColorState() == ColorState.LIGHT_MODE) {
-                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #d1d0c5");
-
-                    }
-
                     theModel.getStats().typedCorrect();
+
+                    if (theModel.getCurrentColorState() == ColorState.PURPLE_MODE) {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #f4f4f2");
+                    }
+                    else {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #d1d0c5");
+                    }
+
                 }
 
                 // If the typed letter is incorrect
                 else {
 
+                    // Change the coloring depending on what the current color theme is
                     if (theModel.getCurrentColorState() == ColorState.DARK_MODE) {
                         theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: Orange");
                     }
                     else if (theModel.getCurrentColorState() == ColorState.LIGHT_MODE) {
                         theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #107896");
-
                     }
-                    //theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: white");
+
+                    else if (theModel.getCurrentColorState() == ColorState.PURPLE_MODE) {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #683a71");
+                    }
                     theModel.getStats().typedIncorrect();
 
                 }

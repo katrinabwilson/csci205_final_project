@@ -13,7 +13,7 @@
 
 #letter {
     -fx-fill: #646669;
-    -fx-font-size: 30;
+    -fx-font-size: 20;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: 400;
 
@@ -71,13 +71,13 @@
     -fx-font-size: 18;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: Bold;
-    -fx-padding: 30px;
+    -fx-padding: 50px;
 }
 
 #countDown {
     -fx-text-fill: Orange;
     -fx-background-color: transparent;
-    -fx-font-size: 30;
+    -fx-font-size: 25;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: Bold;
     -fx-padding: 30px;

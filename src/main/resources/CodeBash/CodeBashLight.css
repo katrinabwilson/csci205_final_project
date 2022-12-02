@@ -10,7 +10,7 @@
 #letter {
     -fx-text-fill: #323437;
     -fx-background-color: transparent;
-    -fx-font-size: 15;
+    -fx-font-size: 20;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: Bold;
 
@@ -89,14 +89,14 @@
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-size: 18;
     -fx-font-weight: bold;
-    -fx-padding: 30px;
+    -fx-padding: 50px;
 }
 
 #countDown {
     -fx-background-color: transparent;
     -fx-text-fill: #006ee6;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-size: 30;
+    -fx-font-size: 25;
     -fx-font-weight: bold;
     -fx-padding: 30px;
 }
