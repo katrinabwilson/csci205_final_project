@@ -28,46 +28,80 @@ public class ColorChanger {
 
     private String lightModeUrl;
 
+    private String purpleModeUrl;
+
     public ColorChanger() {
         //this.colorState = colorState;
 
         this.darkModeUrl = getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
         this.lightModeUrl = getClass().getResource("/CodeBash/CodeBashLight.css").toExternalForm();
+        this.purpleModeUrl = getClass().getResource("/CodeBash/CodeBashPurple.css").toExternalForm();
     }
 
     public void changeColorDisplay(ColorState colorState, Scene welcomeScene, Scene gamePlayScene, Scene resultsScene) {
 
+        welcomeScene.getStylesheets().remove(lightModeUrl);
+        welcomeScene.getStylesheets().remove(purpleModeUrl);
+        welcomeScene.getStylesheets().remove(darkModeUrl);
+
+        gamePlayScene.getStylesheets().remove(purpleModeUrl);
+        gamePlayScene.getStylesheets().remove(darkModeUrl);
+        gamePlayScene.getStylesheets().remove(lightModeUrl);
+
+        resultsScene.getStylesheets().remove(darkModeUrl);
+        resultsScene.getStylesheets().remove(purpleModeUrl);
+        resultsScene.getStylesheets().remove(lightModeUrl);
+
         if (colorState == ColorState.LIGHT_MODE) {
 
             // Adjust the welcome screen to light mode
-            welcomeScene.getStylesheets().remove(darkModeUrl);
+            //welcomeScene.getStylesheets().remove(darkModeUrl);
+            //welcomeScene.getStylesheets().remove(purpleModeUrl);
             welcomeScene.getStylesheets().add(lightModeUrl);
-            System.out.println("changing the welcome screen to light mode");
 
             // Adjust the game play screen to light mode
-            gamePlayScene.getStylesheets().remove(darkModeUrl);
+            //gamePlayScene.getStylesheets().remove(purpleModeUrl);
+            //gamePlayScene.getStylesheets().remove(darkModeUrl);
             gamePlayScene.getStylesheets().add(lightModeUrl);
 
-
             // Adjust the results screen to light mode
-            resultsScene.getStylesheets().remove(darkModeUrl);
+            //resultsScene.getStylesheets().remove(darkModeUrl);
+            //resultsScene.getStylesheets().remove(purpleModeUrl);
             resultsScene.getStylesheets().add(lightModeUrl);
 
         }
         else if (colorState == ColorState.DARK_MODE){
 
             // Adjust the welcome screen to dark mode
-            welcomeScene.getStylesheets().remove(lightModeUrl);
+            //welcomeScene.getStylesheets().remove(lightModeUrl);
+            //welcomeScene.getStylesheets().remove(purpleModeUrl);
             welcomeScene.getStylesheets().add(darkModeUrl);
-            System.out.println("changing the welcome screen to dark mode");
 
             // Adjust the game play screen to dark mode
-            gamePlayScene.getStylesheets().remove(lightModeUrl);
+            //welcomeScene.getStylesheets().remove(purpleModeUrl);
+            //gamePlayScene.getStylesheets().remove(lightModeUrl);
             gamePlayScene.getStylesheets().add(darkModeUrl);
 
             // Adjust the results screen to light mode
-            resultsScene.getStylesheets().remove(lightModeUrl);
+            //resultsScene.getStylesheets().remove(purpleModeUrl);
+            //resultsScene.getStylesheets().remove(lightModeUrl);
             resultsScene.getStylesheets().add(darkModeUrl);
+        }
+
+        else if (colorState == ColorState.PURPLE_MODE) {
+
+            //welcomeScene.getStylesheets().remove(lightModeUrl);
+            //welcomeScene.getStylesheets().remove(darkModeUrl);
+            welcomeScene.getStylesheets().add(purpleModeUrl);
+
+            //gamePlayScene.getStylesheets().remove(lightModeUrl);
+            //gamePlayScene.getStylesheets().remove(darkModeUrl);
+            gamePlayScene.getStylesheets().add(purpleModeUrl);
+
+            //resultsScene.getStylesheets().remove(lightModeUrl);
+            //resultsScene.getStylesheets().remove(darkModeUrl);
+            resultsScene.getStylesheets().add(purpleModeUrl);
+
         }
     }
 }

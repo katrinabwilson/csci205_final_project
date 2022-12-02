@@ -97,10 +97,10 @@ public class CodeBashView {
         welcomeView = new CodeBashWelcome(theModel);
         letterDisplay = new HBox();
         timerLabel = new Label("15-pre set");
+        timerLabel.setId("countDown");
         showTimer.getChildren().add(timerLabel);
         showTimer.setAlignment(Pos.BOTTOM_RIGHT);
 
-        timerLabel.setId("countDown");
 
         letterDisplay.setId("letterDisplay");
 
@@ -119,6 +119,11 @@ public class CodeBashView {
         Label title = new Label(" CodeBash");
         title.setId("Title");
         topPane.getChildren().add(title);
+        topPane.setAlignment(Pos.TOP_LEFT);
+
+        Label directions = new Label("type correct letters? white text. type wrong letters? you'll see.");
+        directions.setId("instructions");
+        topPane.getChildren().add(directions);
         topPane.setAlignment(Pos.TOP_LEFT);
 
 
