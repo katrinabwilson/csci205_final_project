@@ -42,6 +42,9 @@ public class CodeBashModel {
     /** An enumeration representing the current state of the game */
     private GameState gameState;
 
+    /** The chosen typing mode */
+    private GameMode mode;
+
     /** Keeps track of user progress */
     private TypingStats stats;
 
@@ -54,6 +57,7 @@ public class CodeBashModel {
         lineGenerator = new LineGenerator();
         lineGenerator.scanDocuments();
         rand = new Random();
+        mode = GameMode.HUMAN;
         this.currentColorState = ColorState.DARK_MODE;
     }
 
@@ -63,7 +67,12 @@ public class CodeBashModel {
      * @return a random sentence from the list held in lineGenerator
      */
     public void createNextSentence() {
-        currentSentence = lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
+        if (mode == GameMode.HUMAN) {
+            currentSentence = lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
+        }
+        else if (mode == GameMode.JAVA) {
+            currentSentence = lineGenerator.getJavaList().get(rand.nextInt(lineGenerator.getJavaList().size()));
+        }
     }
 
     /**

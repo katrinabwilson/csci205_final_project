@@ -93,6 +93,16 @@ public class TypingStats {
         }
     }
 
+    /**
+     * Resets all the stats to their default values at the beginning of a game
+     */
+    public void reset() {
+        correctLetters = 0;
+        errors = 0;
+        totalLetters = 0;
+        numWords = 0;
+    }
+
     public int getCorrectLetters() {
         return correctLetters;
     }

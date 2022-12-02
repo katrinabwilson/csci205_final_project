@@ -40,14 +40,14 @@ public class LineGenerator {
     /** A record of every possible sentence, common or not */
     private ArrayList<String> sentenceList;
 
+    /** A record of all given lines of code */
+    private ArrayList<String> javaList;
+
     /** The minimum number of characters in a generated sentence */
     private int minSentenceLength;
 
     /** The maximum number of characters in a generated sentence */
     private int maxSentenceLength;
-
-    /** Represents which mode has been chosen by the user */
-    private GameMode mode;
 
     /**
      * Create a new TextProcessor and assign the novels to given indexes
@@ -65,6 +65,7 @@ public class LineGenerator {
         maxSentenceLength = 100;
 
         sentenceList = new ArrayList<>();
+        javaList = new ArrayList<>();
     }
 
     /**
@@ -77,6 +78,7 @@ public class LineGenerator {
      */
     public void scanDocuments() throws IOException {
 
+        // Normal words
         for (int i = 1; i < sources.length; i++) {
             URL novel = new URL(sources[i]);
             Scanner in = new Scanner(novel.openStream());
@@ -117,15 +119,24 @@ public class LineGenerator {
             }
             in.close();
         }
+        // Java.txt
+        Scanner in = new Scanner(this.getClass().getResourceAsStream("/CodeBash/java.txt"));
+        while (in.hasNextLine()) {
+            javaList.add(in.nextLine());
+        }
     }
 
     /**
-     * Getter method for all words in the dictionary for use in verifying guesses.
+     * Getter method for all words in the dictionary for use in verifying sentences
      *
-     * @return sentenceList.keySet(), the set of all the possible sentences
+     * @return an ArrayList of all the possible sentences
      */
     public ArrayList<String> getSentenceList(){
         return this.sentenceList;
+    }
+
+    public ArrayList<String> getJavaList() {
+        return javaList;
     }
 
     /** Temporary test method */

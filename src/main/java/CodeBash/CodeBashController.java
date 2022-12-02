@@ -79,17 +79,33 @@ public class CodeBashController {
                 char correctLetter = letters.get(currentLetter);
                 char typedLetter;
 
-                // Fix window's shift key bug
+                // Fix windows shift key bug
                 if (!key.isShiftDown()) {
                     typedLetter = key.getText().charAt(0);
                 }
-                // check for ? edge case
+                // check for each additional edge case
                 else if (key.getText().charAt(0) == '/'){
                     typedLetter = '?';
-                }
-                // check for ! edge case
-                else if (key.getText().charAt(0) == '1') {
+                } else if (key.getText().charAt(0) == '1') {
                     typedLetter = '!';
+                } else if (key.getText().charAt(0) == ',') {
+                    typedLetter = '<';
+                } else if (key.getText().charAt(0) == '.') {
+                    typedLetter = '>';
+                } else if (key.getText().charAt(0) == '9') {
+                    typedLetter = '(';
+                } else if (key.getText().charAt(0) == '0') {
+                    typedLetter = ')';
+                } else if (key.getText().charAt(0) == '=') {
+                    typedLetter = '+';
+                } else if (key.getText().charAt(0) == '\'') {
+                    typedLetter = '\"';
+                } else if (key.getText().charAt(0) == ';') {
+                    typedLetter = ':';
+                } else if (key.getText().charAt(0) == '[') {
+                    typedLetter = '{';
+                } else if (key.getText().charAt(0) == ']') {
+                    typedLetter = '}';
                 }
                 // otherwise, capitalize letter
                 else {
@@ -147,8 +163,10 @@ public class CodeBashController {
 
             // When backspace entered and the user wants to try again
             else if (key.getCode() == KeyCode.BACK_SPACE){
-                currentLetter--;
-
+                // Catch cursor at the beginning of a line
+                if (currentLetter > 0) {
+                    currentLetter--;
+                }
                 theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #646669");
 
             }
