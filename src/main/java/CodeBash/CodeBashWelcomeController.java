@@ -98,7 +98,6 @@ public class CodeBashWelcomeController {
 
         welcomeView.getTime15().setOnAction(event -> {
             // keep that button selected
-            System.out.println("you pressed 15");
             welcomeView.getTime15().setSelected(true);
 
             if (timeline != null) {
@@ -176,7 +175,6 @@ public class CodeBashWelcomeController {
 
         welcomeView.getTime30().setOnAction(event -> {
             welcomeView.getTime30().setSelected(true);
-            System.out.println("you pressed 30");
 
             if (timeline != null) {
                 timeline.stop();
@@ -188,8 +186,30 @@ public class CodeBashWelcomeController {
             //theView.getRoot().getChildren().add(theView.getTimerLabel());//.setText(timeModel.timeSeconds.toString());
         });
 
-        welcomeView.getTime45().setOnAction(event -> welcomeView.getTime45().setSelected(true));
-        welcomeView.getTime60().setOnAction(event -> welcomeView.getTime60().setSelected(true));
+        welcomeView.getTime45().setOnAction(event -> {
+            // keep that button selected
+            welcomeView.getTime45().setSelected(true);
+
+            if (timeline != null) {
+                timeline.stop();
+            };
+            timeModel.timeSeconds = timeModel.STARTTIME;
+
+            // update timerLabel
+            theView.setTimerLabel("45");
+        });
+        welcomeView.getTime60().setOnAction(event -> {
+            // keep that button selected
+            welcomeView.getTime60().setSelected(true);
+
+            if (timeline != null) {
+                timeline.stop();
+            };
+            timeModel.timeSeconds = timeModel.STARTTIME;
+
+            // update timerLabel
+            theView.setTimerLabel("60");
+        });
 
         welcomeView.getEnglish().setOnAction(event -> welcomeView.getEnglish().setSelected(true));
         welcomeView.getJava().setOnAction(event -> welcomeView.getJava().setSelected(true));

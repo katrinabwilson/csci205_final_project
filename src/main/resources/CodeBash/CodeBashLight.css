@@ -92,6 +92,15 @@
     -fx-padding: 30px;
 }
 
+#countDown {
+    -fx-background-color: transparent;
+    -fx-text-fill: #006ee6;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    -fx-padding: 30px;
+}
+
 #playAgain {
     -fx-background-color: transparent;
     -fx-font-size: 15;

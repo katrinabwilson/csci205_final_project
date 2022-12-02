@@ -52,6 +52,7 @@ public class CodeBashMain extends Application {
      */
     private CodeBashController theController;
 
+    /** The initial display page that shares some motivations behind playing the game */
     private CodeBashIntro theIntro;
 
     /** When start is pressed, a start time is recorded */
@@ -75,8 +76,6 @@ public class CodeBashMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-
 
     /**
      * The application initialization method. This method is called immediately
@@ -159,12 +158,6 @@ public class CodeBashMain extends Application {
         });
         // When you hit the start button, the game starts
         theWelcome.getWelcomeView().getStartBtn().setOnMouseClicked(event-> {
-            stage.setScene(scene);
-            theModel.setGameState(GameState.IN_PROGRESS);
-            startTime = System.currentTimeMillis();
-        });
-        // When you hit the start button, the game starts
-        theWelcome.getWelcomeView().getTime15().setOnMouseClicked(event-> {
             stage.setScene(scene);
             theModel.setGameState(GameState.IN_PROGRESS);
             startTime = System.currentTimeMillis();

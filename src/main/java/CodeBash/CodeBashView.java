@@ -36,18 +36,8 @@ public class CodeBashView {
     private CodeBashModel theModel;
     private CodeBashWelcome welcomeView;
 
-    public Label getTimerLabel() {
-        return timerLabel;
-    }
-
-    public void setTimerLabel(String text) {
-        System.out.println("resetting the text...");
-
-        this.timerLabel.setText(text);
-        //root.getChildren().add(timerLabel);
-        System.out.println("set the text.");
-
-    }
+    /** Used to display our logo button*/
+    private HBox topPane;
 
     /** Time label that will show passage of time */
     private Label timerLabel;
@@ -57,7 +47,6 @@ public class CodeBashView {
 
     private FXView viewTime;
     private FXModel model;
-
 
     /** The button that ends game and timer */
     private Button quitBtn;
@@ -71,6 +60,10 @@ public class CodeBashView {
     /** Stores each letter in the given sentence */
     private ArrayList<Text> textObjects;
 
+    /** Where the timer is displayed */
+    private HBox showTimer;
+
+
     /**
      * Initialize a new CodeBashView
      */
@@ -81,10 +74,7 @@ public class CodeBashView {
 
     }
 
-    private HBox showTimer;
-    public HBox getShowTimer(){
-        return showTimer;
-    }
+
     /**
      * Returns the root of our scene graph
      * @return
@@ -99,21 +89,20 @@ public class CodeBashView {
     private void initSceneGraph() {
         root = new VBox();
         showTimer = new HBox();
-        viewTime = new FXView( model);
+        viewTime = new FXView(model);
+        topPane = new HBox();
+        VBox middlePane = new VBox();
 
         sentence = new TextArea();
         welcomeView = new CodeBashWelcome(theModel);
         letterDisplay = new HBox();
-        timerLabel = new Label("GO!");
+        timerLabel = new Label("15-pre set");
         showTimer.getChildren().add(timerLabel);
+        showTimer.setAlignment(Pos.BOTTOM_RIGHT);
 
-        timerLabel.setStyle("-fx-text-fill: Orange");
+        timerLabel.setId("countDown");
 
         letterDisplay.setId("letterDisplay");
-
-//        // Add title text
-//        root.getChildren().add(new Label("TEST")); // was CodeBash
-//        root.setAlignment(Pos.CENTER);
 
         root.setId("root");
 
@@ -126,12 +115,19 @@ public class CodeBashView {
         quitBtn.setAlignment(Pos.TOP_CENTER);
         quitBtn.setId("transitionButton");
 
+        // Add title text
+        Label title = new Label(" CodeBash");
+        title.setId("Title");
+        topPane.getChildren().add(title);
+        topPane.setAlignment(Pos.TOP_LEFT);
+
+
         //root.getChildren().addAll(welcomeView.getWelcomeView().getRoot().getTop());
 //        root.getChildren().add(viewTime.getRoot());
-        root.getChildren().add(timerLabel);
-        root.getChildren().add(letterDisplay);
-        root.getChildren().add(quitBtn);
-
+        middlePane.getChildren().addAll(showTimer, letterDisplay, quitBtn);
+        middlePane.setAlignment(Pos.CENTER);
+        root.getChildren().add(topPane);
+        root.getChildren().add(middlePane);
 
     }
     public Button getQuitBtn(){return quitBtn;}
@@ -141,7 +137,7 @@ public class CodeBashView {
      * for this view
      */
     public void initStyling() {
-//        root.setPrefSize(800, 300);
+        root.setPrefSize(800, 300);
 
     }
 
@@ -173,6 +169,13 @@ public class CodeBashView {
         letterDisplay.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Resets where the timer starts at
+     * @param text
+     */
+    public void setTimerLabel(String text) {
+        this.timerLabel.setText(text);
+    }
 
 }
 

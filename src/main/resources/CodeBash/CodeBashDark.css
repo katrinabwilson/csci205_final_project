@@ -74,6 +74,15 @@
     -fx-padding: 30px;
 }
 
+#countDown {
+    -fx-text-fill: Orange;
+    -fx-background-color: transparent;
+    -fx-font-size: 30;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-weight: Bold;
+    -fx-padding: 30px;
+}
+
 #playAgain {
     -fx-text-fill: Orange;
     -fx-background-color: transparent;
@@ -97,7 +106,6 @@
     -fx-text-fill: #a9a9a9;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-padding: 29px;
-    -fx-font-weight: Italic;
 }
 .toggle-button{
     -fx-transition-duration: 0.4s;
