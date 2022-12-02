@@ -20,7 +20,6 @@ import CodeBash.model.CodeBashModel;
 
 public class CodeBashWelcome {
 
-
     /**
      * The current CodeBashModel being used
      */
@@ -37,14 +36,13 @@ public class CodeBashWelcome {
      * and a Controller class
      */
     public CodeBashWelcome(CodeBashModel theModel) {
-        //this.colorChanger = new ColorChanger();
-        //this.theModel = codeBashModel;
+        this.theModel = theModel;
         this.welcomeView = new CodeBashWelcomeView();
         this.theController = new CodeBashWelcomeController(welcomeView, theModel);
     }
 
     /**
-     * @return
+     * @return the current view class representing the Welcome interface
      */
     public CodeBashWelcomeView getWelcomeView() {
         return welcomeView;

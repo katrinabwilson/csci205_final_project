@@ -48,14 +48,22 @@ public class CodeBashMain extends Application {
      */
     private CodeBashController theController;
 
+    private CodeBashIntro theIntro;
+
     /** When start is pressed, a start time is recorded */
     private long startTime;
 
     /** The URL to the CSS file that contains the dark mode styling */
     private String darkModeUrl;
 
-    private CodeBashWelcomeView welcomeView;
+    /** Represents the welcome screen, the first thing the user sees */
+    private Scene welcomeScene;
 
+    /** The scene the user types on */
+    private Scene gameScene;
+
+    /** The scene that displays the game play results and */
+    private Scene resultScene;
     /**
      * Our standard main program for a JavaFX application
      * @param args
@@ -72,12 +80,13 @@ public class CodeBashMain extends Application {
     @Override
     public void init() throws Exception {
         super.init();
+        this.theIntro = new CodeBashIntro();
         this.theModel = new CodeBashModel();
         this.theWelcome = new CodeBashWelcome(theModel);
-        //this.welcomeView = new CodeBashWelcomeView();
         this.theView = new CodeBashView(theModel);
         this.theController = new CodeBashController(theModel, theView);
         this.theResults = new CodeBashResults(theModel.getStats());
+
 
         // URL for the initial css styling
         darkModeUrl = getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
@@ -94,22 +103,26 @@ public class CodeBashMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("CodeBash");
-        Scene scene = new Scene(theView.getRoot());
-        Scene welcomeScene = new Scene(theWelcome.getWelcomeView().getRoot());
-        Scene resultScene = new Scene(theResults.getRoot());
-        theWelcome.getWelcomeView().setScenes(welcomeScene, scene, resultScene);
+        Scene introScene = new Scene(theIntro.getRoot());
+        introScene.getStylesheets().add(darkModeUrl);
+        gameScene = new Scene(theView.getRoot());
+        welcomeScene = new Scene(theWelcome.getWelcomeView().getRoot());
+        resultScene = new Scene(theResults.getRoot());
+        theWelcome.getWelcomeView().setScenes(welcomeScene, gameScene, resultScene);
 
         // Start a new game
         theModel.setGameState(GameState.NEW_GAME);
 
         // Change the display of the game play screen
-        scene.getStylesheets().add(darkModeUrl);
+        gameScene.getStylesheets().add(darkModeUrl);
 
         // Putting the information on our window
-        stage.setScene(welcomeScene);
+        //stage.setScene(welcomeScene);
+        stage.setScene(introScene);
         welcomeScene.getStylesheets().add(darkModeUrl);
 
-        initEventHandlers(stage, scene, welcomeScene, resultScene);
+        // Change the scene based on certain button clicks
+        initSceneChanges(stage, gameScene, welcomeScene, resultScene);
 
         // Start the display in dark mode
         resultScene.getStylesheets().add(darkModeUrl);
@@ -121,8 +134,22 @@ public class CodeBashMain extends Application {
         theView.getRoot().requestFocus();
     }
 
-    // TODO - Move this to CodeBashController
-    private void initEventHandlers(Stage stage, Scene scene, Scene welcomeScene, Scene resultScene) {
+    /**
+     * This method handles instances where the user clicks different buttons.
+     * Specifically, these buttons handle switching the interface the user interacts
+     * with, from the welcome screen, to the game play screen, to the results screen.
+     *
+     * @param stage
+     * @param scene
+     * @param welcomeScene
+     * @param resultScene
+     */
+    private void initSceneChanges(Stage stage, Scene scene, Scene welcomeScene, Scene resultScene) {
+        theIntro.getTellMeMore().setOnMouseClicked(event -> {
+            stage.setScene(welcomeScene);
+            theModel.setGameState(GameState.NEW_GAME);
+            theController.setLetters(theModel.getCurrentSentence());
+        });
         // When you hit the start button, the game starts
         theWelcome.getWelcomeView().getStartBtn().setOnMouseClicked(event-> {
             stage.setScene(scene);
@@ -137,7 +164,6 @@ public class CodeBashMain extends Application {
                     theModel.setGameState(GameState.GAME_END);
                     theResults.setStatsLabels((endTime - startTime) / 1000.0);
                 });
-
 
         // When the "PLAY AGAIN" button is hit, bring the user back to the welcome screen
         theResults.getPlayAgain().setOnMouseClicked(event -> {
