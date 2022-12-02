@@ -40,7 +40,14 @@ public class CodeBashView {
         return timerLabel;
     }
 
-    public void setTimerLabel(String text) {this.timerLabel.setText(text);}
+    public void setTimerLabel(String text) {
+        System.out.println("resetting the text...");
+
+        this.timerLabel.setText(text);
+        //root.getChildren().add(timerLabel);
+        System.out.println("set the text.");
+
+    }
 
     /** Time label that will show passage of time */
     private Label timerLabel;

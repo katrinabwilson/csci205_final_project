@@ -57,6 +57,7 @@ public class CodeBashWelcomeController {
     public CodeBashWelcomeController(CodeBashWelcomeView welcomeView, CodeBashModel theModel) {
         this.welcomeView = welcomeView;
         this.theModel = theModel;
+        this.timeModel = new FXModel();
 
         initEventHandlers();
 
@@ -97,6 +98,7 @@ public class CodeBashWelcomeController {
 
         welcomeView.getTime15().setOnAction(event -> {
             // keep that button selected
+            System.out.println("you pressed 15");
             welcomeView.getTime15().setSelected(true);
 
             if (timeline != null) {
@@ -106,7 +108,7 @@ public class CodeBashWelcomeController {
 
             // update timerLabel
             theView.setTimerLabel("15");
-            theView.getRoot().getChildren().add(theView.getTimerLabel());//.setText(timeModel.timeSeconds.toString());
+            //theView.getRoot().getChildren().add(theView.getTimerLabel());//.setText(timeModel.timeSeconds.toString());
 
             /*timeline = new Timeline();
             timeline.setCycleCount(Timeline.INDEFINITE);
@@ -172,7 +174,20 @@ public class CodeBashWelcomeController {
 
         });*/
 
-        welcomeView.getTime30().setOnAction(event -> welcomeView.getTime30().setSelected(true));
+        welcomeView.getTime30().setOnAction(event -> {
+            welcomeView.getTime30().setSelected(true);
+            System.out.println("you pressed 30");
+
+            if (timeline != null) {
+                timeline.stop();
+            };
+            timeModel.timeSeconds = timeModel.STARTTIME;
+
+            // update timerLabel
+            theView.setTimerLabel("30");
+            //theView.getRoot().getChildren().add(theView.getTimerLabel());//.setText(timeModel.timeSeconds.toString());
+        });
+
         welcomeView.getTime45().setOnAction(event -> welcomeView.getTime45().setSelected(true));
         welcomeView.getTime60().setOnAction(event -> welcomeView.getTime60().setSelected(true));
 
