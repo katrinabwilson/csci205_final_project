@@ -62,6 +62,10 @@ public class CodeBashWelcomeController {
 
     }
 
+    public void setTheView(CodeBashView theView) {
+        this.theView = theView;
+    }
+
     /**
      * Handles when settings are pressed
      */
@@ -91,12 +95,85 @@ public class CodeBashWelcomeController {
 
         });
 
-        welcomeView.getTime15().setOnAction(event -> welcomeView.getTime15().setSelected(true));
+        welcomeView.getTime15().setOnAction(event -> {
+            // keep that button selected
+            welcomeView.getTime15().setSelected(true);
+
+            if (timeline != null) {
+                timeline.stop();
+            };
+            timeModel.timeSeconds = timeModel.STARTTIME;
+
+            // update timerLabel
+            theView.setTimerLabel("15");
+            theView.getRoot().getChildren().add(theView.getTimerLabel());//.setText(timeModel.timeSeconds.toString());
+
+            /*timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(1),
+                            new EventHandler<ActionEvent>() {
+                                // KeyFrame event handler
+                                public void handle(ActionEvent event) {
+                                    timeModel.timeSeconds--;
+                                    // update timerLabel
+                                    theView.timerLabel.setText(
+                                            timeModel.timeSeconds.toString());
+                                    theView.getShowTimer().getChildren().add(theView.getTimerLabel());
+
+                                    welcomeView.getRoot().getChildren().addAll(theView.getTimerLabel());
+
+                                    if (timeModel.timeSeconds <= 0) {
+                                        timeline.stop();
+                                    }
+                                }
+                            }));*/
+        });
+        // When the timer button is clicked, set the timer
+        /*welcomeView.getTime15().setOnAction(new EventHandler() {
+            welcomeView.getTime15().setSelected(true);
+            @Override
+            public void handle(Event event) {
+                if (timeline != null) {
+                    timeline.stop();
+                }
+
+                timeModel.timeSeconds = timeModel.STARTTIME;
+
+                // update timerLabel
+                theView.timerLabel.setText(timeModel.timeSeconds.toString());
+
+                timeline = new Timeline();
+                timeline.setCycleCount(Timeline.INDEFINITE);
+                timeline.getKeyFrames().add(
+                        new KeyFrame(Duration.seconds(1),
+                                new EventHandler<ActionEvent>() {
+                                    // KeyFrame event handler
+                                    public void handle(ActionEvent event) {
+                                        timeModel.timeSeconds--;
+                                        // update timerLabel
+                                        theView.timerLabel.setText(
+                                                timeModel.timeSeconds.toString());
+                                        theView.getShowTimer().getChildren().add(theView.getTimerLabel());
+
+                                        welcomeView.getWelcomeView().getRoot().getChildren().addAll(theView.getTimerLabel());
+
+
+                                        if (timeModel.timeSeconds <= 0) {
+                                            timeline.stop();
+                                        }
+                                    }
+                                }));
+                timeline.playFromStart();
+            }
+        });
+
+
+
+        });*/
 
         welcomeView.getTime30().setOnAction(event -> welcomeView.getTime30().setSelected(true));
-
         welcomeView.getTime45().setOnAction(event -> welcomeView.getTime45().setSelected(true));
-
         welcomeView.getTime60().setOnAction(event -> welcomeView.getTime60().setSelected(true));
 
         welcomeView.getEnglish().setOnAction(event -> welcomeView.getEnglish().setSelected(true));
@@ -104,5 +181,7 @@ public class CodeBashWelcomeController {
         welcomeView.getPython().setOnAction(event -> welcomeView.getPython().setSelected(true));
 
     }
+
+
 
 }

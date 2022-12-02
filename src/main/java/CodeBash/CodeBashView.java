@@ -138,6 +138,7 @@ public class CodeBashView {
 
     }
 
+
     /** ArrayList getter method that returns our text objects */
     public Text getTextObjectAt(int i){
         return textObjects.get(i);

@@ -31,6 +31,7 @@ public class CodeBashWelcome {
     /** Used to handle when buttons are pressed, starting game play or altering settings */
     private CodeBashWelcomeController theController;
 
+    private CodeBashView theView;
     /**
      * This constructs our Welcome interface through a View class
      * and a Controller class
@@ -39,6 +40,11 @@ public class CodeBashWelcome {
         this.theModel = theModel;
         this.welcomeView = new CodeBashWelcomeView();
         this.theController = new CodeBashWelcomeController(welcomeView, theModel);
+    }
+
+    public void setTheView(CodeBashView theView) {
+        this.theView = theView;
+        theController.setTheView(theView);
     }
 
     /**
