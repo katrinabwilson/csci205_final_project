@@ -28,7 +28,6 @@
     -fx-background-color: transparent;
     -fx-font-size: 15;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-weight: Bold;
 }
 
 #Title{
@@ -70,7 +69,6 @@
     -fx-background-color: transparent;
     -fx-font-size: 18;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-weight: Bold;
     -fx-padding: 50px;
 }
 
@@ -79,7 +77,6 @@
     -fx-background-color: transparent;
     -fx-font-size: 25;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-weight: Bold;
     -fx-padding: 30px;
 }
 
@@ -88,7 +85,6 @@
     -fx-background-color: transparent;
     -fx-font-size: 15;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-weight: Bold;
 
 }
 
@@ -135,5 +131,18 @@
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-size: 1em; /* 12 */
 
+}
+
+#statsLabel {
+    -fx-text-fill: #646669;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 20;
+
+}
+
+#statsInfo {
+    -fx-font-size: 25;
+    -fx-text-fill: Orange;
+    -fx-font-family: "Roboto Mono", sans-serif;
 }
 

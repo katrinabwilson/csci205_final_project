@@ -22,6 +22,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class CodeBashResults {
@@ -47,6 +48,11 @@ public class CodeBashResults {
     /** Keeps track of the current stats in the game */
     private TypingStats stats;
 
+    private HBox statsDisplay;
+    private VBox errorBox;
+    private VBox wpmBox;
+    private VBox accuracyBox;
+
     /**
      * Initialize a new CodeBashResults scene
      */
@@ -71,25 +77,51 @@ public class CodeBashResults {
     private void initSceneGraph() {
         root = new VBox();
         root.setId("root");
+        statsDisplay = new HBox();
+        errorBox = new VBox();
+        wpmBox = new VBox();
+        accuracyBox = new VBox();
 
-        errors = new Label("Errors: " + stats.getErrors());
-        wpm = new Label(String.format("Words per minute: %d", (int) stats.getWPM(30)));
-        accuracy = new Label(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
+        //errors = new Label("Errors: " + stats.getErrors());
+        Label errorLabel = new Label("errors");
+        errorLabel.setId("statsLabel");
+        errors = new Label("" + stats.getErrors());
+        errors.setId("statsInfo");
+        errorBox.getChildren().addAll(errorLabel, errors);
 
-        errors.setId("stats");
-        wpm.setId("stats");
-        accuracy.setId("stats");
+        //wpm = new Label(String.format("Words per minute: %d", (int) stats.getWPM(30)));
+        Label wpmLabel = new Label("wpm");
+        wpmLabel.setId("statsLabel");
+        wpm = new Label(String.format("%d", (int) stats.getWPM(30)));
+        wpm.setId("statsInfo");
+        wpmBox.getChildren().addAll(wpmLabel, wpm);
+
+        //accuracy = new Label(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
+        Label accuracyLabel = new Label("accuracy");
+        accuracyLabel.setId("statsLabel");
+        accuracy = new Label(String.format("%.2f%%", stats.calculateAccuracy()));
+        accuracy.setId("statsInfo");
+        accuracyBox.getChildren().addAll(accuracyLabel, accuracy);
+
+        statsDisplay.setSpacing(25);
+        statsDisplay.getChildren().addAll(errorBox, wpmBox, accuracyBox);
+        statsDisplay.setAlignment(Pos.CENTER);
+
+        //errors.setId("stats");
+        //wpm.setId("stats");
+        //accuracy.setId("stats");
 
         title = new Label("");
         title.setId("Title");
 
         // Add results below label but above button
-        root.getChildren().add(errors);
-        root.getChildren().add(wpm);
-        root.getChildren().add(accuracy);
+        //root.getChildren().add(errors);
+        //root.getChildren().add(wpm);
+        //root.getChildren().add(accuracy);
 
-        // Add title text
+        // Add title text and results stats
         root.getChildren().add(title);
+        root.getChildren().add(statsDisplay);
 
         // Set up the button to initiate typing
         playAgain = new Button("PLAY AGAIN");
@@ -101,9 +133,9 @@ public class CodeBashResults {
     }
 
     public void setStatsLabels(double time) {
-        this.errors.setText("Errors: " + stats.getErrors());
-        this.wpm.setText(String.format("Words per minute: %d", (int) stats.getWPM(time)));
-        this.accuracy.setText(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
+        this.errors.setText("" + stats.getErrors());
+        this.wpm.setText(String.format("%d", (int) stats.getWPM(time)));
+        this.accuracy.setText(String.format("%.2f%%", stats.calculateAccuracy()));
     }
 
     /**

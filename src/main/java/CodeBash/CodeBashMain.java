@@ -183,7 +183,9 @@ public class CodeBashMain extends Application {
             stage.setScene(welcomeScene);
             theModel.setGameState(GameState.NEW_GAME);
             theController.reset();
+            theView.getRoot().requestFocus();
         });
+
     }
 }
 

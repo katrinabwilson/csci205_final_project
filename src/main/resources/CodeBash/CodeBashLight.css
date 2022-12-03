@@ -12,7 +12,6 @@
     -fx-background-color: transparent;
     -fx-font-size: 20;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-weight: Bold;
 
 }
 
@@ -80,7 +79,6 @@
     -fx-text-fill: #323437;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-padding: 29px;
-    -fx-font-weight: Italic;
 }
 
 #transitionButton {
@@ -146,4 +144,17 @@
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-size: 1em; /* 12 */
 
+}
+
+#statsLabel {
+    -fx-text-fill: #646669;
+    -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 20;
+
+}
+
+#statsInfo {
+    -fx-font-size: 25;
+    -fx-text-fill: #006ee6;
+    -fx-font-family: "Roboto Mono", sans-serif;
 }

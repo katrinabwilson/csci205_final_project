@@ -69,9 +69,10 @@ public class CodeBashView {
      */
     public CodeBashView (CodeBashModel theModel){
         this.theModel = theModel;
+        theModel.createNextSentence();
+
         initSceneGraph();
         initStyling();
-
     }
 
 
@@ -107,7 +108,7 @@ public class CodeBashView {
         root.setId("root");
 
         // Place topPane in between start button and title
-        theModel.createNextSentence();
+        //theModel.createNextSentence();
         createLetterTexts(theModel.getCurrentSentence());
 
         // Set up the button to initiate typing

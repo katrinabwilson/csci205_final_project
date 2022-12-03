@@ -24,13 +24,8 @@ import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorState;
 import CodeBash.model.FXTime.FXModel;
 import CodeBash.model.LetterEvaluator;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 
@@ -77,6 +72,7 @@ public class CodeBashController {
         this.welcomeView = welcomeView;
         letters = new ArrayList<>();
         currentLetter = 0;
+        //theModel.createNextSentence();
         setLetters(theModel.getCurrentSentence());
         initEventHandlers();
         initBindings();
@@ -89,6 +85,8 @@ public class CodeBashController {
         this.theView.getRoot().setOnKeyPressed((key) -> {
             // Evaluate key pressed
             LetterEvaluator letterEvaluator;
+
+            System.out.println("current letter pressed: " + key.getCode().toString());
 
             // If correct, change color to green
             if ((key.getCode() != KeyCode.BACK_SPACE) && (key.getCode() != KeyCode.ENTER) && (key.getCode() != KeyCode.SHIFT)) {
@@ -188,65 +186,12 @@ public class CodeBashController {
 
             }
         });
-
-        /*welcomeView.getWelcomeView().getTime15().setOnAction(new EventHandler() {
-            @Override
-            public void handle(Event event) {
-                if (timeline != null) {
-                    timeline.stop();
-                }
-
-                timeModel.timeSeconds = timeModel.STARTTIME;
-
-                // update timerLabel
-                theView.timerLabel.setText(timeModel.timeSeconds.toString());
-
-                timeline = new Timeline();
-                timeline.setCycleCount(Timeline.INDEFINITE);
-                timeline.getKeyFrames().add(
-                        new KeyFrame(Duration.seconds(1),
-                                new EventHandler<ActionEvent>() {
-                                    // KeyFrame event handler
-                                    public void handle(ActionEvent event) {
-                                        timeModel.timeSeconds--;
-                                        // update timerLabel
-                                        theView.timerLabel.setText(
-                                                timeModel.timeSeconds.toString());
-                                        theView.getShowTimer().getChildren().add(theView.getTimerLabel());
-
-                                        welcomeView.getWelcomeView().getRoot().getChildren().addAll(theView.getTimerLabel());
-
-
-                                        if (timeModel.timeSeconds <= 0) {
-                                            timeline.stop();
-                                        }
-                                    }
-                                }));
-                timeline.playFromStart();
-            }
-        });
-*/
-
-
-
-
-
     }
 
     /**
      * Initialize the bindings used in our app
      */
     private void initBindings(){
-
-    }
-
-    /**
-     * Invoked when a specific event of the type for which this handler is
-     * registered happens.
-     *
-     * @param event the event which occurred
-     */
-    public void handleActionEvent(ActionEvent event) {
 
     }
 
@@ -272,6 +217,7 @@ public class CodeBashController {
         theModel.createNextSentence();
         setLetters(theModel.getCurrentSentence());
         theView.createLetterTexts(theModel.getCurrentSentence());
+        initEventHandlers();
 
         // Fix stats
         theModel.getStats().reset();
