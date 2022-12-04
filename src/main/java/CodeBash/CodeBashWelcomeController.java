@@ -169,7 +169,7 @@ public class CodeBashWelcomeController {
         if (timeline != null) {
             timeline.stop();
         }
-
+        timeModel.setSTARTTIME(time);
         timeModel.timeSeconds = time;
 
         // update timerLabel

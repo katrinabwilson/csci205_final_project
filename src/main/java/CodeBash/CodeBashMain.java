@@ -165,7 +165,8 @@ public class CodeBashMain extends Application {
             startTime = System.currentTimeMillis();
 
             // Start the timer at 15 seconds if nothing else is clicked
-            theWelcome.getTheController().changeCountDown(15, "15");
+            if (theWelcome.getWelcomeView().getTime15().isSelected()){
+            theWelcome.getTheController().changeCountDown(15, "15");}
 
         });
 
