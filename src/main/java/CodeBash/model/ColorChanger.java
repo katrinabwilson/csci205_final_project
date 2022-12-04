@@ -25,9 +25,7 @@ import javafx.scene.Scene;
 
 public class ColorChanger {
     private String darkModeUrl;
-
     private String lightModeUrl;
-
     private String purpleModeUrl;
 
     public ColorChanger() {
