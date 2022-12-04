@@ -23,6 +23,7 @@ import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorState;
 import CodeBash.model.FXTime.FXModel;
 import CodeBash.model.GameMode;
+import CodeBash.model.GameState;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -153,6 +154,7 @@ public class CodeBashWelcomeController {
 
                                 if (timeModel.timeSeconds <= 0) {
                                     timeline.stop();
+                                    theModel.setGameState(GameState.GAME_END);
                                 }
                             }
 

@@ -180,6 +180,15 @@ public class CodeBashMain extends Application {
                     theResults.setEndLabel((endTime - startTime) / 1000.0);
                 });
 
+        theView.getRoot().setOnKeyTyped(event -> {
+            if (theModel.getGameState() == GameState.GAME_END) {
+                long endTime = System.currentTimeMillis();
+                stage.setScene(resultScene);
+                theResults.setStatsLabels((endTime - startTime) / 1000.0);
+                theResults.setEndLabel((endTime - startTime) / 1000.0);
+            }
+        });
+
         // When the "PLAY AGAIN" button is hit, bring the user back to the welcome screen
         theResults.getPlayAgain().setOnMouseClicked(event -> {
             stage.setScene(welcomeScene);

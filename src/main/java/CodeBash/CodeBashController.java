@@ -23,6 +23,7 @@ package CodeBash;
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorState;
 import CodeBash.model.FXTime.FXModel;
+import CodeBash.model.GameState;
 import CodeBash.model.LetterEvaluator;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
