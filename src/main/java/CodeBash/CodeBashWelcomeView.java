@@ -131,7 +131,7 @@ public class CodeBashWelcomeView {
         topPane.getChildren().add(title);
         topPane.setAlignment(Pos.TOP_LEFT);
 
-        // Add instructions
+        // Adding instructions
         instructions = new Label("choose settings then, press start to bash");
         instructions.setId("instructions");
         topPane.getChildren().add(instructions);

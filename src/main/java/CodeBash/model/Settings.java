@@ -1,5 +1,5 @@
 /* *****************************************
- * CSCI205 -Software Engineering and Design
+ * CSCI205 - Software Engineering and Design
  * Fall2022* Instructor: Prof. Brian King
  *
  * Name: Nahom Ayele
@@ -24,7 +24,5 @@ public class Settings {
     private ToggleButton language;
 
     private boolean lightSetting;
-
-
 }
 
