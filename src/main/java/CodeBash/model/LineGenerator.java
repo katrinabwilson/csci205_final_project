@@ -54,8 +54,10 @@ public class LineGenerator {
         sources = new String[3];
         // The Essays of Ralph Waldo Emerson
         sources[0] = "https://www.gutenberg.org/cache/epub/16643/pg16643.txt";
+
         // A Tale of Two Cities
         sources[1] = "https://www.gutenberg.org/files/98/98-0.txt";
+
         // The Adventures of Sherlock Holmes
         sources[2] = "https://www.gutenberg.org/files/1661/1661-0.txt";
 
@@ -80,6 +82,7 @@ public class LineGenerator {
         for (int i = 1; i < sources.length; i++) {
             URL novel = new URL(sources[i]);
             Scanner in = new Scanner(novel.openStream());
+
             // Regex for a sentence; line must start with a capital and end with punctuation
             Pattern p = Pattern.compile("^[A-Z][^!?.]+[!?.]");
 

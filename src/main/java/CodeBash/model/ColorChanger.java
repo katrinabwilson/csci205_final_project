@@ -27,7 +27,7 @@ import javafx.scene.Scene;
  */
 public class ColorChanger {
 
-    /** The css files for all modes */
+    /** The css files for all the modes */
     private String darkModeUrl;
 
     private String lightModeUrl;

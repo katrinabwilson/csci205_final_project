@@ -14,7 +14,7 @@
  *
  * Description: This is a class that will take the correct letter and the
  * typed letter and return a boolean indicating whether the guess was correct
- * or incorrect.
+ * or incorrect
  * ****************************************
  */
 

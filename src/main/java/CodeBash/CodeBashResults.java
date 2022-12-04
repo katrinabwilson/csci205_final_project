@@ -1,5 +1,5 @@
 /* *****************************************
- * CSCI205 -Software Engineering and Design
+ * CSCI205 - Software Engineering and Design
  * Fall2022* Instructor: Prof. Brian King
  *
  * Name: Nahom Ayele, Katrina Wilson, Harmony Yeung, Nolan Sauers
@@ -12,7 +12,7 @@
  * Class: CodeBashResults
  *
  * Description: A basic class that displays how the
- * user did when playing CodeBash.
+ * user did when playing CodeBash
  * *****************************************/
 package CodeBash;
 
@@ -45,7 +45,7 @@ public class CodeBashResults {
     /** Displays the user's accuracy as a percentage */
     private Label accuracy;
 
-    /** A button that brings the player back to the welcome screen*/
+    /** A button that brings the player back to the welcome screen  */
     private Button playAgain;
 
     /** Keeps track of the current stats in the game */

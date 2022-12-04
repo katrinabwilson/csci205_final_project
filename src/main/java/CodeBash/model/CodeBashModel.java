@@ -1,5 +1,5 @@
 /* *****************************************
- * CSCI205-Software Engineering and Design
+ * CSCI205 - Software Engineering and Design
  * Fall2022
  * Instructor: Prof. Brian King
  *
@@ -17,7 +17,7 @@
  * with system data and logic that exist independent of
  * CodeBashView. In this case, such logic includes
  * methods to analyze the correctness of key presses and
- * the generation of random lines.
+ * the generation of random lines
  * ****************************************
  */
 

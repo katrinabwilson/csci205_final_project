@@ -44,7 +44,7 @@ public class CodeBashWelcomeController {
     /** The view representation of the Welcome interface */
     private CodeBashWelcomeView welcomeView;
 
-    /** A Timeline object that is handled frame by frame (helpful for showing decrease on screen)*/
+    /** A Timeline object that is handled frame by frame (helpful for showing decrease on screen) */
     private Timeline timeline;
 
     /** The Model to get the timing information */
@@ -100,7 +100,7 @@ public class CodeBashWelcomeController {
 
         // When the 15-second button is pressed
         welcomeView.getTime15().setOnAction(event -> {
-            // keep that button selected and update the timer label
+            // Keep that button selected and update the timer label
             changeCountDown(15, "15");
 
             handleCountDown();
@@ -108,7 +108,7 @@ public class CodeBashWelcomeController {
 
         // When the 30-second button is pressed
         welcomeView.getTime30().setOnAction(event -> {
-            // keep that button selected and update the timer label
+            // Keep that button selected and update the timer label
             changeCountDown(30, "30");
 
             handleCountDown();
@@ -116,7 +116,7 @@ public class CodeBashWelcomeController {
 
         // When the 45-second button is pressed
         welcomeView.getTime45().setOnAction(event -> {
-            // keep that button selected
+            // Keep that button selected
             changeCountDown(45, "45");
 
             handleCountDown();
@@ -124,7 +124,7 @@ public class CodeBashWelcomeController {
 
         // When the 60-second button is pressed
         welcomeView.getTime60().setOnAction(event -> {
-            // keep that button selected and update the timer label
+            // Keep that button selected and update the timer label
             changeCountDown(60, "60");
 
             handleCountDown();
@@ -184,7 +184,7 @@ public class CodeBashWelcomeController {
 
         timeModel.timeSeconds = time;
 
-        // update timerLabel
+        // Update timerLabel
         theView.setTimerLabel(stringTime);
 
         timeline = new Timeline();

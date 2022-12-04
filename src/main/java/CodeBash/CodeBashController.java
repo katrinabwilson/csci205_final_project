@@ -14,7 +14,7 @@
  *
  * Description: The controller for the CodeBash
  * app that ties together the model logic and view in
- * order to handle user interaction.
+ * order to handle user interaction
  * ****************************************
  */
 package CodeBash;
@@ -30,23 +30,23 @@ import java.util.ArrayList;
 
 /**
  * In our MVC design, this class represents the Controller for our
- * CodeBash app.
+ * CodeBash app
  */
 public class CodeBashController {
 
     /** The model that contains the data and logic behind this controller */
     private CodeBashModel theModel;
 
-    /** We need the time buttons on the welcome screen*/
+    /** We need the time buttons on the welcome screen */
     private CodeBashWelcome welcomeView;
 
     /** The Model to get the timing information */
     private FXModel timeModel;
 
-    /** A Timeline object that is handled frame by frame (helpful for showing decrease on screen)*/
+    /** A Timeline object that is handled frame by frame (helpful for showing decrease on screen) */
     private Timeline timeline;
 
-    /** The view that contains the visual representation of the data*/
+    /** The view that contains the visual representation of the data */
     private CodeBashView theView;
 
     /**

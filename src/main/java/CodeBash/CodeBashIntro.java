@@ -65,7 +65,7 @@ public class CodeBashIntro {
     }
 
     /**
-     * Setting the style
+     * Setting the style for the introduction
      */
     public void initStyling() {
         root.setSpacing(20);

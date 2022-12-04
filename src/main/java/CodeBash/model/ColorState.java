@@ -19,7 +19,7 @@
 
 package CodeBash.model;
 /**
- * A simple enumeration representing the color theme of the game
+ * A simple enumeration representing the game's color theme
  */
 public enum ColorState {
     DARK_MODE,

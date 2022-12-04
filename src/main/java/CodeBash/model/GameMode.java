@@ -13,7 +13,7 @@
  * Class: ColorState
  *
  * Description:
- * The Enum that represents the language to type for the game
+ * The Enum that represents the language for the user to type for the game
  * ****************************************
  */
 

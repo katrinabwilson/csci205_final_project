@@ -1,5 +1,5 @@
 /* *****************************************
- * CSCI205 -Software Engineering and Design
+ * CSCI205 - Software Engineering and Design
  * Fall2022* Instructor: Prof. Brian King
  *
  * Name: Nahom Ayele, Nolan Sauers, Katrina Wilson, Harmony Yeung
@@ -31,7 +31,5 @@ public class Settings {
 
     /** The darkLight modes */
     private boolean lightSetting;
-
-
 }
 

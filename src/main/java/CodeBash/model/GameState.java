@@ -13,7 +13,7 @@
  * Class: ColorState
  *
  * Description:
- * The Enum that represents the current progress of the game
+ * The Enum that represents the current progress for the typing game
  * ****************************************
  */
 

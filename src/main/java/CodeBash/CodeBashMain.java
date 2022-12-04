@@ -83,7 +83,7 @@ public class CodeBashMain extends Application {
     /**
      * The application initialization method. This method is called immediately
      * after the Application class is loaded and constructed, but before the
-     * start() method is invoked.
+     * start() method is invoked
      */
     @Override
     public void init() throws Exception {
@@ -106,9 +106,9 @@ public class CodeBashMain extends Application {
 
     /**
      * @param stage the primary stage for this application, onto which
-     * the application scene can be set.
+     * the application scene can be set
      * Applications may create other stages, if needed, but they will not be
-     * primary stages.
+     * primary stages
      * @throws Exception - If something goes wrong
      */
     @Override
@@ -128,7 +128,6 @@ public class CodeBashMain extends Application {
         gameScene.getStylesheets().add(darkModeUrl);
 
         // Putting the information on our window
-        //stage.setScene(welcomeScene);
         stage.setScene(introScene);
         welcomeScene.getStylesheets().add(darkModeUrl);
 

@@ -43,7 +43,7 @@ public class CodeBashView {
     /** The welcomeView class */
     private CodeBashWelcome welcomeView;
 
-    /** Used to display our logo button*/
+    /** Used to display our logo button */
     private HBox topPane;
 
     /** Time label that will show passage of time */
