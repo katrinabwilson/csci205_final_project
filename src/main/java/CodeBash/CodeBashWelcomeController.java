@@ -104,27 +104,27 @@ public class CodeBashWelcomeController {
             // keep that button selected and update the timer label
             changeCountDown(15, "15");
 
-            handleCountDown();
+            //handleCountDown();
         });
 
         welcomeView.getTime30().setOnAction(event -> {
             // keep that button selected and update the timer label
             changeCountDown(30, "30");
 
-            handleCountDown();
+            //handleCountDown();
         });
 
         welcomeView.getTime45().setOnAction(event -> {
             // keep that button selected
             changeCountDown(45, "45");
 
-            handleCountDown();
+            //handleCountDown();
         });
         welcomeView.getTime60().setOnAction(event -> {
             // keep that button selected and update the timer label
             changeCountDown(60, "60");
 
-            handleCountDown();
+            //handleCountDown();
         });
 
         welcomeView.getEnglish().setOnAction(event -> {
