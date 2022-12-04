@@ -3,7 +3,7 @@
  * Fall2022
  * Instructor: Prof. Brian King
  *
- * Name: Nolan Sauers
+ * Name: Nolan Sauers, Nahom Ayele, Katrina Wilson, Harmony Yeung
  * Section: 01 - 9am
  * Date: 11/6/2022
  * Time: 8:23 PM
@@ -13,7 +13,8 @@
  * Class: LineGenerator
  *
  * Description:
- *
+ * The class that generates the lines from essays that
+ * the user must type
  * ****************************************
  */
 
@@ -25,12 +26,11 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//import org.json.simple.JSONArray;
-//import org.json.simple.JSONObject;
-//import org.json.simple.parser.*;
-
-
+/**
+ * The class that generates the lines the user types
+ */
 public class LineGenerator {
+
     /** An array of the URLs to be used for the lines */
     private String[] sources;
 
@@ -53,6 +53,7 @@ public class LineGenerator {
      * Create a new TextProcessor and assign the novels to given indexes
      */
     public LineGenerator() {
+
         sources = new String[3];
         // The Essays of Ralph Waldo Emerson
         sources[0] = "https://www.gutenberg.org/cache/epub/16643/pg16643.txt";
