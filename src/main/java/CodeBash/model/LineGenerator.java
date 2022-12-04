@@ -127,12 +127,14 @@ public class LineGenerator {
         // java.txt
         Scanner java = new Scanner(this.getClass().getResourceAsStream("/Languages/java.txt"));
         while (java.hasNextLine()) {
+            // *Code Dictionary was derived from monkeytpe pre made library*
             javaList.add(java.nextLine());
         }
 
         // python.txt
         Scanner python = new Scanner(this.getClass().getResourceAsStream("/Languages/python.txt"));
         while (python.hasNextLine()) {
+            // *Code Dictionary was derived from monkeytpe pre made library*
             pythonList.add(python.nextLine());
         }
     }
