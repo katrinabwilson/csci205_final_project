@@ -5,4 +5,16 @@ module csci205_final_project{
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
-    }
+
+    exports TypingGame;
+    opens TypingGame to javafx.fxml;
+    exports TypingGame2;
+    opens TypingGame2 to javafx.fxml;
+
+    exports CodeBash;
+    opens CodeBash to javafx.fxml;
+
+    exports CodeBash.model.TimingClass;
+    exports CodeBash.model.FXTime;
+    opens CodeBash.model.FXTime to javafx.fxml;
+}
