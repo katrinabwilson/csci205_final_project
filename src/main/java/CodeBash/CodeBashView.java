@@ -108,7 +108,6 @@ public class CodeBashView {
         root.setId("root");
 
         // Place topPane in between start button and title
-        //theModel.createNextSentence();
         createLetterTexts(theModel.getCurrentSentence());
 
         // Set up the button to initiate typing
@@ -122,14 +121,11 @@ public class CodeBashView {
         topPane.getChildren().add(title);
         topPane.setAlignment(Pos.TOP_LEFT);
 
-        Label directions = new Label("type correct letters? white text. type wrong letters? you'll see.");
+        Label directions = new Label("press enter to type the next line. \ntype correct letters? white text. type wrong letters? you'll see.");
         directions.setId("instructions");
         topPane.getChildren().add(directions);
         topPane.setAlignment(Pos.TOP_LEFT);
 
-
-        //root.getChildren().addAll(welcomeView.getWelcomeView().getRoot().getTop());
-//        root.getChildren().add(viewTime.getRoot());
         middlePane.getChildren().addAll(showTimer, letterDisplay, quitBtn);
         middlePane.setAlignment(Pos.CENTER);
         root.getChildren().add(topPane);
