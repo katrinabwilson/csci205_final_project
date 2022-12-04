@@ -162,6 +162,7 @@ public class CodeBashMain extends Application {
         theWelcome.getWelcomeView().getStartBtn().setOnMouseClicked(event-> {
             stage.setScene(scene);
             theModel.setGameState(GameState.IN_PROGRESS);
+            theController.reset();
             startTime = System.currentTimeMillis();
 
             // Start the timer at 15 seconds if nothing else is clicked

@@ -57,7 +57,7 @@ public class CodeBashModel {
         lineGenerator = new LineGenerator();
         lineGenerator.scanDocuments();
         rand = new Random();
-        mode = GameMode.HUMAN;
+        mode = GameMode.ENGLISH;
         this.currentColorState = ColorState.DARK_MODE;
     }
 
@@ -67,11 +67,14 @@ public class CodeBashModel {
      * @return a random sentence from the list held in lineGenerator
      */
     public void createNextSentence() {
-        if (mode == GameMode.HUMAN) {
+        if (mode == GameMode.ENGLISH) {
             currentSentence = lineGenerator.getSentenceList().get(rand.nextInt(lineGenerator.getSentenceList().size()));
         }
         else if (mode == GameMode.JAVA) {
             currentSentence = lineGenerator.getJavaList().get(rand.nextInt(lineGenerator.getJavaList().size()));
+        }
+        else if (mode == GameMode.PYTHON) {
+            currentSentence = lineGenerator.getPythonList().get(rand.nextInt(lineGenerator.getPythonList().size()));
         }
     }
 
@@ -97,6 +100,14 @@ public class CodeBashModel {
 
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public GameMode getMode() {
+        return mode;
+    }
+
+    public void setMode(GameMode mode) {
+        this.mode = mode;
     }
 
     public ColorState getCurrentColorState() {

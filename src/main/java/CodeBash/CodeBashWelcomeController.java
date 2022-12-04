@@ -22,11 +22,10 @@ package CodeBash;
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorState;
 import CodeBash.model.FXTime.FXModel;
-import CodeBash.model.GameState;
+import CodeBash.model.GameMode;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
 
@@ -127,9 +126,18 @@ public class CodeBashWelcomeController {
             handleCountDown();
         });
 
-        welcomeView.getEnglish().setOnAction(event -> welcomeView.getEnglish().setSelected(true));
-        welcomeView.getJava().setOnAction(event -> welcomeView.getJava().setSelected(true));
-        welcomeView.getPython().setOnAction(event -> welcomeView.getPython().setSelected(true));
+        welcomeView.getEnglish().setOnAction(event -> {
+            welcomeView.getEnglish().setSelected(true);
+            theModel.setMode(GameMode.ENGLISH);
+        });
+        welcomeView.getJava().setOnAction(event -> {
+            welcomeView.getJava().setSelected(true);
+            theModel.setMode(GameMode.JAVA);
+        });
+        welcomeView.getPython().setOnAction(event -> {
+            welcomeView.getPython().setSelected(true);
+            theModel.setMode(GameMode.PYTHON);
+        });
 
     }
 

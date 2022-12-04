@@ -24,9 +24,6 @@ import java.net.URL;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.io.FileReader;
-import java.util.Iterator;
-import java.util.Map;
 
 //import org.json.simple.JSONArray;
 //import org.json.simple.JSONObject;
@@ -40,8 +37,11 @@ public class LineGenerator {
     /** A record of every possible sentence, common or not */
     private ArrayList<String> sentenceList;
 
-    /** A record of all given lines of code */
+    /** A record of all given lines of code in java */
     private ArrayList<String> javaList;
+
+    /** A record of all given lines of code in python */
+    private ArrayList<String> pythonList;
 
     /** The minimum number of characters in a generated sentence */
     private int minSentenceLength;
@@ -66,6 +66,7 @@ public class LineGenerator {
 
         sentenceList = new ArrayList<>();
         javaList = new ArrayList<>();
+        pythonList = new ArrayList<>();
     }
 
     /**
@@ -119,10 +120,16 @@ public class LineGenerator {
             }
             in.close();
         }
-        // Java.txt
-        Scanner in = new Scanner(this.getClass().getResourceAsStream("/CodeBash/java.txt"));
-        while (in.hasNextLine()) {
-            javaList.add(in.nextLine());
+        // java.txt
+        Scanner java = new Scanner(this.getClass().getResourceAsStream("/Languages/java.txt"));
+        while (java.hasNextLine()) {
+            javaList.add(java.nextLine());
+        }
+
+        // python.txt
+        Scanner python = new Scanner(this.getClass().getResourceAsStream("/Languages/python.txt"));
+        while (python.hasNextLine()) {
+            pythonList.add(python.nextLine());
         }
     }
 
@@ -137,6 +144,10 @@ public class LineGenerator {
 
     public ArrayList<String> getJavaList() {
         return javaList;
+    }
+
+    public ArrayList<String> getPythonList() {
+        return pythonList;
     }
 
     /** Temporary test method */
