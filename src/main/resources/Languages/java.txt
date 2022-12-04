@@ -5,25 +5,20 @@ String welcome = "Hello World";
 ArrayList<String> words = new ArrayList<>();
 while (i > 0)
 System.out.println("Hello World!");
-
 public class Main {
     public static void main(String[] args) {
-        System.out.println(\"Hello World\");
+        System.out.println("Hello World");
     }
 }
-
 void finish(String name){
     System.out.println("My job here is done. Goodbye " + name);
 }
-
 int square(int x){
     return x*x;
 }
-
 for (int i=0; i<items.length; i++) {
     doSomething(items[i]);
 }
-
 public enum OperatingSystem {
     OSX, Windows, LINUX;
     public String toString() {
@@ -34,7 +29,6 @@ public enum OperatingSystem {
         }
     }
 }
-
 boolean contains(int[] list, int x) {
     for(int y: list) {
         if (y == x){
@@ -43,22 +37,20 @@ boolean contains(int[] list, int x) {
        return false;
     }
 }
-
 public enum Wood {
     INDIAN_ROSEWOOD, BRAZILIAN_ROSEWOOD, MAHOGANY,
     MAPLE, COCOBOLO, CEDAR, ADIRONDACK, ALDER, SITKA;}
-
 public String toString() {
     switch(this) {
-        case INDIAN_ROSEWOOD: return \"Indian Rosewood\";
-        case BRAZILIAN_ROSEWOOD: return \"Brazilian Rosewood\";
-        case MAHOGANY: return \"Mahogany\";
-        case MAPLE: return \"Maple\";
-        case COCOBOLO: return \"Cocobolo\";
-        case CEDAR: return \"Cedar\";
-        case ADIRONDACK: return \"Adirondack\";
-        case ALDER: return \"Alder\";
-        case SITKA: return \"Sitka\";
-        default: return \"Any\";
+        case INDIAN_ROSEWOOD: return "Indian Rosewood";
+        case BRAZILIAN_ROSEWOOD: return "Brazilian Rosewood";
+        case MAHOGANY: return "Mahogany";
+        case MAPLE: return "Maple";
+        case COCOBOLO: return "Cocobolo";
+        case CEDAR: return "Cedar";
+        case ADIRONDACK: return "Adirondack";
+        case ALDER: return "Alder";
+        case SITKA: return "Sitka";
+        default: return "Any";
     }
 }
