@@ -29,9 +29,7 @@ public class ColorChanger {
 
     /** The css files for all the modes */
     private String darkModeUrl;
-
     private String lightModeUrl;
-
     private String purpleModeUrl;
 
     /**
