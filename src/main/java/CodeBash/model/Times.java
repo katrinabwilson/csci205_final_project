@@ -90,7 +90,7 @@ public class Times {
     /**
      * The actual countdown
      *
-      * @return the counterLabel with the amount of time left
+      * @return the counterLabel with the amount of time the user has left
      */
     public String countdown() {
         time = new Timer(1000, new ActionListener() {
