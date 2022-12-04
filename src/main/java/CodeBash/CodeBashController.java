@@ -86,7 +86,7 @@ public class CodeBashController {
             // Evaluate key pressed
             LetterEvaluator letterEvaluator;
 
-            System.out.println("current letter pressed: " + key.getCode().toString());
+            //System.out.println("current letter pressed: " + key.getCode().toString());
 
             // If correct, change color to green
             if ((key.getCode() != KeyCode.BACK_SPACE) && (key.getCode() != KeyCode.ENTER) && (key.getCode() != KeyCode.SHIFT)) {
