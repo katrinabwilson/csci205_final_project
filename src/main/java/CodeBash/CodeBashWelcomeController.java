@@ -3,7 +3,7 @@
  * Fall 2022
  * Instructor: Prof. Brian King
  *
- * Name: Katrina Wilson
+ * Name: Katrina Wilson, Nahom Ayele, Nolan Sauers, Harmony Yeung
  * Section: 9am - 01
  * Date: 12/1/22
  * Time: 10:32 AM
@@ -13,7 +13,9 @@
  * Class: CodeBashWelcomeController
  *
  * Description:
- *
+ * The CodeBash welcome scene's controller that controls the
+ * timer buttons, color buttons, the language button, and the
+ * start button
  * ****************************************
  */
 
@@ -30,6 +32,10 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
 
+/**
+ * The controller for the welcome scene that binds controls
+ * with their respective buttons
+ */
 public class CodeBashWelcomeController {
 
     /** The Model used for this round */
@@ -44,6 +50,7 @@ public class CodeBashWelcomeController {
     /** The Model to get the timing information */
     private FXModel timeModel;
 
+    /** The View for CodeBash */
     private CodeBashView theView;
 
 
@@ -59,16 +66,7 @@ public class CodeBashWelcomeController {
         this.theModel = theModel;
         this.timeModel = new FXModel();
 
-        // Set the initial countdown to 15
-       // changeCountDown(15, "15");
-        //handleCountDown();
-
         initEventHandlers();
-
-    }
-
-    public void setTheView(CodeBashView theView) {
-        this.theView = theView;
     }
 
     /**
@@ -76,30 +74,31 @@ public class CodeBashWelcomeController {
      */
     private void initEventHandlers() {
 
+        // When the dark mode button is pressed
         welcomeView.getDarkMode().setOnAction(event -> {
             welcomeView.setCurrentColorMode(ColorState.DARK_MODE);
             welcomeView.getColorChanger().changeColorDisplay(welcomeView.getCurrentColorMode(), welcomeView.getWelcomeScene(), welcomeView.getGamePlayScene(), welcomeView.getResultScene());
             welcomeView.getDarkMode().setSelected(true);
             theModel.setCurrentColorState(ColorState.DARK_MODE);
-
         });
 
+        // When the light mode button is pressed
         welcomeView.getLightMode().setOnAction(event -> {
             welcomeView.setCurrentColorMode(ColorState.LIGHT_MODE);
             welcomeView.getColorChanger().changeColorDisplay(welcomeView.getCurrentColorMode(), welcomeView.getWelcomeScene(), welcomeView.getGamePlayScene(), welcomeView.getResultScene());
             welcomeView.getLightMode().setSelected(true);
             theModel.setCurrentColorState(ColorState.LIGHT_MODE);
-
         });
 
+        // When the purple mode button is pressed
         welcomeView.getPurpleMode().setOnAction(event -> {
             welcomeView.setCurrentColorMode(ColorState.PURPLE_MODE);
             welcomeView.getColorChanger().changeColorDisplay(welcomeView.getCurrentColorMode(), welcomeView.getWelcomeScene(), welcomeView.getGamePlayScene(), welcomeView.getResultScene());
             welcomeView.getPurpleMode().setSelected(true);
             theModel.setCurrentColorState(ColorState.PURPLE_MODE);
-
         });
 
+        // When the 15-second button is pressed
         welcomeView.getTime15().setOnAction(event -> {
             // keep that button selected and update the timer label
             changeCountDown(15, "15");
@@ -107,6 +106,7 @@ public class CodeBashWelcomeController {
             handleCountDown();
         });
 
+        // When the 30-second button is pressed
         welcomeView.getTime30().setOnAction(event -> {
             // keep that button selected and update the timer label
             changeCountDown(30, "30");
@@ -114,12 +114,15 @@ public class CodeBashWelcomeController {
             handleCountDown();
         });
 
+        // When the 45-second button is pressed
         welcomeView.getTime45().setOnAction(event -> {
             // keep that button selected
             changeCountDown(45, "45");
 
             handleCountDown();
         });
+
+        // When the 60-second button is pressed
         welcomeView.getTime60().setOnAction(event -> {
             // keep that button selected and update the timer label
             changeCountDown(60, "60");
@@ -127,12 +130,15 @@ public class CodeBashWelcomeController {
             handleCountDown();
         });
 
+        // When language buttons are pressed
         welcomeView.getEnglish().setOnAction(event -> welcomeView.getEnglish().setSelected(true));
         welcomeView.getJava().setOnAction(event -> welcomeView.getJava().setSelected(true));
         welcomeView.getPython().setOnAction(event -> welcomeView.getPython().setSelected(true));
-
     }
 
+    /**
+     * The countdown
+     */
     private void handleCountDown() {
         timeline.getKeyFrames().add(
                 new KeyFrame(Duration.seconds(1),
@@ -152,7 +158,13 @@ public class CodeBashWelcomeController {
         timeline.playFromStart();
     }
 
+    /**
+     * Highlights the timer button depending on the time
+     * @param time - the number of seconds
+     * @param stringTime - the number of seconds as a string
+     */
     public void changeCountDown(int time, String stringTime) {
+
         if (time == 15) {
             welcomeView.getTime15().setSelected(true);
         }
@@ -179,5 +191,12 @@ public class CodeBashWelcomeController {
         timeline.setCycleCount(Timeline.INDEFINITE);
 
         handleCountDown();
+    }
+
+    /**
+     * The setter to set the view
+     */
+    public void setTheView(CodeBashView theView) {
+        this.theView = theView;
     }
 }

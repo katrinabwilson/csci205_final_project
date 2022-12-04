@@ -13,7 +13,6 @@
  *
  * Description: A basic class that displays how the
  * user did when playing CodeBash.
- *
  * *****************************************/
 package CodeBash;
 
@@ -25,6 +24,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * The class that displays the results of the user
+ * while playing CodeBash
+ */
 public class CodeBashResults {
 
     /** Root node for the scene graph */
@@ -48,9 +51,16 @@ public class CodeBashResults {
     /** Keeps track of the current stats in the game */
     private TypingStats stats;
 
+    /** The HBox that holds the display stats */
     private HBox statsDisplay;
+
+    /** Shows how many errors the user made */
     private VBox errorBox;
+
+    /** Shows the user's words per minute */
     private VBox wpmBox;
+
+    /** Shows the user's accuracy */
     private VBox accuracyBox;
 
     /**
@@ -107,17 +117,8 @@ public class CodeBashResults {
         statsDisplay.getChildren().addAll(errorBox, wpmBox, accuracyBox);
         statsDisplay.setAlignment(Pos.CENTER);
 
-        //errors.setId("stats");
-        //wpm.setId("stats");
-        //accuracy.setId("stats");
-
         title = new Label("");
         title.setId("Title");
-
-        // Add results below label but above button
-        //root.getChildren().add(errors);
-        //root.getChildren().add(wpm);
-        //root.getChildren().add(accuracy);
 
         // Add title text and results stats
         root.getChildren().add(title);
@@ -132,6 +133,10 @@ public class CodeBashResults {
         root.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Shows and sets the stats of the user
+     * @param time - the amount of time the user took
+     */
     public void setStatsLabels(double time) {
         this.errors.setText("" + stats.getErrors());
         this.wpm.setText(String.format("%d", (int) stats.getWPM(time)));
@@ -196,13 +201,10 @@ public class CodeBashResults {
     }
 
     /**
-     * @return - the root node of the scene
+     * The getters for CodeBashResults
      */
     public Parent getRoot(){return root;}
 
-    /**
-     * @return - the playAgain button
-     */
     public Button getPlayAgain() {
         return playAgain;
     }

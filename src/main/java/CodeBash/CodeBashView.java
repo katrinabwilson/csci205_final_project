@@ -15,9 +15,9 @@
  * Description: This represents the basic GUI part of CodeBash.
  * This includes the code to display the text the user has to type
  * and other settings.
- *
  * ****************************************
  */
+
 package CodeBash;
 
 import CodeBash.model.CodeBashModel;
@@ -31,9 +31,16 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
+/**
+ * The GUI of codeBash that displays the text that the user types
+ * and the settings options
+ */
 public class CodeBashView {
+
     /** The model that contains the data and logic behind this view */
     private CodeBashModel theModel;
+
+    /** The welcomeView class */
     private CodeBashWelcome welcomeView;
 
     /** Used to display our logo button*/
@@ -45,7 +52,10 @@ public class CodeBashView {
     /** Root node for the scene graph */
     private VBox root;
 
+    /** The view of the Timer */
     private FXView viewTime;
+
+    /** The model for the Timer */
     private FXModel model;
 
     /** The button that ends game and timer */
@@ -63,7 +73,6 @@ public class CodeBashView {
     /** Where the timer is displayed */
     private HBox showTimer;
 
-
     /**
      * Initialize a new CodeBashView
      */
@@ -72,16 +81,6 @@ public class CodeBashView {
         theModel.createNextSentence();
 
         initSceneGraph();
-        initStyling();
-    }
-
-
-    /**
-     * Returns the root of our scene graph
-     * @return
-     */
-    public VBox getRoot(){
-        return root;
     }
 
     /**
@@ -108,7 +107,6 @@ public class CodeBashView {
         root.setId("root");
 
         // Place topPane in between start button and title
-        //theModel.createNextSentence();
         createLetterTexts(theModel.getCurrentSentence());
 
         // Set up the button to initiate typing
@@ -127,29 +125,10 @@ public class CodeBashView {
         topPane.getChildren().add(directions);
         topPane.setAlignment(Pos.TOP_LEFT);
 
-
-        //root.getChildren().addAll(welcomeView.getWelcomeView().getRoot().getTop());
-//        root.getChildren().add(viewTime.getRoot());
         middlePane.getChildren().addAll(showTimer, letterDisplay, quitBtn);
         middlePane.setAlignment(Pos.CENTER);
         root.getChildren().add(topPane);
         root.getChildren().add(middlePane);
-
-    }
-    public Button getQuitBtn(){return quitBtn;}
-
-    /**
-     * Apply appropriate styles to all the content in the scene graph
-     * for this view
-     */
-    public void initStyling() {
-
-    }
-
-
-    /** ArrayList getter method that returns our text objects */
-    public Text getTextObjectAt(int i){
-        return textObjects.get(i);
     }
 
     /**
@@ -182,6 +161,21 @@ public class CodeBashView {
         this.timerLabel.setText(text);
     }
 
+    /** ArrayList getter method that returns our text objects */
+    public Text getTextObjectAt(int i){
+        return textObjects.get(i);
+    }
+
+    /** Returns the Quit button */
+    public Button getQuitBtn(){return quitBtn;}
+
+    /**
+     * Returns the root of our scene graph
+     * @return
+     */
+    public VBox getRoot(){
+        return root;
+    }
 }
 
 

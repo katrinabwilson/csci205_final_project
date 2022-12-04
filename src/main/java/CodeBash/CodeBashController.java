@@ -15,7 +15,6 @@
  * Description: The controller for the CodeBash
  * app that ties together the model logic and view in
  * order to handle user interaction.
- *
  * ****************************************
  */
 package CodeBash;
@@ -34,6 +33,7 @@ import java.util.ArrayList;
  * CodeBash app.
  */
 public class CodeBashController {
+
     /** The model that contains the data and logic behind this controller */
     private CodeBashModel theModel;
 
@@ -72,7 +72,6 @@ public class CodeBashController {
         this.welcomeView = welcomeView;
         letters = new ArrayList<>();
         currentLetter = 0;
-        //theModel.createNextSentence();
         setLetters(theModel.getCurrentSentence());
         initEventHandlers();
         initBindings();

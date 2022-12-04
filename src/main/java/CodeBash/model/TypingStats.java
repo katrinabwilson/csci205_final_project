@@ -3,7 +3,7 @@
  * Fall2022
  * Instructor: Prof. Brian King
  *
- * Name: Nolan Sauers
+ * Name: Nolan Sauers, Nahom Ayele, Katrina Wilson, Harmony Yeung
  * Section: 01 - 9am
  * Date: 11/16/2022
  * Time: 9:48 AM
@@ -13,7 +13,7 @@
  * Class: TypingStats
  *
  * Description:
- *
+ * The class that keeps track of the user's input
  * ****************************************
  */
 
@@ -103,6 +103,9 @@ public class TypingStats {
         numWords = 0;
     }
 
+    /**
+     * Getters of TypingStats
+     */
     public int getCorrectLetters() {
         return correctLetters;
     }

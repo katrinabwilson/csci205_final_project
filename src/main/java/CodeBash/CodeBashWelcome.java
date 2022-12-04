@@ -2,7 +2,7 @@
  * CSCI205 -Software Engineering and Design
  * Fall2022* Instructor: Prof. Brian King
  *
- * Name: Nahom Ayele
+ * Name: Nahom Ayele, Nolan Sauers, Katrina Wilson, Harmony Yeung
  * Section: Section 01-9am
  * Date: 11/15/22
  * Time: 12:53 PM
@@ -12,7 +12,7 @@
  * Class: CodeBashWelcome
  *
  * Description:
- *
+ * The class that represents the CodeBash welcome scene
  * *****************************************/
 package CodeBash;
 
@@ -20,9 +20,7 @@ import CodeBash.model.CodeBashModel;
 
 public class CodeBashWelcome {
 
-    /**
-     * The current CodeBashModel being used
-     */
+    /** The current CodeBashModel being user */
     private CodeBashModel theModel;
 
     /** This will create the buttons and the overall JavaFx display */
@@ -45,12 +43,10 @@ public class CodeBashWelcome {
     public void setTheView(CodeBashView theView) {
         this.theView = theView;
         theController.setTheView(theView);
-        /*theController.changeCountDown(15, "15");
-        theController.handleCountDown();*/
     }
 
     /**
-     * @return the current view class representing the Welcome interface
+     * @return the getter for CodeBashWelcome
      */
     public CodeBashWelcomeView getWelcomeView() {
         return welcomeView;

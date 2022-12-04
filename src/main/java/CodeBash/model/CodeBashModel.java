@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class CodeBashModel {
+
     /** Generates a list of possible sentences and stores them */
     private LineGenerator lineGenerator;
 
@@ -76,15 +77,12 @@ public class CodeBashModel {
     }
 
     /**
-     * @return - the current sentence displayed on the interface
+     * The getters and setters of CodeBashModel
      */
     public String getCurrentSentence() {
         return currentSentence;
     }
 
-    /**
-     * @return - the lineGenerator object being used
-     */
     public LineGenerator getLineGenerator() { return lineGenerator;}
 
     public TypingStats getStats() {
