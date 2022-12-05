@@ -23,12 +23,9 @@ package CodeBash;
 
 import CodeBash.model.ColorChanger;
 import CodeBash.model.ColorState;
-import CodeBash.model.FXTime.FXModel;
-import CodeBash.model.FXTime.FXView;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -50,9 +47,6 @@ public class CodeBashWelcomeView {
     /** An HBox with the timer settings */
     private HBox timerPane;
 
-    /** An HBox with the color settings */
-    private HBox colorSettings;
-
     /** A VBox with all the settings */
     private VBox settingsPane;
 
@@ -67,9 +61,6 @@ public class CodeBashWelcomeView {
 
     /** A label that changes that displays the seconds passing */
     public Label timerLabel;
-
-    /** Asks the user to choose settings */
-    private Label settingsInstructions;
 
     /** The buttons for the timer */
     private ToggleButton time15;
@@ -134,7 +125,6 @@ public class CodeBashWelcomeView {
         vBox = new VBox();
         topPane = new HBox();
         timerPane = new HBox();
-        colorSettings = new HBox();
         settingsPane = new VBox();
         currentColorMode = ColorState.DARK_MODE;
         timerLabel = new Label("");
@@ -225,13 +215,17 @@ public class CodeBashWelcomeView {
         timerPane.setId("settingsBox");
         settingsPane.getChildren().add(timerPane);
 
+        // Add more instructions
+        Label enterLabel = new Label("when playing, press enter to type the next line");
+        enterLabel.setId("instructions");
+        vBox.getChildren().add(enterLabel);
+        vBox.setAlignment(Pos.CENTER);
+
         // Set up the button to initiate typing
         startBtn = new Button("START");
-        //startBtn.setAlignment(Pos.TOP_CENTER);
         startBtn.setId("transitionButton");
         vBox.getChildren().add(startBtn);
         vBox.setAlignment(Pos.CENTER);
-        //vBox.setStyle("-fx-border-color: Orange");
 
         // Organize the BorderPane
         root.setId("root");
