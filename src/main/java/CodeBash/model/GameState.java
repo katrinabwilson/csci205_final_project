@@ -5,7 +5,6 @@ package CodeBash.model;
  */
 public enum GameState {
     NEW_GAME,
-    CONT_GAME,
     IN_PROGRESS,
     GAME_END
 }
