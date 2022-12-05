@@ -23,12 +23,6 @@
     -fx-text-fill: #646669;
     -fx-font-family: "Roboto Mono", sans-serif;
 }
-#quit {
-    -fx-text-fill: Orange;
-    -fx-background-color: transparent;
-    -fx-font-size: 20;
-    -fx-font-family: "Roboto Mono", sans-serif;
-}
 
 #Title{
     -fx-text-fill: #646669;
@@ -50,7 +44,7 @@
     -fx-text-fill: #646669;
     -fx-background-color: transparent;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-size: 21; /* 12 */
+    -fx-font-size: 21;
 }
 
 #setting:hover {
@@ -61,7 +55,7 @@
     -fx-text-fill: Orange;
     -fx-background-color: transparent;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-size: 21; /* 12 */
+    -fx-font-size: 21;
 
 }
 #transitionButton {
@@ -80,13 +74,6 @@
     -fx-padding: 30px;
 }
 
-#playAgain {
-    -fx-text-fill: Orange;
-    -fx-background-color: transparent;
-    -fx-font-size: 15;
-    -fx-font-family: "Roboto Mono", sans-serif;
-
-}
 
 #label {
     -fx-font-size: 21;
@@ -114,7 +101,7 @@
     -fx-border-insets: 1 1 1 1, 0;
     -fx-background-color: transparent;
     -fx-font-family:"Roboto Mono", sans-serif;
-    -fx-font-size: 21; /* 12 */
+    -fx-font-size: 21;
     -fx-text-fill: #646669;
 }
 
@@ -132,7 +119,7 @@
     -fx-text-fill: orange;
     -fx-background-color: transparent;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-size: 21; /* 12 */
+    -fx-font-size: 21;
 
 }
 

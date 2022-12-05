@@ -54,7 +54,7 @@ public class CodeBashIntro {
         Label desc1 = new Label("looking to improve your lightning fast typing skills?\n " +
                                 "\n       forgetting syntax to certain programming language?\n" +
                                 "\nlucky you! you've come to the right place.");
-        desc1.setId("intro");
+        desc1.setId("instructions");
 
         root.getChildren().add(desc1);
         root.setAlignment(Pos.CENTER);
@@ -62,7 +62,6 @@ public class CodeBashIntro {
         tellMeMore = new Button("tell me more...");
         tellMeMore.setId("transitionButton");
         root.getChildren().add(tellMeMore);
-
 
     }
 
