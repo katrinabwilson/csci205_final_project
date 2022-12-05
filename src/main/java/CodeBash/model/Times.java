@@ -1,5 +1,5 @@
 /* *****************************************
- * CSCI205 -Software Engineering and Design
+ * CSCI205 - Software Engineering and Design
  * Fall2022* Instructor: Prof. Brian King
  *
  * Name: Harmony Yeung, Nahom Ayele, Nolan Sauers, Katrina Wilson
@@ -90,7 +90,7 @@ public class Times {
     /**
      * The actual countdown
      *
-      * @return the counterLabel with the amount of time the user has left
+     * @return the counterLabel with the amount of time the user has left
      */
     public String countdown() {
         time = new Timer(1000, new ActionListener() {

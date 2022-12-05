@@ -42,6 +42,9 @@ public class CodeBashWelcome {
         this.theController = new CodeBashWelcomeController(welcomeView, theModel);
     }
 
+    /**
+     * Initializing the view and the controller
+     */
     public void setTheView(CodeBashView theView) {
         this.theView = theView;
         theController.setTheView(theView);
