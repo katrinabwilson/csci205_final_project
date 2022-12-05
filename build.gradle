@@ -47,7 +47,7 @@ application {
     mainModule = "csci205_final_project"
 
     // "lab03.Skewness" for example DO NOT add .java at the end
-    mainClassName = "org.team05.Main"
+    mainClassName = "CodeBash.CodeBashMain"
 
     if (project.hasProperty("mainClass")) {
         getMainClass().set(project.getProperty("mainClass"))
