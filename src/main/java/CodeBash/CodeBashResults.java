@@ -12,8 +12,7 @@
  * Class: CodeBashResults
  *
  * Description: A basic class that displays how the
- * user did when playing CodeBash.
- *
+ * user did when playing CodeBash
  * *****************************************/
 package CodeBash;
 
@@ -48,9 +47,16 @@ public class CodeBashResults {
     /** Keeps track of the current stats in the game */
     private TypingStats stats;
 
+    /** HBox to contain the stats */
     private HBox statsDisplay;
+
+    /** VBox that contains the amount of errors the user inputted */
     private VBox errorBox;
+
+    /** The VBox that contains the words per minute of the user */
     private VBox wpmBox;
+
+    /** The VBox that contains the accuracy of the user */
     private VBox accuracyBox;
 
     /**
@@ -82,21 +88,18 @@ public class CodeBashResults {
         wpmBox = new VBox();
         accuracyBox = new VBox();
 
-        //errors = new Label("Errors: " + stats.getErrors());
         Label errorLabel = new Label("errors");
         errorLabel.setId("statsLabel");
         errors = new Label("" + stats.getErrors());
         errors.setId("statsInfo");
         errorBox.getChildren().addAll(errorLabel, errors);
 
-        //wpm = new Label(String.format("Words per minute: %d", (int) stats.getWPM(30)));
         Label wpmLabel = new Label("wpm");
         wpmLabel.setId("statsLabel");
         wpm = new Label(String.format("%d", (int) stats.getWPM(30)));
         wpm.setId("statsInfo");
         wpmBox.getChildren().addAll(wpmLabel, wpm);
 
-        //accuracy = new Label(String.format("Accuracy: %.2f%%", stats.calculateAccuracy()));
         Label accuracyLabel = new Label("accuracy");
         accuracyLabel.setId("statsLabel");
         accuracy = new Label(String.format("%.2f%%", stats.calculateAccuracy()));
@@ -107,17 +110,8 @@ public class CodeBashResults {
         statsDisplay.getChildren().addAll(errorBox, wpmBox, accuracyBox);
         statsDisplay.setAlignment(Pos.CENTER);
 
-        //errors.setId("stats");
-        //wpm.setId("stats");
-        //accuracy.setId("stats");
-
         title = new Label("");
         title.setId("Title");
-
-        // Add results below label but above button
-        //root.getChildren().add(errors);
-        //root.getChildren().add(wpm);
-        //root.getChildren().add(accuracy);
 
         // Add title text and results stats
         root.getChildren().add(title);
@@ -132,6 +126,10 @@ public class CodeBashResults {
         root.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Setting the labels using the user's stats as they played
+     * @param time - the amount of time the user took
+     */
     public void setStatsLabels(double time) {
         this.errors.setText("" + stats.getErrors());
         this.wpm.setText(String.format("%d", (int) stats.getWPM(time)));
@@ -196,13 +194,10 @@ public class CodeBashResults {
     }
 
     /**
-     * @return - the root node of the scene
+     * The getters of CodeBashResults
      */
     public Parent getRoot(){return root;}
 
-    /**
-     * @return - the playAgain button
-     */
     public Button getPlayAgain() {
         return playAgain;
     }

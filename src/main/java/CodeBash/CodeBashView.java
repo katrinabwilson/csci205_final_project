@@ -14,8 +14,7 @@
  *
  * Description: This represents the basic GUI part of CodeBash.
  * This includes the code to display the text the user has to type
- * and other settings.
- *
+ * and other settings
  * ****************************************
  */
 package CodeBash;
@@ -31,9 +30,16 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
+/**
+ * The GUI of CodeBash that displays the text that the user types
+ * and the settings options
+ */
 public class CodeBashView {
+
     /** The model that contains the data and logic behind this view */
     private CodeBashModel theModel;
+
+    /** The welcomeView class */
     private CodeBashWelcome welcomeView;
 
     /** Used to display our logo button */
@@ -45,7 +51,10 @@ public class CodeBashView {
     /** Root node for the scene graph */
     private VBox root;
 
+    /** The view of the Timer */
     private FXView viewTime;
+
+    /** The model for the Timer */
     private FXModel model;
 
     /** The button that ends game and timer */
@@ -72,16 +81,6 @@ public class CodeBashView {
         theModel.createNextSentence();
 
         initSceneGraph();
-        initStyling();
-    }
-
-
-    /**
-     * Returns the root of our scene graph
-     * @return
-     */
-    public VBox getRoot(){
-        return root;
     }
 
     /**
@@ -132,21 +131,6 @@ public class CodeBashView {
         root.getChildren().add(middlePane);
 
     }
-    public Button getQuitBtn(){return quitBtn;}
-
-    /**
-     * Apply appropriate styles to all the content in the scene graph
-     * for this view
-     */
-    public void initStyling() {
-
-    }
-
-
-    /** ArrayList getter method that returns our text objects */
-    public Text getTextObjectAt(int i){
-        return textObjects.get(i);
-    }
 
     /**
      * This creates Text objects that are then added to the game
@@ -171,13 +155,21 @@ public class CodeBashView {
     }
 
     /**
-     * Resets where the timer starts at
-     * @param text
+     * The getters and setter of CodeBashView
      */
     public void setTimerLabel(String text) {
         this.timerLabel.setText(text);
     }
 
+    public VBox getRoot(){
+        return root;
+    }
+
+    public Button getQuitBtn(){return quitBtn;}
+
+    public Text getTextObjectAt(int i){
+        return textObjects.get(i);
+    }
 }
 
 

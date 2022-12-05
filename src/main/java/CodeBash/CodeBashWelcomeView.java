@@ -3,7 +3,7 @@
  * Fall 2022
  * Instructor: Prof. Brian King
  *
- * Name: Katrina Wilson
+ * Name: Katrina Wilson, Nahom Ayele, Nolan Sauers, Harmony Yeung
  * Section: 9am - 01
  * Date: 12/1/22
  * Time: 10:37 AM
@@ -13,7 +13,9 @@
  * Class: CodeBashWelcomeView
  *
  * Description:
- *
+ * The CodeBash welcome scene's view that controls how the
+ * timer buttons, color buttons, the language button, and the
+ * start button are displayed
  * ****************************************
  */
 
@@ -30,7 +32,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * The CodeBash Welcome view class that displays all the buttons
+ * necessary for the settings options
+ */
 public class CodeBashWelcomeView {
+
     /** Used to display the start button and title */
     private VBox vBox;
 
@@ -70,6 +77,7 @@ public class CodeBashWelcomeView {
     private ToggleButton time45;
     private ToggleButton time60;
 
+    /** The toggle group for the timers */
     private ToggleGroup timers;
 
     /** the dark mode button */
@@ -81,7 +89,7 @@ public class CodeBashWelcomeView {
     /** the purple mode button*/
     private ToggleButton purpleMode;
 
-    // The language buttons
+    /** The language buttons */
     private ToggleGroup languageGroup;
     private ToggleButton english;
     private ToggleButton java;
@@ -108,6 +116,9 @@ public class CodeBashWelcomeView {
     /** an instance of ColorChanger that will alter the display's coloring */
     private ColorChanger colorChanger;
 
+    /**
+     * Initializes the colorChanger and calls other methods
+     */
     public CodeBashWelcomeView() {
         colorChanger = new ColorChanger();
         initSceneGraph();
@@ -115,6 +126,9 @@ public class CodeBashWelcomeView {
 
     }
 
+    /**
+     * Initializes and adds the title, instructions, buttons
+     */
     public void initSceneGraph() {
         root = new VBox();
         vBox = new VBox();
@@ -136,12 +150,6 @@ public class CodeBashWelcomeView {
         instructions.setId("instructions");
         topPane.getChildren().add(instructions);
         topPane.setAlignment(Pos.TOP_LEFT);
-
-        // Add setting instructions
-        //settingsInstructions = new Label("Choose your settings: ");
-        //settingsInstructions.setId("btnLabel");
-        //vBox.getChildren().add(settingsInstructions);
-        //vBox.setAlignment(Pos.CENTER);
 
         // Setting up the timer buttons
         time15 = new ToggleButton("15");
@@ -229,10 +237,6 @@ public class CodeBashWelcomeView {
         root.setId("root");
         root.getChildren().addAll(topPane, settingsPane, vBox);
         root.setAlignment(Pos.TOP_CENTER);
-        //root.setTop(topPane);
-        //root.setCenter(settingsPane);
-        //root.setBottom(vBox);
-
     }
 
     /**
@@ -240,24 +244,30 @@ public class CodeBashWelcomeView {
      * for this Welcome screen
      */
     private void initStyling() {
-//        vBox.setPrefSize(1000, 300);
         vBox.setSpacing(50);
     }
 
+    /**
+     * When called, this method assigns scenes to the CodeBashWelcome object,
+     * later to be used in changing their color styling.
+     *
+     * @param welcomeScene  - the first scene the user is prompted with
+     * @param gamePlayScene - the scene where the user plays the game
+     * @param resultsScene  - where the results are posted and the user is prompted to play again
+     */
+    public void setScenes(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene) {
+        this.welcomeScene = welcomeScene;
+        this.gamePlayScene = gamePlayScene;
+        this.resultScene = resultsScene;
+    }
 
-
+    /**
+     * The getters and setters for the CodeBashWelcomeView class
+     */
     public VBox getRoot() {
         return root;
     }
 
-
-    public VBox getvBox() {
-        return vBox;
-    }
-
-    public ToggleGroup getLanguageGroup() {
-        return languageGroup;
-    }
 
     public ToggleButton getEnglish() {
         return english;
@@ -291,7 +301,6 @@ public class CodeBashWelcomeView {
         return time60;
     }
 
-
     public ToggleButton getDarkMode() {
         return darkMode;
     }
@@ -303,7 +312,6 @@ public class CodeBashWelcomeView {
     public ToggleButton getPurpleMode() {
         return purpleMode;
     }
-
 
     public Scene getWelcomeScene() {
         return welcomeScene;
@@ -327,19 +335,5 @@ public class CodeBashWelcomeView {
 
     public ColorChanger getColorChanger() {
         return colorChanger;
-    }
-
-    /**
-     * When called, this method assigns scenes to the CodeBashWelcome object,
-     * later to be used in changing their color styling.
-     *
-     * @param welcomeScene  - the first scene the user is prompted with
-     * @param gamePlayScene - the scene where the user plays the game
-     * @param resultsScene  - where the results are posted and the user is prompted to play again
-     */
-    public void setScenes(Scene welcomeScene, Scene gamePlayScene, Scene resultsScene) {
-        this.welcomeScene = welcomeScene;
-        this.gamePlayScene = gamePlayScene;
-        this.resultScene = resultsScene;
     }
 }

@@ -14,8 +14,7 @@
  *
  * Description: The controller for the CodeBash
  * app that ties together the model logic and view in
- * order to handle user interaction.
- *
+ * order to handle user interaction
  * ****************************************
  */
 package CodeBash;
@@ -23,7 +22,6 @@ package CodeBash;
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorState;
 import CodeBash.model.FXTime.FXModel;
-import CodeBash.model.GameState;
 import CodeBash.model.LetterEvaluator;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
@@ -35,19 +33,20 @@ import java.util.ArrayList;
  * CodeBash app.
  */
 public class CodeBashController {
+
     /** The model that contains the data and logic behind this controller */
     private CodeBashModel theModel;
 
-    /** We need the time buttons on the welcome screen*/
+    /** We need the time buttons on the welcome screen */
     private CodeBashWelcome welcomeView;
 
     /** The Model to get the timing information */
     private FXModel timeModel;
 
-    /** A Timeline object that is handled frame by frame (helpful for showing decrease on screen)*/
+    /** A Timeline object that is handled frame by frame (helpful for showing decrease on screen) */
     private Timeline timeline;
 
-    /** The view that contains the visual representation of the data*/
+    /** The view that contains the visual representation of the data */
     private CodeBashView theView;
 
     /**
@@ -73,10 +72,8 @@ public class CodeBashController {
         this.welcomeView = welcomeView;
         letters = new ArrayList<>();
         currentLetter = 0;
-        //theModel.createNextSentence();
         setLetters(theModel.getCurrentSentence());
         initEventHandlers();
-        initBindings();
     }
 
     /**
@@ -86,8 +83,6 @@ public class CodeBashController {
         this.theView.getRoot().setOnKeyPressed((key) -> {
             // Evaluate key pressed
             LetterEvaluator letterEvaluator;
-
-            //System.out.println("current letter pressed: " + key.getCode().toString());
 
             // If correct, change color to green
             if ((key.getCode() != KeyCode.BACK_SPACE) && (key.getCode() != KeyCode.ENTER) && (key.getCode() != KeyCode.SHIFT)) {
@@ -122,7 +117,7 @@ public class CodeBashController {
                 } else if (key.getText().charAt(0) == ']') {
                     typedLetter = '}';
                 }
-                // otherwise, capitalize letter
+                // Otherwise, capitalize letter
                 else {
                     typedLetter = key.getText().toUpperCase().charAt(0);
                 }
@@ -150,7 +145,6 @@ public class CodeBashController {
 
                 // If the typed letter is incorrect
                 else {
-
                     // Change the coloring depending on what the current color theme is
                     if (theModel.getCurrentColorState() == ColorState.DARK_MODE) {
                         theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: Orange");
@@ -163,7 +157,6 @@ public class CodeBashController {
                         theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #683a71");
                     }
                     theModel.getStats().typedIncorrect();
-
                 }
                 currentLetter++;
             }
@@ -187,13 +180,6 @@ public class CodeBashController {
 
             }
         });
-    }
-
-    /**
-     * Initialize the bindings used in our app
-     */
-    private void initBindings(){
-
     }
 
     /**
