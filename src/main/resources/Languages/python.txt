@@ -1,1 +1,47 @@
 num = 0
+class Person:
+def __init__(self, name, age):
+self.name = name
+self.age = age
+def my_function(food):
+for x in food: print(x)
+fruits = ["apple", "banana", "cherry"]
+my_function(fruits)
+f = open("demofile.txt", "r")
+print(f.readline())
+f.close()
+def solveSudoku(sudoku, i=0, j=0):
+i, j = findNextCellToFill(sudoku)
+if i == -1:
+return True
+for e in range(1, 10):
+if isValid(sudoku, i, j, e):
+sudoku[i][j] = e
+if solveSudoku(sudoku, i, j):
+return True
+sudoku[i][j] = 0
+return False
+ef bruteforce(charset, maxlength):
+return (''.join(candidate)
+for candidate in itertools.chain.from_iterable(itertools.product(charset, repeat=i)
+for i in range(1, maxlength + 1)))\\ndef extractFile(arFile, attempt):
+try: arFile.extractall(pwd=attempt)
+print "Password found! password is %s"%attempt
+exit(0)
+except Exception,e:
+pass
+if datetime.datetime.now().second%20==0:
+print 'At %s'%attempt
+def factorial(n):
+return 1 if (n == 1 or n == 0) else n * factorial(n - 1)
+class Node:
+def __init__(self, next=None, prev=None, data=None):
+self.next = next self.prev = prev
+self.data = data
+def __str__(self):
+cur = self.head.next
+out = "\"
+while cur:
+out += str(cur.value) + "->\"\
+cur = cur.next
+return out[:-3]
