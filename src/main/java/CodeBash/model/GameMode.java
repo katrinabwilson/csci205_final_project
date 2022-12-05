@@ -1,4 +1,4 @@
-/* *****************************************change
+/* *****************************************
  * CSCI205 - Software Engineering and Design
  * Fall 2022
  * Instructor: Prof. Brian King
