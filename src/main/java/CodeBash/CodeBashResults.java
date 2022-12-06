@@ -122,7 +122,7 @@ public class CodeBashResults {
 
         // Set up the button to initiate typing
         playAgain = new Button("PLAY AGAIN");
-        endGame = new Button("End Game");
+        endGame = new Button("end game");
         playAgain.setAlignment(Pos.TOP_CENTER);
         playAgain.setId("transitionButton");
         endGame.setId("transitionButton");
