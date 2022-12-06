@@ -127,22 +127,20 @@ public class LineGenerator {
         // java.txt
         Scanner java = new Scanner(this.getClass().getResourceAsStream("/Languages/java.txt"));
         while (java.hasNextLine()) {
-            // *Code Dictionary was derived from monkeytpe pre made library*
+            // *Code Dictionary was derived from monkeytpe pre-made library*
             javaList.add(java.nextLine());
         }
 
         // python.txt
         Scanner python = new Scanner(this.getClass().getResourceAsStream("/Languages/python.txt"));
         while (python.hasNextLine()) {
-            // *Code Dictionary was derived from monkeytpe pre made library*
+            // *Code Dictionary was derived from monkeytpe pre-made library*
             pythonList.add(python.nextLine());
         }
     }
 
     /**
-     * Getter method for all words in the dictionary for use in verifying sentences
-     *
-     * @return an ArrayList of all the possible sentences
+     * Getter methods for LineGenerator
      */
     public ArrayList<String> getSentenceList(){
         return this.sentenceList;
@@ -154,15 +152,5 @@ public class LineGenerator {
 
     public ArrayList<String> getPythonList() {
         return pythonList;
-    }
-
-    /** Temporary test method */
-    public static void main(String[] args) throws IOException {
-
-        LineGenerator lineGenerator = new LineGenerator();
-        lineGenerator.scanDocuments();
-        for (String line : lineGenerator.getSentenceList()) {
-            System.out.println(line + "\n");
-        }
     }
 }

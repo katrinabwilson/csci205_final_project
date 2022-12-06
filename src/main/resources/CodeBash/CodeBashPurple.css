@@ -23,17 +23,11 @@
     -fx-text-fill: #646669;
     -fx-font-family: "Roboto Mono", sans-serif;
 }
-#quit {
-    -fx-text-fill: #967bb6;
-    -fx-background-color: transparent;
-    -fx-font-size: 15;
-    -fx-font-family: "Roboto Mono", sans-serif;
-}
 
 #Title{
     -fx-text-fill: #683a71;
     -fx-fill: #683a71;
-    -fx-font-size: 30;
+    -fx-font-size: 40;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: 400;
     -fx-padding: 15px;
@@ -47,10 +41,10 @@
 
 }
 #setting {
-    -fx-text-fill: #646669;
+    -fx-text-fill: #6d5788;
     -fx-background-color: transparent;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-size: 1em; /* 12 */
+    -fx-font-size: 21;
 }
 
 #setting:hover {
@@ -61,13 +55,13 @@
     -fx-text-fill: #967bb6;
     -fx-background-color: transparent;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-size: 1em; /* 12 */
+    -fx-font-size: 21;
 
 }
 #transitionButton {
     -fx-text-fill: #bc92c5;
     -fx-background-color: transparent;
-    -fx-font-size: 18;
+    -fx-font-size: 28;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-font-weight: Bold;
     -fx-padding: 50px;
@@ -81,13 +75,6 @@
     -fx-padding: 30px;
 }
 
-#playAgain {
-    -fx-text-fill: #967bb6;
-    -fx-background-color: transparent;
-    -fx-font-size: 15;
-    -fx-font-family: "Roboto Mono", sans-serif;
-
-}
 
 #label {
     -fx-text-fill: #a9a9a9;
@@ -97,12 +84,14 @@
 #btnLabel {
     -fx-text-fill: #a9a9a9;
     -fx-font-family: "Roboto Mono", sans-serif;
+    -fx-font-size: 21;
 }
 
 #instructions {
     -fx-text-fill: #a9a9a9;
     -fx-font-family: "Roboto Mono", sans-serif;
     -fx-padding: 29px;
+    -fx-font-size: 21;
 }
 .toggle-button{
     -fx-transition-duration: 0.4s;
@@ -112,8 +101,8 @@
     -fx-border-insets: 1 1 1 1, 0;
     -fx-background-color: transparent;
     -fx-font-family:"Roboto Mono", sans-serif;
-    -fx-font-size: 1em; /* 12 */
-    -fx-text-fill: #646669;
+    -fx-font-size: 21;
+    -fx-text-fill: #6d5788;
 }
 
 .toggle-button:hover {
@@ -130,7 +119,7 @@
     -fx-text-fill: #967bb6;
     -fx-background-color: transparent;
     -fx-font-family: "Roboto Mono", sans-serif;
-    -fx-font-size: 1em; /* 12 */
+    -fx-font-size: 21;
 
 }
 

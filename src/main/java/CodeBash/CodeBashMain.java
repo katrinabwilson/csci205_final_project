@@ -15,7 +15,7 @@
  * Description:
  * A class file to present a GUI to analyze key presses and their accuracy
  * against the printed sentence on the interface. It instantiates a game play
- * screen, welcome screen, and a results screen.
+ * screen, welcome screen, and a results screen
  * ****************************************
  */
 
@@ -23,13 +23,17 @@ package CodeBash;
 
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.FXTime.FXModel;
-import CodeBash.model.FXTime.FXView;
 import CodeBash.model.GameState;
 import javafx.application.Application;
-import javafx.beans.binding.Bindings;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * The class that represents the GUI to recognize the key presses and
+ * instantiates the game play scene, welcome scene, and the results
+ * scene
+ */
 public class CodeBashMain extends Application {
 
     /** The model that contains the data and logic behind this app */
@@ -69,9 +73,10 @@ public class CodeBashMain extends Application {
 
     /** The scene that displays the game play results and */
     private Scene resultScene;
+
     /**
      * Our standard main program for a JavaFX application
-     * @param args
+     * @param args - the argument
      */
     public static void main(String[] args) {
         launch(args);
@@ -90,15 +95,11 @@ public class CodeBashMain extends Application {
         this.theWelcome = new CodeBashWelcome(theModel);
         this.theView = new CodeBashView(theModel);
         theWelcome.setTheView(theView);
-
         this.theController = new CodeBashController(theModel, theView, timeModel, theWelcome);
-
         this.theResults = new CodeBashResults(theModel.getStats());
-
 
         // URL for the initial css styling
         darkModeUrl = getClass().getResource("/CodeBash/CodeBashDark.css").toExternalForm();
-
     }
 
     /**
@@ -146,10 +147,10 @@ public class CodeBashMain extends Application {
      * Specifically, these buttons handle switching the interface the user interacts
      * with, from the welcome screen, to the game play screen, to the results screen.
      *
-     * @param stage
-     * @param scene
-     * @param welcomeScene
-     * @param resultScene
+     * @param stage - what the scenes must be set to
+     * @param scene - the game scene
+     * @param welcomeScene - the welcome scene
+     * @param resultScene - the results scene
      */
     private void initSceneChanges(Stage stage, Scene scene, Scene welcomeScene, Scene resultScene) {
         theIntro.getTellMeMore().setOnMouseClicked(event -> {
@@ -205,7 +206,9 @@ public class CodeBashMain extends Application {
             theController.reset();
             theView.getRoot().requestFocus();
         });
-
+        // When "End Game" button is clicked, it closes the current gameplay window
+        theResults.getEndGame().setOnMouseClicked(event ->
+                Platform.exit());
     }
 }
 

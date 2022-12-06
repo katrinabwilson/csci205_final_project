@@ -3,7 +3,7 @@
  * Fall 2022
  * Instructor: Prof. Brian King
  *
- * Name: Katrina Wilson
+ * Name: Katrina Wilson, Nahom Ayele, Nolan Sauers, Harmony Yeung
  * Section: 9am - 01
  * Date: 12/1/22
  * Time: 10:37 AM
@@ -13,7 +13,9 @@
  * Class: CodeBashWelcomeView
  *
  * Description:
- *
+ * The CodeBash welcome scene's view that controls how the
+ * timer buttons, color buttons, the language button, and the
+ * start button are displayed
  * ****************************************
  */
 
@@ -21,16 +23,18 @@ package CodeBash;
 
 import CodeBash.model.ColorChanger;
 import CodeBash.model.ColorState;
-import CodeBash.model.FXTime.FXModel;
-import CodeBash.model.FXTime.FXView;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * The CodeBash Welcome view class that displays all the buttons
+ * necessary for the settings options
+ */
 public class CodeBashWelcomeView {
+
     /** Used to display the start button and title */
     private VBox vBox;
 
@@ -42,9 +46,6 @@ public class CodeBashWelcomeView {
 
     /** An HBox with the timer settings */
     private HBox timerPane;
-
-    /** An HBox with the color settings */
-    private HBox colorSettings;
 
     /** A VBox with all the settings */
     private VBox settingsPane;
@@ -61,15 +62,13 @@ public class CodeBashWelcomeView {
     /** A label that changes that displays the seconds passing */
     public Label timerLabel;
 
-    /** Asks the user to choose settings */
-    private Label settingsInstructions;
-
     /** The buttons for the timer */
     private ToggleButton time15;
     private ToggleButton time30;
     private ToggleButton time45;
     private ToggleButton time60;
 
+    /** The toggle group for the timers */
     private ToggleGroup timers;
 
     /** the dark mode button */
@@ -81,33 +80,42 @@ public class CodeBashWelcomeView {
     /** the purple mode button*/
     private ToggleButton purpleMode;
 
-    // The language buttons
+    /** The toggle group for the language buttons */
     private ToggleGroup languageGroup;
+
+    /** The english mode button */
     private ToggleButton english;
+
+    /** The java mode button */
     private ToggleButton java;
+
+    /** The python mode button */
     private ToggleButton python;
 
     /** Button label */
     private Label btnLabel;
 
-    /** the toggle group for color*/
+    /** The toggle group for color*/
     private ToggleGroup colorGroup;
 
-    /** the initial welcome screen */
+    /** The initial welcome screen */
     private Scene welcomeScene;
 
-    /** the game play screen */
+    /** The game play screen */
     private Scene gamePlayScene;
 
-    /** the scene with the stats and offering the user to play again */
+    /** The scene with the stats and offering the user to play again */
     private Scene resultScene;
 
     /** The current color theme the game is in */
     private ColorState currentColorMode;
 
-    /** an instance of ColorChanger that will alter the display's coloring */
+    /** An instance of ColorChanger that will alter the display's coloring */
     private ColorChanger colorChanger;
 
+    /**
+     * Initializes the colorChanger and calls other methods
+     */
     public CodeBashWelcomeView() {
         colorChanger = new ColorChanger();
         initSceneGraph();
@@ -115,12 +123,14 @@ public class CodeBashWelcomeView {
 
     }
 
+    /**
+     * Initializes and adds the title, instructions, buttons
+     */
     public void initSceneGraph() {
         root = new VBox();
         vBox = new VBox();
         topPane = new HBox();
         timerPane = new HBox();
-        colorSettings = new HBox();
         settingsPane = new VBox();
         currentColorMode = ColorState.DARK_MODE;
         timerLabel = new Label("");
@@ -136,12 +146,6 @@ public class CodeBashWelcomeView {
         instructions.setId("instructions");
         topPane.getChildren().add(instructions);
         topPane.setAlignment(Pos.TOP_LEFT);
-
-        // Add setting instructions
-        //settingsInstructions = new Label("Choose your settings: ");
-        //settingsInstructions.setId("btnLabel");
-        //vBox.getChildren().add(settingsInstructions);
-        //vBox.setAlignment(Pos.CENTER);
 
         // Setting up the timer buttons
         time15 = new ToggleButton("15");
@@ -217,22 +221,22 @@ public class CodeBashWelcomeView {
         timerPane.setId("settingsBox");
         settingsPane.getChildren().add(timerPane);
 
+        // Add more instructions
+        Label enterLabel = new Label("when playing, press enter to type the next line");
+        enterLabel.setId("instructions");
+        vBox.getChildren().add(enterLabel);
+        vBox.setAlignment(Pos.CENTER);
+
         // Set up the button to initiate typing
         startBtn = new Button("START");
-        //startBtn.setAlignment(Pos.TOP_CENTER);
         startBtn.setId("transitionButton");
         vBox.getChildren().add(startBtn);
         vBox.setAlignment(Pos.CENTER);
-        //vBox.setStyle("-fx-border-color: Orange");
 
         // Organize the BorderPane
         root.setId("root");
         root.getChildren().addAll(topPane, settingsPane, vBox);
         root.setAlignment(Pos.TOP_CENTER);
-        //root.setTop(topPane);
-        //root.setCenter(settingsPane);
-        //root.setBottom(vBox);
-
     }
 
     /**
@@ -240,93 +244,7 @@ public class CodeBashWelcomeView {
      * for this Welcome screen
      */
     private void initStyling() {
-//        vBox.setPrefSize(1000, 300);
         vBox.setSpacing(50);
-    }
-
-
-
-    public VBox getRoot() {
-        return root;
-    }
-
-
-    public VBox getvBox() {
-        return vBox;
-    }
-
-    public ToggleGroup getLanguageGroup() {
-        return languageGroup;
-    }
-
-    public ToggleButton getEnglish() {
-        return english;
-    }
-
-    public ToggleButton getJava() {
-        return java;
-    }
-
-    public ToggleButton getPython() {
-        return python;
-    }
-
-    public Button getStartBtn() {
-        return startBtn;
-    }
-
-    public ToggleButton getTime15() {
-        return time15;
-    }
-
-    public ToggleButton getTime30() {
-        return time30;
-    }
-
-    public ToggleButton getTime45() {
-        return time45;
-    }
-
-    public ToggleButton getTime60() {
-        return time60;
-    }
-
-
-    public ToggleButton getDarkMode() {
-        return darkMode;
-    }
-
-    public ToggleButton getLightMode() {
-        return lightMode;
-    }
-
-    public ToggleButton getPurpleMode() {
-        return purpleMode;
-    }
-
-
-    public Scene getWelcomeScene() {
-        return welcomeScene;
-    }
-
-    public Scene getGamePlayScene() {
-        return gamePlayScene;
-    }
-
-    public Scene getResultScene() {
-        return resultScene;
-    }
-
-    public ColorState getCurrentColorMode() {
-        return currentColorMode;
-    }
-
-    public void setCurrentColorMode(ColorState currentColorMode) {
-        this.currentColorMode = currentColorMode;
-    }
-
-    public ColorChanger getColorChanger() {
-        return colorChanger;
     }
 
     /**
@@ -341,5 +259,132 @@ public class CodeBashWelcomeView {
         this.welcomeScene = welcomeScene;
         this.gamePlayScene = gamePlayScene;
         this.resultScene = resultsScene;
+    }
+
+    /**
+     * @return - the VBox root for CodeBashWelcomeView
+     */
+    public VBox getRoot() {
+        return root;
+    }
+
+    /**
+     * @return the toggle button for english
+     */
+    public ToggleButton getEnglish() {
+        return english;
+    }
+
+    /**
+     * @return the toggle button for java
+     */
+    public ToggleButton getJava() {
+        return java;
+    }
+
+    /**
+     * @return the toggle button for python
+     */
+    public ToggleButton getPython() {
+        return python;
+    }
+
+    /**
+     * @return the button for the Start button
+     */
+    public Button getStartBtn() {
+        return startBtn;
+    }
+
+    /**
+     * @return the toggle button for 15 seconds
+     */
+    public ToggleButton getTime15() {
+        return time15;
+    }
+
+    /**
+     * @return the toggle button for 30 seconds
+     */
+    public ToggleButton getTime30() {
+        return time30;
+    }
+
+    /**
+     * @return the toggle button for 45 seconds
+     */
+    public ToggleButton getTime45() {
+        return time45;
+    }
+
+    /**
+     * @return the toggle button for 60 seconds
+     */
+    public ToggleButton getTime60() {
+        return time60;
+    }
+
+    /**
+     * @return the toggle button for dark mode
+     */
+    public ToggleButton getDarkMode() {
+        return darkMode;
+    }
+
+    /**
+     * @return the toggle button for light mode
+     */
+    public ToggleButton getLightMode() {
+        return lightMode;
+    }
+
+    /**
+     * @return the toggle button for purple mode
+     */
+    public ToggleButton getPurpleMode() {
+        return purpleMode;
+    }
+
+    /**
+     * @return the welcome scene
+     */
+    public Scene getWelcomeScene() {
+        return welcomeScene;
+    }
+
+    /**
+     * @return the game play scene
+     */
+    public Scene getGamePlayScene() {
+        return gamePlayScene;
+    }
+
+    /**
+     * @return the results scene
+     */
+    public Scene getResultScene() {
+        return resultScene;
+    }
+
+    /**
+     * @return the current color mode
+     */
+    public ColorState getCurrentColorMode() {
+        return currentColorMode;
+    }
+
+    /**
+     * Sets the color mode for the app
+     * @param currentColorMode - what you change the color mode to
+     */
+    public void setCurrentColorMode(ColorState currentColorMode) {
+        this.currentColorMode = currentColorMode;
+    }
+
+    /**
+     * @return the current color changer object
+     */
+    public ColorChanger getColorChanger() {
+        return colorChanger;
     }
 }

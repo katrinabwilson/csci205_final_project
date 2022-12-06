@@ -15,12 +15,15 @@
  * Description: This is a class that will take the correct letter and the
  * typed letter and return a boolean indicating whether the guess was correct
  * or incorrect.
- *
  * ****************************************
  */
 
 package CodeBash.model;
 
+/**
+ * The class that takes in the correct letter and the user inputted
+ * letter and returns a boolean that compares the two
+ */
 public class LetterEvaluator {
 
     /** The letter the user should type */
@@ -47,32 +50,4 @@ public class LetterEvaluator {
     public boolean analyzeKeyPress() {
         return (correctLetter.equals(typedLetter));
     }
-
-    public void setCorrectLetter(Character correctLetter) {
-        this.correctLetter = correctLetter;
-    }
-
-    public void setTypedLetter(Character typedLetter) {
-        this.typedLetter = typedLetter;
-    }
-
-//    /** A temporary test class used when the JUnit tests didn't work */
-//    public static void main(String[] args) {
-//        LetterEvaluator letterEvaluator = new LetterEvaluator('c', 'f');
-//        if (!letterEvaluator.analyzeKeyPress()) {
-//            System.out.println("false! this is supposed to happen.");
-//        }
-//        else {
-//            System.out.println("yikes. not supposed to happen.");
-//        }
-//
-//        letterEvaluator = new LetterEvaluator('c', 'c');
-//        if (letterEvaluator.analyzeKeyPress()) {
-//            System.out.println("true! this is supposed to happen.");
-//        }
-//        else {
-//            System.out.println("yikes. not supposed to happen.");
-//        }
-
-//    }
 }
