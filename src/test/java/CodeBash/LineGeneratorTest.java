@@ -21,7 +21,7 @@
 
 package CodeBash;
 
-import CodeBashModel2.LineGenerator;
+import CodeBash.model.LineGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
