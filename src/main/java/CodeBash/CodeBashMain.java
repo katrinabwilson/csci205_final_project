@@ -94,9 +94,7 @@ public class CodeBashMain extends Application {
         this.theWelcome = new CodeBashWelcome(theModel);
         this.theView = new CodeBashView(theModel);
         theWelcome.setTheView(theView);
-
         this.theController = new CodeBashController(theModel, theView, timeModel, theWelcome);
-
         this.theResults = new CodeBashResults(theModel.getStats());
 
         // URL for the initial css styling

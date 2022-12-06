@@ -54,12 +54,15 @@ public class CodeBashWelcome {
     }
 
     /**
-     * The getters for CodeBashWelcome
+     * @return the current instance of CodeBashWelcomeView
      */
     public CodeBashWelcomeView getWelcomeView() {
         return welcomeView;
     }
 
+    /**
+     * @return the current CodeBashWelcomeController
+     */
     public CodeBashWelcomeController getTheController() {
         return theController;
     }
