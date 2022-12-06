@@ -25,6 +25,7 @@ import CodeBash.model.CodeBashModel;
 import CodeBash.model.FXTime.FXModel;
 import CodeBash.model.GameState;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -207,6 +208,9 @@ public class CodeBashMain extends Application {
             theController.reset();
             theView.getRoot().requestFocus();
         });
+        // When "End Game" button is clicked, it closes the current gameplay window
+        theResults.getEndGame().setOnMouseClicked(event ->
+                Platform.exit());
     }
 }
 

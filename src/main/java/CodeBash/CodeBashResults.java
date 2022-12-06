@@ -44,6 +44,9 @@ public class CodeBashResults {
     /** A button that brings the player back to the welcome screen*/
     private Button playAgain;
 
+    /** A button that quits the game*/
+    private Button endGame;
+
     /** Keeps track of the current stats in the game */
     private TypingStats stats;
 
@@ -119,9 +122,12 @@ public class CodeBashResults {
 
         // Set up the button to initiate typing
         playAgain = new Button("PLAY AGAIN");
+        endGame = new Button("End Game");
         playAgain.setAlignment(Pos.TOP_CENTER);
         playAgain.setId("transitionButton");
+        endGame.setId("transitionButton");
         root.getChildren().add(playAgain);
+        root.getChildren().add(endGame);
 
         root.setAlignment(Pos.CENTER);
     }
@@ -202,6 +208,6 @@ public class CodeBashResults {
         return playAgain;
     }
 
-
+    public Button getEndGame() {return endGame;}
 }
 
