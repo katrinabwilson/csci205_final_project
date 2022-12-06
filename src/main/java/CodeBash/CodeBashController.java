@@ -22,6 +22,7 @@ package CodeBash;
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.ColorState;
 import CodeBash.model.FXTime.FXModel;
+import CodeBash.model.GameState;
 import CodeBash.model.LetterEvaluator;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
@@ -175,9 +176,16 @@ public class CodeBashController {
                 // Catch cursor at the beginning of a line
                 if (currentLetter > 0) {
                     currentLetter--;
+                    if (theModel.getCurrentColorState() == ColorState.DARK_MODE) {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #646669");
+                    }
+                    else if (theModel.getCurrentColorState() == ColorState.LIGHT_MODE) {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #323437");
+                    }
+                    else {
+                        theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #ccadd3");
+                    }
                 }
-                theView.getTextObjectAt(currentLetter).setStyle("-fx-fill: #646669");
-
             }
         });
     }
