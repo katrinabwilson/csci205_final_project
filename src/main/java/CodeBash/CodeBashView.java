@@ -21,7 +21,6 @@ package CodeBash;
 
 import CodeBash.model.CodeBashModel;
 import CodeBash.model.FXTime.FXModel;
-import CodeBash.model.FXTime.FXView;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -49,9 +48,6 @@ public class CodeBashView {
 
     /** Root node for the scene graph */
     private VBox root;
-
-    /** The view of the Timer */
-    private FXView viewTime;
 
     /** The model for the Timer */
     private FXModel model;
@@ -88,7 +84,6 @@ public class CodeBashView {
     private void initSceneGraph() {
         root = new VBox();
         showTimer = new HBox();
-        viewTime = new FXView(model);
         topPane = new HBox();
         VBox middlePane = new VBox();
 

@@ -16,12 +16,10 @@
  * *****************************************/
 package CodeBash.model.FXTime;
 
-import javafx.animation.Timeline;
-
 public class FXModel {
     /** This is the starting time of 15 seconds */
     public Integer STARTTIME = 15;
-
+    /** Setter method for the start time desired */
     public void setSTARTTIME(Integer STARTTIME) {
         this.STARTTIME = STARTTIME;
     }
