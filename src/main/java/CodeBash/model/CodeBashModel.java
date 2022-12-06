@@ -26,6 +26,10 @@ package CodeBash.model;
 import java.io.IOException;
 import java.util.Random;
 
+/**
+ * The model for CodeBash. It analyzes the correctness of key presses
+ * and the generation of random lines.
+ */
 public class CodeBashModel {
 
     /** Generates a list of possible sentences and stores them */
