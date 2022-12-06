@@ -80,31 +80,37 @@ public class CodeBashWelcomeView {
     /** the purple mode button*/
     private ToggleButton purpleMode;
 
-    /** The language buttons */
+    /** The toggle group for the language buttons */
     private ToggleGroup languageGroup;
+
+    /** The english mode button */
     private ToggleButton english;
+
+    /** The java mode button */
     private ToggleButton java;
+
+    /** The python mode button */
     private ToggleButton python;
 
     /** Button label */
     private Label btnLabel;
 
-    /** the toggle group for color*/
+    /** The toggle group for color*/
     private ToggleGroup colorGroup;
 
-    /** the initial welcome screen */
+    /** The initial welcome screen */
     private Scene welcomeScene;
 
-    /** the game play screen */
+    /** The game play screen */
     private Scene gamePlayScene;
 
-    /** the scene with the stats and offering the user to play again */
+    /** The scene with the stats and offering the user to play again */
     private Scene resultScene;
 
     /** The current color theme the game is in */
     private ColorState currentColorMode;
 
-    /** an instance of ColorChanger that will alter the display's coloring */
+    /** An instance of ColorChanger that will alter the display's coloring */
     private ColorChanger colorChanger;
 
     /**
@@ -256,77 +262,128 @@ public class CodeBashWelcomeView {
     }
 
     /**
-     * The getters and setters for the CodeBashWelcomeView class
+     * @return - the VBox root for CodeBashWelcomeView
      */
     public VBox getRoot() {
         return root;
     }
 
-
+    /**
+     * @return the toggle button for english
+     */
     public ToggleButton getEnglish() {
         return english;
     }
 
+    /**
+     * @return the toggle button for java
+     */
     public ToggleButton getJava() {
         return java;
     }
 
+    /**
+     * @return the toggle button for python
+     */
     public ToggleButton getPython() {
         return python;
     }
 
+    /**
+     * @return the button for the Start button
+     */
     public Button getStartBtn() {
         return startBtn;
     }
 
+    /**
+     * @return the toggle button for 15 seconds
+     */
     public ToggleButton getTime15() {
         return time15;
     }
 
+    /**
+     * @return the toggle button for 30 seconds
+     */
     public ToggleButton getTime30() {
         return time30;
     }
 
+    /**
+     * @return the toggle button for 45 seconds
+     */
     public ToggleButton getTime45() {
         return time45;
     }
 
+    /**
+     * @return the toggle button for 60 seconds
+     */
     public ToggleButton getTime60() {
         return time60;
     }
 
+    /**
+     * @return the toggle button for dark mode
+     */
     public ToggleButton getDarkMode() {
         return darkMode;
     }
 
+    /**
+     * @return the toggle button for light mode
+     */
     public ToggleButton getLightMode() {
         return lightMode;
     }
 
+    /**
+     * @return the toggle button for purple mode
+     */
     public ToggleButton getPurpleMode() {
         return purpleMode;
     }
 
+    /**
+     * @return the welcome scene
+     */
     public Scene getWelcomeScene() {
         return welcomeScene;
     }
 
+    /**
+     * @return the game play scene
+     */
     public Scene getGamePlayScene() {
         return gamePlayScene;
     }
 
+    /**
+     * @return the results scene
+     */
     public Scene getResultScene() {
         return resultScene;
     }
 
+    /**
+     * @return the current color mode
+     */
     public ColorState getCurrentColorMode() {
         return currentColorMode;
     }
 
+    /**
+     * Sets the color mode for the app
+     * @param currentColorMode - what you change the color mode to
+     */
     public void setCurrentColorMode(ColorState currentColorMode) {
         this.currentColorMode = currentColorMode;
     }
 
+    /**
+     * @return the current color changer object
+     */
     public ColorChanger getColorChanger() {
         return colorChanger;
     }

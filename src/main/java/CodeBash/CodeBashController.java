@@ -125,7 +125,6 @@ public class CodeBashController {
                 letterEvaluator = new LetterEvaluator(correctLetter, typedLetter);
 
                 // Add a word to the stats class every time space is pressed
-                // Better implementation for this? -- we should refactor this! - Katrina
                 if (key.getCode() == KeyCode.SPACE) {
                     theModel.getStats().wordCompleted();
                 }

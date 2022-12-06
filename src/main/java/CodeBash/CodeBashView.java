@@ -23,7 +23,6 @@ import CodeBash.model.CodeBashModel;
 import CodeBash.model.FXTime.FXModel;
 import CodeBash.model.FXTime.FXView;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;

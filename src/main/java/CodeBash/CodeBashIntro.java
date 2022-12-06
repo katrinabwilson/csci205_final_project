@@ -73,12 +73,15 @@ public class CodeBashIntro {
     }
 
     /**
-     * The getters of CodeBashIntro
+     * @return the buttons that is labeled with "tell me more"
      */
     public Button getTellMeMore() {
         return tellMeMore;
     }
 
+    /**
+     * @return the VBox root of CodeBashIntro
+     */
     public VBox getRoot() {
         return root;
     }
