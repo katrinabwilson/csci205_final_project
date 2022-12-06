@@ -102,32 +102,24 @@ public class CodeBashWelcomeController {
         welcomeView.getTime15().setOnAction(event -> {
             // Keep that button selected and update the timer label
             changeCountDown(15, "15");
-
-            //handleCountDown();
         });
 
         // When the 30-second button is pressed
         welcomeView.getTime30().setOnAction(event -> {
             // Keep that button selected and update the timer label
             changeCountDown(30, "30");
-
-            //handleCountDown();
         });
 
         // When the 45-second button is pressed
         welcomeView.getTime45().setOnAction(event -> {
             // Keep that button selected
             changeCountDown(45, "45");
-
-            //handleCountDown();
         });
 
         // When the 60-second button is pressed
         welcomeView.getTime60().setOnAction(event -> {
             // Keep that button selected and update the timer label
             changeCountDown(60, "60");
-
-            //handleCountDown();
         });
 
         // When language buttons are pressed
@@ -150,7 +142,8 @@ public class CodeBashWelcomeController {
     }
 
     /**
-     * The countdown
+     * This method handles the timer counting down from the
+     * time specified by the user.
      */
     private void handleCountDown() {
         timeline.getKeyFrames().add(
@@ -208,7 +201,9 @@ public class CodeBashWelcomeController {
     }
 
     /**
-     * The setter to set the view
+     * Sets the view for the game play scene that is used
+     * in this instance of CodeBashWelcomeController
+     * @param theView - the current CodeBashView
      */
     public void setTheView(CodeBashView theView) {
         this.theView = theView;

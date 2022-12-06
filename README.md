@@ -1,22 +1,37 @@
 # CSCI 205 - Software Engineering and Design
-Bucknell University  
+Bucknell University
 Lewisburg, PA
 ### Course Info
 Instructor: Brian King
 Semester: Fall 2022
 ## Team Information
-Katrina Wilson is the Scrum Master and a developer for this project. She is a 
-sophomore studying Computer Science and Economics.
+Katrina Wilson is the Scrum Master and a Developer for this project. She is a Sophomore studying Computer Science and Economics.
 
-Nahom Ayele is a senior studying Math Econ. He's a developer.
+Nahom Ayele is a Senior studying Math Econ. He's a Developer.
 
-Nolan Sauers is the Project Owner and a developer for this project. He's a sophomore studying Computer Science and Engineering.
+Nolan Sauers is the Project Owner and a Developer for this project. He's a Sophomore studying Computer Science and Engineering.
 
-Harmony Yeung is a Developer who is a sophomore Computer Science major.
+Harmony Yeung is a Developer who is a Sophomore Computer Science major.
 
 ## Project Information
-*Write a few sentences about your project. This can be done later, as you may not quite know all the details yet.*
+Our project is called “CodeBash”, which takes a lot of its inspiration from the online typing game called “monkeytype”. Overarchingly, our game aims to provide the user with a tool that can help them improve their typing speed and accuracy.
 
-Our project is called CodeBash.
-## How to run it
-*IMPORTANT -Update this with information about how to build and run your project!
+Additionally, this tool can be used to refamiliarize the user with syntax of programming languages that they are working with, or hoping to maintain.
+
+In an increasingly technical world, having typing skills is fundamental to how we communicate with one another, whether that is essay writing, CSCI 205 labs, or texting. In our opinion, there’s no better way to improve that skill than through the snarky, visually appealing, one of a kind CodeBash game.
+
+## Package Structure
+
+The entire project is contained within the “CodeBash” package. From there, the model for the main game - which contains the game logic and functionality - is contained inside the “model” package, and everything else (including the view, controller, and main class) is outside of that package.
+
+## 3rd Party Libraries Used
+
+JavaFX
+
+## How to Run It
+If you have the file on your computer, simply run the “CodeBashMain” main method.
+
+If you’re looking to play from Gitlab, clone the program and type ./gradlew run
+
+## URL to Video Presentation
+TBD

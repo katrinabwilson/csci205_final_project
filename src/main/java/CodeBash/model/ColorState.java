@@ -3,7 +3,7 @@
  * Fall 2022
  * Instructor: Prof. Brian King
  *
- * Name: Katrina Wilson
+ * Name: Katrina Wilson, Nahom Ayele, Nolan Sauers, Harmony Yeung
  * Section: 9am - 01
  * Date: 11/29/22
  * Time: 8:50 PM
@@ -13,13 +13,13 @@
  * Class: ColorState
  *
  * Description:
- *
+ * The Enum that represents the color theme of the game
  * ****************************************
  */
 
 package CodeBash.model;
 /**
- * A simple enumeration representing the current progress of the game
+ * A simple enumeration representing the game's color theme
  */
 public enum ColorState {
     DARK_MODE,

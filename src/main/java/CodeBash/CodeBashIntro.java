@@ -3,7 +3,7 @@
  * Fall 2022
  * Instructor: Prof. Brian King
  *
- * Name: Katrina Wilson
+ * Name: Katrina Wilson, Nahom Ayele, Nolan Sauers, Harmony Yeung
  * Section: 9am - 01
  * Date: 12/1/22
  * Time: 6:16 PM
@@ -13,7 +13,8 @@
  * Class: CodeBashIntro
  *
  * Description:
- *
+ * The very first scene that introduces the
+ * user to CodeBash
  * ****************************************
  */
 
@@ -24,18 +25,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * The Introduction scene to CodeBash
+ */
 public class CodeBashIntro {
 
     /** Root node for the scene graph */
     private VBox root;
 
+    /** The button to continue off the introduction scene */
     private Button tellMeMore;
 
+    /**
+     * The method that calls the other methods
+     */
     public CodeBashIntro() {
         initSceneGraph();
         initStyling();
     }
 
+    /**
+     * Setting the scene for what CodeBashIntro looks like
+     */
     public void initSceneGraph() {
         root = new VBox();
         root.setId("root");
@@ -43,11 +54,7 @@ public class CodeBashIntro {
         Label desc1 = new Label("looking to improve your lightning fast typing skills?\n " +
                                 "\n       forgetting syntax to certain programming language?\n" +
                                 "\nlucky you! you've come to the right place.");
-        desc1.setId("intro");
-        //Label desc2 = new Label("forgetting syntax to certain programming language?");
-        //desc2.setId("btnLabel");
-        //Label desc3 = new Label("lucky you! you've come to the right place.");
-        //desc3.setId("btnLabel");
+        desc1.setId("instructions");
 
         root.getChildren().add(desc1);
         root.setAlignment(Pos.CENTER);
@@ -56,18 +63,25 @@ public class CodeBashIntro {
         tellMeMore.setId("transitionButton");
         root.getChildren().add(tellMeMore);
 
-
     }
 
+    /**
+     * Setting the style for the introduction
+     */
     public void initStyling() {
-//        root.setPrefSize(800, 300);
         root.setSpacing(20);
     }
 
+    /**
+     * @return the buttons that is labeled with "tell me more"
+     */
     public Button getTellMeMore() {
         return tellMeMore;
     }
 
+    /**
+     * @return the VBox root of CodeBashIntro
+     */
     public VBox getRoot() {
         return root;
     }

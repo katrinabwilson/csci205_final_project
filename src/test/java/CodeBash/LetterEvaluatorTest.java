@@ -21,7 +21,7 @@
 
 package CodeBash;
 
-import CodeBashModel2.LetterEvaluator;
+import CodeBash.model.LetterEvaluator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
