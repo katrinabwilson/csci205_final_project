@@ -34,4 +34,4 @@ If you have the file on your computer, simply run the “CodeBashMain” main me
 If you’re looking to play from Gitlab, clone the program and type ./gradlew run
 
 ## URL to Video Presentation
-TBD
+https://mediaspace.bucknell.edu/media/CSCI205+Final+Project+Video+%28Team05%29/1_4sa8da3l
