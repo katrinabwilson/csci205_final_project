@@ -11,7 +11,7 @@ Nahom Ayele is a Senior studying Math Econ. He's a Developer.
 
 Nolan Sauers is the Project Owner and a Developer for this project. He's a Sophomore studying Computer Science and Engineering.
 
-Harmony Yeung is a Developer who is a Sophomore Computer Science major.
+Harmony Yeung is a Developer who is a Sophomore studying Computer Science.
 
 ## Project Information
 Our project is called “CodeBash”, which takes a lot of its inspiration from the online typing game called “monkeytype”. Overarchingly, our game aims to provide the user with a tool that can help them improve their typing speed and accuracy.
